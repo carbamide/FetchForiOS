@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3394" systemVersion="13A569" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Headers" representedClassName="Headers" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="url" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Urls" inverseName="headers" inverseEntity="Urls" syncable="YES"/>
+    </entity>
+    <entity name="Parameters" representedClassName="Parameters" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="url" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Urls" inverseName="parameters" inverseEntity="Urls" syncable="YES"/>
+    </entity>
+    <entity name="Projects" representedClassName="Projects" syncable="YES">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="urls" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Urls" inverseName="project" inverseEntity="Urls" syncable="YES"/>
+    </entity>
+    <entity name="Urls" representedClassName="Urls" syncable="YES">
+        <attribute name="customPayload" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="method" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="urlDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="headers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Headers" inverseName="url" inverseEntity="Headers" syncable="YES"/>
+        <relationship name="parameters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Parameters" inverseName="url" inverseEntity="Parameters" syncable="YES"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Projects" inverseName="urls" inverseEntity="Projects" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Headers" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Parameters" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Projects" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Urls" positionX="0" positionY="0" width="0" height="0"/>
+    </elements>
+</model>
