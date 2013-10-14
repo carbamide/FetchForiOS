@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="13A584" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="H1p-Uh-vWS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4511" systemVersion="13A598" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="H1p-Uh-vWS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3745"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -151,7 +151,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qk4-1b-6ck">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="qk4-1b-6ck">
                                 <rect key="frame" x="653" y="86" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
@@ -168,6 +168,7 @@
                             <constraint firstAttribute="trailing" secondItem="cUa-Yy-z6N" secondAttribute="trailing" constant="20" id="DHF-1f-tUT"/>
                             <constraint firstItem="zio-gI-kdw" firstAttribute="trailing" secondItem="bfn-WF-wEW" secondAttribute="trailing" id="DaN-fq-nFW"/>
                             <constraint firstItem="vps-Bx-dBg" firstAttribute="top" secondItem="zio-gI-kdw" secondAttribute="bottom" constant="8" symbolic="YES" id="EtV-6f-ham"/>
+                            <constraint firstAttribute="trailing" secondItem="qk4-1b-6ck" secondAttribute="trailing" constant="30" id="Etn-Nz-zIk"/>
                             <constraint firstItem="EeT-Tc-2h9" firstAttribute="top" secondItem="8vR-mf-N5R" secondAttribute="bottom" constant="8" id="FHm-86-eJo"/>
                             <constraint firstAttribute="trailing" secondItem="8vR-mf-N5R" secondAttribute="trailing" constant="20" id="GqN-bi-CDB"/>
                             <constraint firstItem="8vR-mf-N5R" firstAttribute="top" secondItem="KQS-fg-lg3" secondAttribute="bottom" constant="16" id="LC4-JW-Krb"/>
@@ -187,6 +188,7 @@
                             <constraint firstAttribute="bottom" secondItem="bfn-WF-wEW" secondAttribute="bottom" constant="238" id="cgP-lI-RqF"/>
                             <constraint firstAttribute="trailing" secondItem="vps-Bx-dBg" secondAttribute="trailing" constant="20" id="gzF-8N-YxY"/>
                             <constraint firstItem="kLg-57-AHq" firstAttribute="top" secondItem="cUa-Yy-z6N" secondAttribute="bottom" constant="8" id="hnO-Bx-FVi"/>
+                            <constraint firstItem="qk4-1b-6ck" firstAttribute="centerY" secondItem="zio-gI-kdw" secondAttribute="centerY" id="i0l-Os-eUD"/>
                             <constraint firstItem="zio-gI-kdw" firstAttribute="top" secondItem="e5E-8q-tig" secondAttribute="bottom" constant="17" id="jtH-fC-lof"/>
                             <constraint firstItem="8vR-mf-N5R" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" constant="20" id="m1z-FG-6Wo"/>
                             <constraint firstItem="Azs-QO-f8A" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" constant="20" id="pqV-2s-Yj2"/>

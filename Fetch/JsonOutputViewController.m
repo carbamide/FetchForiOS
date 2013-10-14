@@ -38,6 +38,8 @@
     
     [self setPreferredContentSize:CGSizeMake(480, 320)];
     
+    [self setTitle:@"JSON Representation"];
+    
     if ([[self jsonData] isKindOfClass:[NSArray class]]) {
         [self setJsonData:@{@"Root": [self jsonData]}];
     }
@@ -64,12 +66,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    float heightPadding = self.navigationController.navigationBar.frame.size.height;
-    
-    [[self treeView] setContentInset:UIEdgeInsetsMake(heightPadding, 0.0, 0.0, 0.0)];
-    [[self treeView] setContentOffset:CGPointMake(0.0, -heightPadding)];
-    
+
     [[self treeView] setFrame:[[self view] bounds]];
 }
 

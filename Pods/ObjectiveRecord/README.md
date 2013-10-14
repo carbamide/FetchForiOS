@@ -4,7 +4,7 @@ The syntax is borrowed from Ruby on Rails.<br>
 And yeah, no AppDelegate code.
 It's fully tested with [Kiwi](https://github.com/allending/Kiwi).
 
-[![Build Status](https://travis-ci.org/mneorr/Objective-Record.png?branch=master)](https://travis-ci.org/mneorr/Objective-Record)
+[![Build Status](https://travis-ci.org/mneorr/ObjectiveRecord.png?branch=master)](https://travis-ci.org/mneorr/ObjectiveRecord)
 
 #### Usage
 1. Install with [CocoaPods](http://cocoapods.org) or clone
@@ -18,7 +18,11 @@ john.name = @"John";
 [john save];
 [john delete];
 
-[Person create:@{ @"name" : @"John", @"age" : @12, @"member" : @NO }];
+[Person create:@{ 
+    @"name" : @"John",
+    @"age" : @12, 
+    @"member" : @NO 
+}];
 ```
 
 #### Finders
@@ -118,7 +122,14 @@ Since v1.2, camel case is supported automatically - you don't have to do nothing
 
 @end
 ```
+
+#### Testing
+
+ObjectiveRecord supports CoreData's in-memory store. In any place, before your tests start running, it's enough to call
+``` objc
+[[CoreDataManager sharedManager] useInMemoryStore];
+```
+
 #### Roadmap
 
 - NSIncrementalStore support
-- In memory store support

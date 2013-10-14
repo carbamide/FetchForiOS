@@ -29,6 +29,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self setTitle:@"Response Headers"];
 }
 
 - (void)didReceiveMemoryWarning

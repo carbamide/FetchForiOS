@@ -119,7 +119,7 @@ static float const kAnimationDuration = 0.3;
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
 {
-    [barButtonItem setTitle:@"Master"];
+    [barButtonItem setTitle:@"Projects"];
     
     [[self navigationItem] setLeftBarButtonItem:barButtonItem animated:YES];
     
@@ -274,6 +274,10 @@ static float const kAnimationDuration = 0.3;
                 return;
             }
             
+            Headers *tempHeader = [self headersDataSource][[indexPath row]];
+            
+            [tempHeader delete];
+            
             [[self headersDataSource] removeObjectAtIndex:[indexPath row]];
             
             [[self headersTableView] beginUpdates];
@@ -292,6 +296,10 @@ static float const kAnimationDuration = 0.3;
                 return;
             }
             
+            Parameters *tempParam = [self parametersDataSource][[indexPath row]];
+            
+            [tempParam delete];
+            
             [[self parametersDataSource] removeObjectAtIndex:[indexPath row]];
             
             [[self parametersTableView] beginUpdates];
@@ -307,11 +315,12 @@ static float const kAnimationDuration = 0.3;
     
     [viewController setJsonData:[self jsonData]];
     
-    if (![self jsonPopover]) {
-        [self setJsonPopover:[[UIPopoverController alloc] initWithContentViewController:viewController]];
+    if ([[self responseHeadersPopover] isPopoverVisible]) {
+        [[self responseHeadersPopover] dismissPopoverAnimated:YES];
     }
-    
-    [[self jsonPopover] setContentViewController:viewController];
+
+    [self setJsonPopover:[[UIPopoverController alloc] initWithContentViewController:[[UINavigationController alloc] initWithRootViewController:viewController]]];
+
     [[self jsonPopover] presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
@@ -354,8 +363,12 @@ static float const kAnimationDuration = 0.3;
     
     ResponseHeadersViewController *headersViewController = [[ResponseHeadersViewController alloc] initWithStyle:UITableViewStylePlain keysArray:keysArray valuesArray:valuesArray];
     
+    if ([[self jsonPopover] isPopoverVisible]) {
+        [[self jsonPopover] dismissPopoverAnimated:YES];
+    }
+    
     if (![self responseHeadersPopover]) {
-        [self setResponseHeadersPopover:[[UIPopoverController alloc] initWithContentViewController:headersViewController]];
+        [self setResponseHeadersPopover:[[UIPopoverController alloc] initWithContentViewController:[[UINavigationController alloc] initWithRootViewController:headersViewController]]];
     }
     
     [[self responseHeadersPopover] presentPopoverFromBarButtonItem:[self responseHeadersButton] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
@@ -614,16 +627,11 @@ static float const kAnimationDuration = 0.3;
     [[self currentUrl] addParametersObject:tempParameter];
     [[self currentUrl] save];
     
-    [self reloadParameterDataSource];
-}
-
--(void)reloadParameterDataSource
-{
-    for (Parameters *tempParameter in [[self currentUrl] parameters]) {
-        [[self parametersDataSource] addObject:tempParameter];
-        
-        [[self parametersTableView] reloadData];
-    }
+    [[self parametersDataSource] addObject:tempParameter];
+    
+    [[self parametersTableView] beginUpdates];
+    [[self parametersTableView] insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:([[self parametersDataSource] count] - 1) inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [[self parametersTableView] endUpdates];
 }
 
 #pragma mark -
