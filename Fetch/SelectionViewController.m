@@ -31,7 +31,7 @@
 {
     [super viewDidLoad];
     
-    [self setPreferredContentSize:CGSizeMake(160, ([[self dataSource] count] * 44))];
+    [self setPreferredContentSize:CGSizeMake(220, ([[self dataSource] count] * 44))];
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,9 +68,23 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIButton *button = [self sender];
+    UIButton *button = nil;
+    UITextField *textField = nil;
     
-    [button setTitle:[self dataSource][[indexPath row]] forState:UIControlStateNormal];
+    if ([[self sender] isKindOfClass:[UIButton class]]) {
+        button = [self sender];
+    }
+    else {
+        textField = [self sender];
+    }
+    
+    if (button) {
+        [button setTitle:[self dataSource][[indexPath row]] forState:UIControlStateNormal];
+    }
+    else {
+        [textField setText:[self dataSource][[indexPath row]]];
+        [textField resignFirstResponder];
+    }
     
     [[[self delegate] selectionPopover] dismissPopoverAnimated:YES];
 }

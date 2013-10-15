@@ -8,6 +8,11 @@
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
+typedef enum CellType {
+    HeaderCell = 0,
+    ParameterCell = 1
+} CellType;
+
 // Dictionary Values
 static NSString *const kInsertValue = @"Insert Value";
 static NSString *const kInsertName = @"Insert Name";

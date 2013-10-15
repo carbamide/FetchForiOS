@@ -81,6 +81,55 @@
                                 <rect key="frame" x="20" y="217" width="663" height="135"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="SsZ-Js-1Dt" customClass="FetchCell">
+                                        <rect key="frame" x="0.0" y="22" width="663" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SsZ-Js-1Dt" id="81L-bR-X5p">
+                                            <rect key="frame" x="0.0" y="0.0" width="663" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Header Value" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L7A-To-Ofe" customClass="JVFloatLabeledTextField">
+                                                    <rect key="frame" x="406" y="7" width="237" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="237" id="z2z-iC-3LH"/>
+                                                    </constraints>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="SsZ-Js-1Dt" id="msi-br-Apw"/>
+                                                    </connections>
+                                                </textField>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Header Name" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EG7-vU-rjt" customClass="JVFloatLabeledTextField">
+                                                    <rect key="frame" x="20" y="7" width="258" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="258" id="aoH-sG-LTI"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="SsZ-Js-1Dt" id="B1b-wy-Dpr"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="L7A-To-Ofe" secondAttribute="trailing" constant="20" symbolic="YES" id="FKz-Qq-kRu"/>
+                                                <constraint firstItem="L7A-To-Ofe" firstAttribute="bottom" secondItem="EG7-vU-rjt" secondAttribute="bottom" id="MZ3-Ef-rHe"/>
+                                                <constraint firstAttribute="bottom" secondItem="EG7-vU-rjt" secondAttribute="bottom" constant="6" id="P6n-24-KLy"/>
+                                                <constraint firstItem="EG7-vU-rjt" firstAttribute="leading" secondItem="81L-bR-X5p" secondAttribute="leading" constant="20" symbolic="YES" id="jgI-b3-wFP"/>
+                                                <constraint firstItem="L7A-To-Ofe" firstAttribute="baseline" secondItem="EG7-vU-rjt" secondAttribute="baseline" id="t5g-rc-2Kv"/>
+                                                <constraint firstItem="L7A-To-Ofe" firstAttribute="top" secondItem="81L-bR-X5p" secondAttribute="top" constant="7" id="xjb-0q-sc2"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameTextField" destination="EG7-vU-rjt" id="EZd-1U-00f"/>
+                                            <outlet property="valueTextField" destination="L7A-To-Ofe" id="p3g-vx-inV"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="JEX-9P-axG" id="lVr-wd-QkC"/>
                                     <outlet property="delegate" destination="JEX-9P-axG" id="0f5-mK-KmU"/>
@@ -90,6 +139,55 @@
                                 <rect key="frame" x="20" y="396" width="663" height="135"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="LZy-o9-e0h" customClass="FetchCell">
+                                        <rect key="frame" x="0.0" y="22" width="663" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LZy-o9-e0h" id="pyi-pn-b9d">
+                                            <rect key="frame" x="0.0" y="0.0" width="663" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Header Value" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YyC-Lb-b63" customClass="JVFloatLabeledTextField">
+                                                    <rect key="frame" x="406" y="7" width="237" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="237" id="Zkw-fe-hzB"/>
+                                                    </constraints>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="LZy-o9-e0h" id="aBs-Aj-oaf"/>
+                                                    </connections>
+                                                </textField>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Header Name" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zEM-VJ-w3g" customClass="JVFloatLabeledTextField">
+                                                    <rect key="frame" x="20" y="7" width="258" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="258" id="m5s-dK-ah3"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="LZy-o9-e0h" id="Dav-Y4-GeU"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="YyC-Lb-b63" secondAttribute="trailing" constant="20" symbolic="YES" id="Axm-do-8xK"/>
+                                                <constraint firstItem="YyC-Lb-b63" firstAttribute="baseline" secondItem="zEM-VJ-w3g" secondAttribute="baseline" id="Cfc-Q6-R9d"/>
+                                                <constraint firstAttribute="bottom" secondItem="zEM-VJ-w3g" secondAttribute="bottom" constant="6" id="NLU-NP-zww"/>
+                                                <constraint firstItem="zEM-VJ-w3g" firstAttribute="leading" secondItem="pyi-pn-b9d" secondAttribute="leading" constant="20" symbolic="YES" id="Pnv-UP-fIb"/>
+                                                <constraint firstItem="YyC-Lb-b63" firstAttribute="bottom" secondItem="zEM-VJ-w3g" secondAttribute="bottom" id="i9k-5F-vJ0"/>
+                                                <constraint firstItem="YyC-Lb-b63" firstAttribute="top" secondItem="pyi-pn-b9d" secondAttribute="top" constant="7" id="isH-9T-TgB"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameTextField" destination="zEM-VJ-w3g" id="adg-OF-1CZ"/>
+                                            <outlet property="valueTextField" destination="YyC-Lb-b63" id="1gj-G6-Qwe"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="JEX-9P-axG" id="ncO-GU-efr"/>
                                     <outlet property="delegate" destination="JEX-9P-axG" id="jd1-yD-vBX"/>
@@ -231,8 +329,6 @@
                         <outlet property="responseHeadersButton" destination="57j-uY-AsF" id="XCJ-Z1-dyi"/>
                         <outlet property="urlDescriptionTextField" destination="vps-Bx-dBg" id="VNH-nv-1pa"/>
                         <outlet property="urlTextField" destination="Azs-QO-f8A" id="T3c-jE-KGj"/>
-                        <segue destination="9CV-EV-180" kind="modal" identifier="AddParameter" modalPresentationStyle="formSheet" id="OAQ-EG-tn8"/>
-                        <segue destination="SBK-Pw-cqS" kind="modal" identifier="AddHeader" modalPresentationStyle="formSheet" id="7A5-VV-fYN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
@@ -275,92 +371,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mUj-dj-DSS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1178" y="-2909"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="GBU-zR-agc">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="SBK-Pw-cqS" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xH8-pN-zJ5">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="2iL-sh-An0" kind="relationship" relationship="rootViewController" id="4oY-ZO-lxb"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nxp-Fr-aHG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2566" y="-1729"/>
-        </scene>
-        <!--Add Header View Controller - Add Header-->
-        <scene sceneID="jEU-jk-ImL">
-            <objects>
-                <viewController id="2iL-sh-An0" customClass="AddHeaderViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="1ar-7o-ifR"/>
-                        <viewControllerLayoutGuide type="bottom" id="JPL-Qg-DeH"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="zWU-1R-CAH">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="79l-5c-BLM">
-                                <rect key="frame" x="46" y="91" width="134" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Select Header Type">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="selectHeaderAction:" destination="2iL-sh-An0" eventType="touchUpInside" id="oZx-MA-FEx"/>
-                                </connections>
-                            </button>
-                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c2y-He-jQ3">
-                                <rect key="frame" x="46" y="91" width="202" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Header Value" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ojy-6z-LHt">
-                                <rect key="frame" x="256" y="91" width="239" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRa-Un-4cw">
-                                <rect key="frame" x="93" y="130" width="108" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Custom Header">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="customHeaderAction:" destination="2iL-sh-An0" eventType="touchUpInside" id="rc6-BV-3FS"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Add Header" id="LKy-eV-Xde">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="SHd-RG-WJV">
-                            <connections>
-                                <action selector="cancel:" destination="2iL-sh-An0" id="4WF-Rz-gWZ"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="uFM-Mb-ym8">
-                            <connections>
-                                <action selector="save:" destination="2iL-sh-An0" id="FSN-Z7-D6W"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="customHeaderButton" destination="kRa-Un-4cw" id="4mj-ww-mse"/>
-                        <outlet property="customHeaderTextField" destination="c2y-He-jQ3" id="vpp-kj-5dm"/>
-                        <outlet property="headerValueTextField" destination="ojy-6z-LHt" id="R8x-q7-9a8"/>
-                        <outlet property="selectHeaderTypeButton" destination="79l-5c-BLM" id="wry-1Y-7Ek"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="N4J-fH-d2D" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3278" y="-1734"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
@@ -443,70 +453,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="246" y="-1792"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ukj-Ws-dtQ">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="9CV-EV-180" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DTT-Yv-xs2">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="PMp-mA-XOu" kind="relationship" relationship="rootViewController" id="c16-bT-jKR"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="X9e-PV-CYb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2566" y="-2739"/>
-        </scene>
-        <!--Add Parameter View Controller - Add Parameter-->
-        <scene sceneID="7Ng-xN-QBS">
-            <objects>
-                <viewController id="PMp-mA-XOu" customClass="AddParameterViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="iJg-YQ-wNq"/>
-                        <viewControllerLayoutGuide type="bottom" id="grD-gi-9ec"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="3RB-Mq-KV8">
-                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Parameter Value" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Krg-uY-3je">
-                                <rect key="frame" x="281" y="80" width="239" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Parameter Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wCN-yb-Sj1">
-                                <rect key="frame" x="20" y="80" width="239" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Add Parameter" id="3zD-GO-wmK">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="w9n-Wv-hK6">
-                            <connections>
-                                <action selector="cancel:" destination="PMp-mA-XOu" id="4JM-16-E3s"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="0PK-WT-44Q">
-                            <connections>
-                                <action selector="save:" destination="PMp-mA-XOu" id="yp0-Et-tff"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="parameterNameTextField" destination="wCN-yb-Sj1" id="dEP-EU-fLZ"/>
-                        <outlet property="parameterValueTextField" destination="Krg-uY-3je" id="4xH-uN-aDC"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a5K-NP-5a1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3278" y="-2739"/>
         </scene>
     </scenes>
     <resources>

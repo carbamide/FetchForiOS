@@ -15,9 +15,8 @@
 #import "Constants.h"
 #import "UIView+FindAndResignFirstResponder.h"
 #import "JsonOutputViewController.h"
-#import "AddParameterViewController.h"
-#import "AddHeaderViewController.h"
 #import "ResponseHeadersViewController.h"
+#import "FetchCell.h"
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -90,28 +89,6 @@ static float const kAnimationDuration = 0.3;
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-}
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:kAddHeaderSegue]) {
-        if ([self currentHeader]) {
-            UINavigationController *navController = [segue destinationViewController];
-            
-            AddHeaderViewController *viewController = (AddHeaderViewController *)[navController topViewController];
-            
-            [viewController setCurrentHeader:[self currentHeader]];
-        }
-    }
-    else if ([[segue identifier] isEqualToString:kAddParameterSegue]) {
-        if ([self currentParameter]) {
-            UINavigationController *navController = [segue destinationViewController];
-            
-            AddParameterViewController *viewController = (AddParameterViewController *)[navController topViewController];
-            
-            [viewController setCurrentParameter:[self currentParameter]];
-        }
-    }
 }
 
 #pragma mark -
@@ -265,7 +242,17 @@ static float const kAnimationDuration = 0.3;
 {
     if (sender == [self headersSegCont]) {
         if ([sender selectedSegmentIndex] == 0) {
-            [self performSegueWithIdentifier:kAddHeaderSegue sender:nil];
+            Headers *tempHeader = [Headers create:@{@"name": @"", @"value": @""}];
+            [tempHeader save];
+            
+            [[self currentUrl] addHeadersObject:tempHeader];
+            [[self currentUrl] save];
+            
+            [[self headersDataSource] addObject:tempHeader];
+            
+            [[self headersTableView] beginUpdates];
+            [[self headersTableView] insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[[self headersDataSource] indexOfObject:tempHeader] inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [[self headersTableView] endUpdates];
         }
         else {
             NSIndexPath *indexPath = [[self headersTableView] indexPathForSelectedRow];
@@ -287,7 +274,17 @@ static float const kAnimationDuration = 0.3;
     }
     else if (sender == [self parametersSegCont]) {
         if ([sender selectedSegmentIndex] == 0) {
-            [self performSegueWithIdentifier:kAddParameterSegue sender:nil];
+            Parameters *tempParam = [Parameters create:@{@"name": @"", @"value": @""}];
+            [tempParam save];
+            
+            [[self currentUrl] addParametersObject:tempParam];
+            [[self currentUrl] save];
+            
+            [[self parametersDataSource] addObject:tempParam];
+            
+            [[self parametersTableView] beginUpdates];
+            [[self parametersTableView] insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:[[self parametersDataSource] indexOfObject:tempParam] inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [[self parametersTableView] endUpdates];
         }
         else {
             NSIndexPath *indexPath = [[self parametersTableView] indexPathForSelectedRow];
@@ -655,23 +652,29 @@ static float const kAnimationDuration = 0.3;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    FetchCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+    if (!cell) {
+        cell = [[FetchCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
     
     if (tableView == [self headersTableView]) {
         Headers *tempHeader = [self headersDataSource][[indexPath row]];
         
-        [[cell textLabel] setText:[tempHeader name]];
-        [[cell detailTextLabel] setText:[tempHeader value]];
+        [[cell nameTextField] setText:[tempHeader name]];
+        [[cell valueTextField] setText:[tempHeader value]];
+        [cell setCellType:HeaderCell];
+        
+        [cell setCurrentHeader:tempHeader];
     }
     else {
         Parameters *tempParameter = [self parametersDataSource][[indexPath row]];
         
-        [[cell textLabel] setText:[tempParameter name]];
-        [[cell detailTextLabel] setText:[tempParameter value]];
+        [[cell nameTextField] setText:[tempParameter name]];
+        [[cell valueTextField] setText:[tempParameter value]];
+        [cell setCellType:ParameterCell];
+
+        [cell setCurrentParameter:tempParameter];
     }
     
     return cell;
@@ -717,20 +720,7 @@ static float const kAnimationDuration = 0.3;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (tableView == [self headersTableView]) {
-        Headers *tempHeader = [self headersDataSource][[indexPath row]];
-        
-        [self setCurrentHeader:tempHeader];
-        
-        [self performSegueWithIdentifier:kAddHeaderSegue sender:nil];
-    }
-    else {
-        Parameters *tempParameter = [self parametersDataSource][[indexPath row]];
-        
-        [self setCurrentParameter:tempParameter];
-        
-        [self performSegueWithIdentifier:kAddParameterSegue sender:nil];
-    }
+    return;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
