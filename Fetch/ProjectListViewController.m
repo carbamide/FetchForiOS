@@ -12,6 +12,7 @@
 #import "UrlListViewController.h"
 #import "Constants.h"
 #import "ProjectHandler.h"
+#import "AppDelegate.h"
 
 @interface ProjectListViewController ()
 @property (strong, nonatomic) NSMutableArray *projectList;
@@ -38,6 +39,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ([(AppDelegate *)[[UIApplication sharedApplication] delegate] isInternetDown]) {
+        [[[self navigationController] navigationBar] setBarTintColor:[UIColor redColor]];
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:INTERNET_DOWN object:Nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
+        [[[self navigationController] navigationBar] setBarTintColor:[UIColor redColor]];
+    }];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:INTERNET_UP object:Nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
+        [[[self navigationController] navigationBar] setBarTintColor:[UIColor clearColor]];
+    }];
     
     [[Projects all] each:^(Projects *object) {
         [[self projectList] addObject:object];

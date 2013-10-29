@@ -17,6 +17,7 @@
 #import "JsonOutputViewController.h"
 #import "ResponseHeadersViewController.h"
 #import "FetchCell.h"
+#import "AppDelegate.h"
 
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
@@ -76,6 +77,26 @@ NS_ENUM(NSInteger, CellTypeTag){
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadUrl:) name:LOAD_URL object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addHeader:) name:ADD_HEADER object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addParameter:) name:ADD_PARAMETER object:nil];
+    
+    [self setTitle:@"Fetch for iOS"];
+    
+    if ([(AppDelegate *)[[UIApplication sharedApplication] delegate] isInternetDown]) {
+        [[[self navigationController] navigationBar] setBarTintColor:[UIColor redColor]];
+        
+        [self setTitle:[[self title] stringByAppendingString:@" - Internet Connection Down"]];
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:INTERNET_DOWN object:Nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
+        [[[self navigationController] navigationBar] setBarTintColor:[UIColor redColor]];
+        
+        [self setTitle:[[self title] stringByAppendingString:@" - Internet Connection Down"]];
+    }];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:INTERNET_UP object:Nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
+        [[[self navigationController] navigationBar] setBarTintColor:[UIColor clearColor]];
+        
+        [self setTitle:[[self title] stringByReplacingOccurrencesOfString:@" - Internet Connection Down" withString:@""]];
+    }];
     
     [[NSNotificationCenter defaultCenter] addObserverForName:RELOAD_HEADER_TABLE object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
         [self setCurrentHeader:nil];

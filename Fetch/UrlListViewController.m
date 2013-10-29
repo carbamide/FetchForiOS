@@ -10,6 +10,7 @@
 #import "Projects.h"
 #import "Urls.h"
 #import "Constants.h"
+#import "AppDelegate.h"
 
 @interface UrlListViewController ()
 
@@ -36,6 +37,18 @@
 {
     [super viewDidLoad];
 	
+    if ([(AppDelegate *)[[UIApplication sharedApplication] delegate] isInternetDown]) {
+        [[[self navigationController] navigationBar] setBarTintColor:[UIColor redColor]];
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:INTERNET_DOWN object:Nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
+        [[[self navigationController] navigationBar] setBarTintColor:[UIColor redColor]];
+    }];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:INTERNET_UP object:Nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
+        [[[self navigationController] navigationBar] setBarTintColor:[UIColor clearColor]];
+    }];
+    
     for (Urls *tempUrl in [[self currentProject] urls]) {
         [[self urlList] addObject:tempUrl];
     }

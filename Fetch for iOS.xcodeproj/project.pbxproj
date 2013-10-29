@@ -40,6 +40,7 @@
 		2941E18917F85F1100D5FD44 /* ResponseHeadersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2941E18817F85F1100D5FD44 /* ResponseHeadersViewController.m */; };
 		29463BCC17F4A44A00B2C807 /* HeaderNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29463BCB17F4A44A00B2C807 /* HeaderNames.plist */; };
 		29463BCF17F4A82B00B2C807 /* UrlListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29463BCE17F4A82B00B2C807 /* UrlListViewController.m */; };
+		2974FB44182056B4007A34D5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2974FB43182056B4007A34D5 /* Reachability.m */; };
 		299F66D1180CD08F00AC77C3 /* FetchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 299F66D0180CD08F00AC77C3 /* FetchCell.m */; };
 		D210FEA3776C4A6A83963046 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7047A5B15E4746C38C71D231 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -109,6 +110,8 @@
 		29463BCB17F4A44A00B2C807 /* HeaderNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HeaderNames.plist; sourceTree = "<group>"; };
 		29463BCD17F4A82B00B2C807 /* UrlListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlListViewController.h; sourceTree = "<group>"; };
 		29463BCE17F4A82B00B2C807 /* UrlListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UrlListViewController.m; sourceTree = "<group>"; };
+		2974FB42182056B4007A34D5 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		2974FB43182056B4007A34D5 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		299F66CF180CD08F00AC77C3 /* FetchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchCell.h; sourceTree = "<group>"; };
 		299F66D0180CD08F00AC77C3 /* FetchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchCell.m; sourceTree = "<group>"; };
 		7047A5B15E4746C38C71D231 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +181,8 @@
 		291744C017F3B8B20052A8C9 /* Fetch */ = {
 			isa = PBXGroup;
 			children = (
+				2974FB42182056B4007A34D5 /* Reachability.h */,
+				2974FB43182056B4007A34D5 /* Reachability.m */,
 				2917450517F3CBE90052A8C9 /* Data Handling */,
 				2941E17617F4DB8600D5FD44 /* Master View Controllers */,
 				2941E17417F4DB6900D5FD44 /* Singletons */,
@@ -475,6 +480,7 @@
 				2917451117F3CBF50052A8C9 /* SeparatorNodeObject.m in Sources */,
 				291744D417F3B8B20052A8C9 /* ProjectListViewController.m in Sources */,
 				2917450217F3CAC50052A8C9 /* Parameters.m in Sources */,
+				2974FB44182056B4007A34D5 /* Reachability.m in Sources */,
 				2917450F17F3CBF50052A8C9 /* NodeObject.m in Sources */,
 				291744CB17F3B8B20052A8C9 /* AppDelegate.m in Sources */,
 				2941E17F17F5CCCB00D5FD44 /* UIView+FindAndResignFirstResponder.m in Sources */,

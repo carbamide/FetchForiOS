@@ -10,6 +10,11 @@
 #import "ProjectListViewController.h"
 #import "ProjectHandler.h"
 #import "Constants.h"
+#import "Reachability.h"
+
+@interface AppDelegate ()
+@property (nonatomic) Reachability *internetReachability;
+@end
 
 @implementation AppDelegate
 
@@ -17,6 +22,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
+    
+    [self setInternetReachability:[Reachability reachabilityForInternetConnection]];
+    [[self internetReachability] startNotifier];
+    
+    [self updateInterfaceWithReachability:[self internetReachability]];
+    
     UISplitViewController *splitViewController = (UISplitViewController *)[[self window] rootViewController];
     UINavigationController *navigationController = [[splitViewController viewControllers] lastObject];
     
@@ -83,4 +95,46 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+#pragma mark - Reachability
+
+- (void)reachabilityChanged:(NSNotification *)aNotification
+{
+	Reachability *reachability = [aNotification object];
+	NSParameterAssert([reachability isKindOfClass:[Reachability class]]);
+    
+	[self updateInterfaceWithReachability:reachability];
+}
+
+- (void)updateInterfaceWithReachability:(Reachability *)reachability
+{
+	if (reachability == [self internetReachability]) {
+        NetworkStatus netStatus = [reachability currentReachabilityStatus];
+        
+        switch (netStatus) {
+            case NotReachable: {
+                UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Internet Connection"
+                                                                     message:@"An active Internet connection is required to use this application."
+                                                                    delegate:nil
+                                                           cancelButtonTitle:@"OK"
+                                                           otherButtonTitles:nil, nil];
+                
+                [errorAlert show];
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:INTERNET_DOWN object:nil];
+                
+                [self setInternetDown:YES];
+                
+                break;
+            }
+            case ReachableViaWWAN:
+            case ReachableViaWiFi: {
+                [[NSNotificationCenter defaultCenter] postNotificationName:INTERNET_UP object:nil];
+                
+                [self setInternetDown:NO];
+                
+                break;
+            }
+        }
+	}
+}
 @end

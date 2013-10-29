@@ -11,6 +11,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (getter = isInternetDown) BOOL internetDown;
 
 - (NSURL *)applicationDocumentsDirectory;
 

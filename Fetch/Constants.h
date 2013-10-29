@@ -49,6 +49,8 @@ static NSString *const ADD_HEADER = @"add_header";
 static NSString *const ADD_PARAMETER = @"add_parameter";
 static NSString *const RELOAD_HEADER_TABLE = @"reload_header_table";
 static NSString *const RELOAD_PARAMETER_TABLE = @"reload_parameter_table";
+static NSString *const INTERNET_DOWN = @"internet_down";
+static NSString *const INTERNET_UP = @"internet_up";
 
 // Segues
 static NSString *const kAddParameterSegue = @"AddParameter";
