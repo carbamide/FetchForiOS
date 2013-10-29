@@ -31,7 +31,7 @@
     [self setPreferredContentSize:CGSizeMake(320, 600)];
     
     [self setProjectList:[NSMutableArray array]];
-    
+        
     [super awakeFromNib];
 }
 
