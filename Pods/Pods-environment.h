@@ -10,7 +10,7 @@
 #define COCOAPODS_POD_AVAILABLE_JVFloatLabeledTextField
 #define COCOAPODS_VERSION_MAJOR_JVFloatLabeledTextField 0
 #define COCOAPODS_VERSION_MINOR_JVFloatLabeledTextField 0
-#define COCOAPODS_VERSION_PATCH_JVFloatLabeledTextField 1
+#define COCOAPODS_VERSION_PATCH_JVFloatLabeledTextField 3
 
 // ObjectiveRecord
 #define COCOAPODS_POD_AVAILABLE_ObjectiveRecord
@@ -28,5 +28,5 @@
 #define COCOAPODS_POD_AVAILABLE_RATreeView
 #define COCOAPODS_VERSION_MAJOR_RATreeView 0
 #define COCOAPODS_VERSION_MINOR_RATreeView 1
-#define COCOAPODS_VERSION_PATCH_RATreeView 0
+#define COCOAPODS_VERSION_PATCH_RATreeView 5
 

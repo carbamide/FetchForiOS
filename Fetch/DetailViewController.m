@@ -36,7 +36,7 @@ static float const kAnimationDuration = 0.3;
 
 @implementation DetailViewController
 
-#pragma mark - 
+#pragma mark -
 #pragma mark - Lifecycle
 
 - (void)viewDidLoad
@@ -46,18 +46,13 @@ static float const kAnimationDuration = 0.3;
     if (![self currentUrl]) {
         [[self urlTextField] setEnabled:NO];
         [[self urlDescriptionTextField] setEnabled:NO];
-        
         [[self methodsButton] setEnabled:NO];
         [[self fetchButton] setEnabled:NO];
-        
         [[self customPayloadSwitch] setEnabled:NO];
-        
         [[self headersSegCont] setEnabled:NO];
         [[self parametersSegCont] setEnabled:NO];
-        
         [[self jsonOutputButton] setEnabled:NO];
         [[self responseHeadersButton] setEnabled:NO];
-        
         [[self clearButton] setEnabled:NO];
         
         [[self fetchActivityIndicator] setHidden:YES];
@@ -134,7 +129,7 @@ static float const kAnimationDuration = 0.3;
 -(IBAction)fetchAction:(id)sender
 {
     NSLog(@"%s", __FUNCTION__);
- 
+    
     [[self fetchActivityIndicator] setHidden:NO];
     [[self fetchActivityIndicator] startAnimating];
     [[self fetchButton] setHidden:YES];
@@ -147,14 +142,20 @@ static float const kAnimationDuration = 0.3;
     
     if ([self addToUrlListIfUnique]) {
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+        NSMutableString *parameters = [[NSMutableString alloc] init];
+        
+        if ([parameters length] > 0) {
+            [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", [[self urlTextField] text], parameters]]];
+        }
+        else {
+            [request setURL:[NSURL URLWithString:[[self urlTextField] text]]];
+        }
         
         [request setHTTPMethod:[[[self methodsButton] titleLabel] text]];
         
         for (Headers *tempHeader in [self headersDataSource]) {
             [request setValue:[tempHeader value] forHTTPHeaderField:[tempHeader name]];
         }
-        
-        NSMutableString *parameters = [[NSMutableString alloc] init];
         
         if ([[self customPayloadSwitch] isOn]) {
             [request setHTTPBody:[[[self customPayloadTextView] text] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -170,28 +171,18 @@ static float const kAnimationDuration = 0.3;
             }
         }
         
-        if ([parameters length] > 0) {
-            [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", [[self urlTextField] text], parameters]]];
-        }
-        else {
-            [request setURL:[NSURL URLWithString:[[self urlTextField] text]]];
-        }
-        
         [self logReqest:request];
         
-        [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response,
-                                                                                                                NSData *data,
-                                                                                                                NSError *connectionError) {
+        [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data,
+                                                                  NSURLResponse *response,
+                                                                  NSError *error) {
             NSHTTPURLResponse *urlResponse = (NSHTTPURLResponse *)response;
             NSInteger responseCode = [urlResponse statusCode];
             NSString *responseCodeString = [NSString stringWithFormat:@"Response - %li\n", (long)responseCode];
             
             [self appendToOutput:kResponseSeparator color:[UIColor blueColor]];
-            
             [self setResponseDictionary:[urlResponse allHeaderFields]];
             
-            [[self responseHeadersButton] setEnabled:YES];
-
             if (NSLocationInRange(responseCode, NSMakeRange(200, (299 - 200)))) {
                 [self appendToOutput:responseCodeString color:[UIColor greenColor]];
             }
@@ -201,13 +192,11 @@ static float const kAnimationDuration = 0.3;
             
             [self appendToOutput:[NSString stringWithFormat:@"%@", [urlResponse allHeaderFields]] color:[UIColor greenColor]];
             
-            if (!connectionError) {
+            if (!error) {
                 id jsonData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
                 
                 if (jsonData) {
                     [self setJsonData:jsonData];
-                    
-                    [[self fetchButton] setEnabled:YES];
                     
                     NSData *jsonHolder = [NSJSONSerialization dataWithJSONObject:jsonData options:NSJSONWritingPrettyPrinted error:nil];
                     
@@ -215,30 +204,37 @@ static float const kAnimationDuration = 0.3;
                         [self appendToOutput:[[NSString alloc] initWithData:jsonHolder encoding:NSUTF8StringEncoding] color:[UIColor blackColor]];
                     }
                     
-                    [[self jsonOutputButton] setEnabled:YES];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [[self fetchButton] setEnabled:YES];
+                        [[self jsonOutputButton] setEnabled:YES];
+                    });
                 }
                 else {
                     [self appendToOutput:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] color:[UIColor blackColor]];
                 }
             }
             else {
-                UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                                     message:[connectionError localizedDescription]
-                                                                    delegate:nil
-                                                           cancelButtonTitle:@"OK"
-                                                           otherButtonTitles:nil, nil];
-                
-                [errorAlert show];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                         message:[error localizedDescription]
+                                                                        delegate:nil
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+                    
+                    [errorAlert show];
+                });
             }
             
-            [[self fetchActivityIndicator] setHidden:YES];
-            [[self fetchActivityIndicator] stopAnimating];
-            [[self fetchButton] setHidden:NO];
-        }];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[self responseHeadersButton] setEnabled:YES];
+                [[self fetchActivityIndicator] setHidden:YES];
+                [[self fetchActivityIndicator] stopAnimating];
+                [[self fetchButton] setHidden:NO];
+            });
+        }] resume];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:RELOAD_PROJECT_TABLE object:nil];
     }
-    
 }
 
 -(IBAction)segmentedControlAction:(id)sender
@@ -318,9 +314,9 @@ static float const kAnimationDuration = 0.3;
     if ([[self responseHeadersPopover] isPopoverVisible]) {
         [[self responseHeadersPopover] dismissPopoverAnimated:YES];
     }
-
+    
     [self setJsonPopover:[[UIPopoverController alloc] initWithContentViewController:[[UINavigationController alloc] initWithRootViewController:viewController]]];
-
+    
     [[self jsonPopover] presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
@@ -684,7 +680,7 @@ static float const kAnimationDuration = 0.3;
         [[cell nameTextField] setText:[tempParameter name]];
         [[cell valueTextField] setText:[tempParameter value]];
         [cell setCellType:ParameterCell];
-
+        
         [cell setCurrentParameter:tempParameter];
     }
     
