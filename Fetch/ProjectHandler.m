@@ -16,9 +16,15 @@
 
 @implementation ProjectHandler
 
-+(BOOL)importFromData:(NSData *)data
++(BOOL)importFromData:(NSData *)data error:(NSError **)error
 {
     NSDictionary *importedDictionary = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    if (!importedDictionary) {
+        *error = [NSError errorWithDomain:@"com.jukaela.fetch" code:100 userInfo:@{NSLocalizedDescriptionKey: @"Unable to unarchive fetch document"}];
+        
+        return NO;
+    }
     
     Projects *tempProject = [Projects create];
     
@@ -64,9 +70,15 @@
     return [tempProject save];
 }
 
-+(BOOL)importFromPath:(NSString *)path
++(BOOL)importFromPath:(NSString *)path error:(NSError **)error
 {
     NSDictionary *importedDictionary = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    
+    if (!importedDictionary) {
+        *error = [NSError errorWithDomain:@"com.jukaela.fetch" code:100 userInfo:@{NSLocalizedDescriptionKey: @"Unable to unarchive fetch document"}];
+        
+        return NO;
+    }
     
     Projects *tempProject = [Projects create];
     
