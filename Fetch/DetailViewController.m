@@ -63,6 +63,9 @@ static float const kAnimationDuration = 0.3;
         [[self fetchActivityIndicator] setHidden:YES];
     }
     
+    [[self urlDescriptionTextField] setPlaceholder:@"URL Description"];
+    [[self urlTextField] setPlaceholder:@"URL"];
+    
     [[[self outputTextView] layer] setCornerRadius:5];
     [[[self customPayloadTextView] layer] setCornerRadius:5];
     
@@ -434,6 +437,10 @@ static float const kAnimationDuration = 0.3;
     }
     
     if (!validPrefix) {
+        [[self fetchActivityIndicator] setHidden:YES];
+        [[self fetchActivityIndicator] stopAnimating];
+        [[self fetchButton] setHidden:NO];
+        
         UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                              message:@"The URL is invalid."
                                                             delegate:nil
@@ -474,6 +481,10 @@ static float const kAnimationDuration = 0.3;
             method = 3;
         }
         else {
+            [[self fetchActivityIndicator] setHidden:YES];
+            [[self fetchActivityIndicator] stopAnimating];
+            [[self fetchButton] setHidden:NO];
+            
             UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                                  message:@"The HTTP method is invalid."
                                                                 delegate:nil

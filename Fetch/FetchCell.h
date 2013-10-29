@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "Constants.h"
+#import <JVFloatLabeledTextField/JVFloatLabeledTextField.h>
 
 @class Headers, Parameters;
 
 @interface FetchCell : UITableViewCell <UITextFieldDelegate>
 
-@property (strong, nonatomic) IBOutlet UITextField *nameTextField;
-@property (strong, nonatomic) IBOutlet UITextField *valueTextField;
+@property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *nameTextField;
+@property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *valueTextField;
 
 @property (strong, nonatomic) Headers *currentHeader;
 @property (strong, nonatomic) Parameters *currentParameter;

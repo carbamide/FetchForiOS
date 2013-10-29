@@ -94,6 +94,8 @@
     
     [textField resignFirstResponder];
     
+    [[self selectionPopover] dismissPopoverAnimated:YES];
+    
     return YES;
 }
 
@@ -103,6 +105,8 @@
     
     [textField resignFirstResponder];
     
+    [[self selectionPopover] dismissPopoverAnimated:YES];
+
     return YES;
 }
 

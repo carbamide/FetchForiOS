@@ -64,9 +64,7 @@
 {
     if ([self currentProject]) {
         Urls *tempUrl = [Urls create];
-        
-        [tempUrl setUrlDescription:@"New URL"];
-        
+                
         [[self currentProject] addUrlsObject:tempUrl];
         
         [[self currentProject] save];
@@ -104,7 +102,7 @@
         [[cell textLabel] setText:[tempUrl urlDescription]];
     }
     else {
-        [[cell textLabel] setText:[tempUrl url]];
+        [[cell textLabel] setText:@"No Description"];
     }
     
     [[cell imageView] setImage:[UIImage imageNamed:@"URL"]];

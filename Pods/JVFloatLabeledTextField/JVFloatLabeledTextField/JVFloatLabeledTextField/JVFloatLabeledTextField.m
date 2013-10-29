@@ -36,16 +36,30 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _floatingLabel = [UILabel new];
-        _floatingLabel.alpha = 0.0f;
-        [self addSubview:_floatingLabel];
-        
-        // some basic default fonts/colors
-        _floatingLabel.font = [UIFont boldSystemFontOfSize:12.0f];
-        self.floatingLabelTextColor = [UIColor grayColor];
-        self.floatingLabelActiveTextColor = [UIColor blueColor];
+	    [self commonInit];
     }
     return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if(self)
+    {
+        [self commonInit];
+    }
+    return self;
+}
+
+- (void)commonInit
+{
+    _floatingLabel = [UILabel new];
+    _floatingLabel.alpha = 0.0f;
+    [self addSubview:_floatingLabel];
+	
+    // some basic default fonts/colors
+    _floatingLabel.font = [UIFont boldSystemFontOfSize:12.0f];
+    self.floatingLabelTextColor = [UIColor grayColor];
 }
 
 - (void)setPlaceholder:(NSString *)placeholder
@@ -53,7 +67,10 @@
     [super setPlaceholder:placeholder];
     _floatingLabel.text = placeholder;
     [_floatingLabel sizeToFit];
-    _floatingLabel.frame = CGRectMake(0.0f, _floatingLabel.font.lineHeight, _floatingLabel.frame.size.width, _floatingLabel.frame.size.height);
+    
+    if (0 == [self.text length]) {
+        _floatingLabel.transform = [self floatingLabelHiddenTransform];
+    }
 }
 
 - (CGRect)textRectForBounds:(CGRect)bounds
@@ -73,6 +90,24 @@
 	return rect;
 }
 
+-(void)setText:(NSString *)text
+{
+    [super setText:text];
+    
+    if (!self.text || 0 == [self.text length]) {
+        [self hideFloatingLabel];
+    }
+    else {
+        if (self.floatingLabelActiveTextColor) {
+            _floatingLabel.textColor = self.floatingLabelActiveTextColor;
+        }
+        else {
+            _floatingLabel.textColor = self.tintColor;
+        }
+        [self showFloatingLabel];
+    }
+}
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
@@ -82,7 +117,12 @@
             [self hideFloatingLabel];
         }
         else {
-            _floatingLabel.textColor = self.floatingLabelActiveTextColor;
+            if (self.floatingLabelActiveTextColor) {
+                _floatingLabel.textColor = self.floatingLabelActiveTextColor;
+            }
+            else {
+                _floatingLabel.textColor = self.tintColor;
+            }
             [self showFloatingLabel];
         }
     }
@@ -97,20 +137,28 @@
 - (void)showFloatingLabel
 {
     [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseOut animations:^{
-        _floatingLabel.alpha = 1.0f;
-        _floatingLabel.frame = CGRectMake(_floatingLabel.frame.origin.x, 2.0f,
-                                          _floatingLabel.frame.size.width, _floatingLabel.frame.size.height);
+        _floatingLabel.alpha = 1;
+        _floatingLabel.transform = CGAffineTransformIdentity;
     } completion:nil];
 }
 
 - (void)hideFloatingLabel
 {
     [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseIn animations:^{
-        _floatingLabel.alpha = 0.0f;
-    } completion:^(BOOL finished) {
-        _floatingLabel.frame = CGRectMake(_floatingLabel.frame.origin.x, _floatingLabel.font.lineHeight,
-                                          _floatingLabel.frame.size.width, _floatingLabel.frame.size.height);
-    }];
+        _floatingLabel.alpha = 0;
+        _floatingLabel.transform = [self floatingLabelHiddenTransform];
+    } completion:nil];
 }
 
+- (CGAffineTransform)floatingLabelHiddenTransform
+{
+    CGRect fromRect = _floatingLabel.frame;
+    CGRect toRect = [self textRectForBounds:self.bounds];
+    toRect.size = [self.placeholder sizeWithAttributes:self.defaultTextAttributes];
+    
+    CGSize scales = CGSizeMake(toRect.size.width/fromRect.size.width, toRect.size.height/fromRect.size.height);
+    CGPoint offset = CGPointMake(CGRectGetMidX(toRect) - CGRectGetMidX(fromRect), CGRectGetMidY(toRect) - CGRectGetMidY(fromRect));
+    
+    return CGAffineTransformMake(scales.width, 0, 0, scales.height, offset.x, offset.y);
+}
 @end

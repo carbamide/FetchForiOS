@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JVFloatLabeledTextField.h"
 
 @class Projects;
 
@@ -18,8 +19,8 @@
 @property (strong, nonatomic) UIPopoverController *responseHeadersPopover;
 @property (strong, nonatomic) UIPopoverController *jsonPopover;
 
-@property (strong, nonatomic) IBOutlet UITextField *urlTextField;
-@property (strong, nonatomic) IBOutlet UITextField *urlDescriptionTextField;
+@property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *urlTextField;
+@property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *urlDescriptionTextField;
 @property (strong, nonatomic) IBOutlet UIButton *methodsButton;
 @property (strong, nonatomic) IBOutlet UIButton *fetchButton;
 @property (strong, nonatomic) IBOutlet UISwitch *customPayloadSwitch;
