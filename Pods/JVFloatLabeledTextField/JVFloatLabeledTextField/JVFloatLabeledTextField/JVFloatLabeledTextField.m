@@ -36,24 +36,54 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _floatingLabel = [UILabel new];
-        _floatingLabel.alpha = 0.0f;
-        [self addSubview:_floatingLabel];
-        
-        // some basic default fonts/colors
-        _floatingLabel.font = [UIFont boldSystemFontOfSize:12.0f];
-        self.floatingLabelTextColor = [UIColor grayColor];
-        self.floatingLabelActiveTextColor = [UIColor blueColor];
+	    [self commonInit];
     }
     return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder 
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self commonInit];
+        
+        // force setter to be called on a placeholder defined in a NIB/Storyboard
+    	if (self.placeholder) {
+        	self.placeholder = self.placeholder;
+    	}
+    }
+    return self;
+}
+
+- (void)commonInit
+{
+    _floatingLabel = [UILabel new];
+    _floatingLabel.alpha = 0.0f;
+    [self addSubview:_floatingLabel];
+	
+    // some basic default fonts/colors
+    _floatingLabel.font = [UIFont boldSystemFontOfSize:12.0f];
+    _floatingLabelTextColor = [UIColor grayColor];
 }
 
 - (void)setPlaceholder:(NSString *)placeholder
 {
     [super setPlaceholder:placeholder];
+    
     _floatingLabel.text = placeholder;
     [_floatingLabel sizeToFit];
-    _floatingLabel.frame = CGRectMake(0.0f, _floatingLabel.font.lineHeight, _floatingLabel.frame.size.width, _floatingLabel.frame.size.height);
+    
+    CGFloat originX = 0.f;
+    
+    if (self.textAlignment == NSTextAlignmentCenter) {
+        originX = (self.frame.size.width/2) - (_floatingLabel.frame.size.width/2);
+    }
+    else if (self.textAlignment == NSTextAlignmentRight) {
+        originX = self.frame.size.width - _floatingLabel.frame.size.width;
+    }
+    
+    _floatingLabel.frame = CGRectMake(originX, _floatingLabel.font.lineHeight,
+                                      _floatingLabel.frame.size.width, _floatingLabel.frame.size.height);
 }
 
 - (CGRect)textRectForBounds:(CGRect)bounds
@@ -82,7 +112,10 @@
             [self hideFloatingLabel];
         }
         else {
-            _floatingLabel.textColor = self.floatingLabelActiveTextColor;
+            if (self.floatingLabelFont) {
+                _floatingLabel.font = self.floatingLabelFont;
+            }
+            [self setLabelActiveColor];
             [self showFloatingLabel];
         }
     }
@@ -91,13 +124,29 @@
         if (!self.text || 0 == [self.text length]) {
             [self hideFloatingLabel];
         }
+        else {
+            [self showFloatingLabel];
+        }
+    }
+}
+
+- (void)setLabelActiveColor
+{
+    if (self.floatingLabelActiveTextColor) {
+        _floatingLabel.textColor = self.floatingLabelActiveTextColor;
+    }
+    else {
+        _floatingLabel.textColor = self.tintColor;
     }
 }
 
 - (void)showFloatingLabel
 {
+    [self setLabelOriginForTextAlignment];
+    
     [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseOut animations:^{
         _floatingLabel.alpha = 1.0f;
+            
         _floatingLabel.frame = CGRectMake(_floatingLabel.frame.origin.x, 2.0f,
                                           _floatingLabel.frame.size.width, _floatingLabel.frame.size.height);
     } completion:nil];
@@ -105,12 +154,29 @@
 
 - (void)hideFloatingLabel
 {
+    [self setLabelOriginForTextAlignment];
+    
     [UIView animateWithDuration:0.3f delay:0.0f options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseIn animations:^{
         _floatingLabel.alpha = 0.0f;
     } completion:^(BOOL finished) {
         _floatingLabel.frame = CGRectMake(_floatingLabel.frame.origin.x, _floatingLabel.font.lineHeight,
                                           _floatingLabel.frame.size.width, _floatingLabel.frame.size.height);
     }];
+}
+
+- (void)setLabelOriginForTextAlignment
+{
+    CGFloat originX = _floatingLabel.frame.origin.x;
+    
+    if (self.textAlignment == NSTextAlignmentCenter) {
+        originX = (self.frame.size.width/2) - (_floatingLabel.frame.size.width/2);
+    }
+    else if (self.textAlignment == NSTextAlignmentRight) {
+        originX = self.frame.size.width - _floatingLabel.frame.size.width;
+    }
+    
+    _floatingLabel.frame = CGRectMake(originX, _floatingLabel.frame.origin.y,
+                                      _floatingLabel.frame.size.width, _floatingLabel.frame.size.height);
 }
 
 @end

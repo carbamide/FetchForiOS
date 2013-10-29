@@ -4,40 +4,55 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-JVFloatLabeledTextField.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-ObjectiveRecord.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-ObjectiveSugar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-RATreeView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>689732E9707048B3A2ACCD33</key>
+		<key>0CAA5797FE8E4178A078D2F9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9867938FF465457DB33F3055</key>
+		<key>27D536DF1717469F92038F6A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>98967F59982E4EDC889AEE2F</key>
+		<key>3345221159044B75AC10E349</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>99068C01E60A499A924D7AA4</key>
+		<key>DD75EF70029B4B17BEEE2930</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BE22D2DF137B48D4AC5EA380</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C5586A8E753B4639B6B690BB</key>
+		<key>EC5A2778F71341ACBCD27F21</key>
 		<dict>
 			<key>primary</key>
 			<true/>

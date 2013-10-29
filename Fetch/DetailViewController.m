@@ -46,18 +46,13 @@ static float const kAnimationDuration = 0.3;
     if (![self currentUrl]) {
         [[self urlTextField] setEnabled:NO];
         [[self urlDescriptionTextField] setEnabled:NO];
-        
         [[self methodsButton] setEnabled:NO];
         [[self fetchButton] setEnabled:NO];
-        
         [[self customPayloadSwitch] setEnabled:NO];
-        
         [[self headersSegCont] setEnabled:NO];
         [[self parametersSegCont] setEnabled:NO];
-        
         [[self jsonOutputButton] setEnabled:NO];
         [[self responseHeadersButton] setEnabled:NO];
-        
         [[self clearButton] setEnabled:NO];
         
         [[self fetchActivityIndicator] setHidden:YES];
@@ -237,7 +232,6 @@ static float const kAnimationDuration = 0.3;
         
         [[NSNotificationCenter defaultCenter] postNotificationName:RELOAD_PROJECT_TABLE object:nil];
     }
-    
 }
 
 -(IBAction)segmentedControlAction:(id)sender

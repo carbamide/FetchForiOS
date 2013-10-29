@@ -92,7 +92,8 @@
 {
   self = [super initWithFrame:frame];
   if (self) {
-    [self commonInitWithFrame:frame style:style];
+    CGRect innerFrame = CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds));
+    [self commonInitWithFrame:innerFrame style:style];
   }
   return self;
 }
@@ -101,8 +102,8 @@
 {
   self = [super initWithCoder:aDecoder];
   if (self) {
-    CGRect frame = CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds));
-    [self commonInitWithFrame:frame style:RATreeViewStylePlain];
+    CGRect innerFrame = CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds));
+    [self commonInitWithFrame:innerFrame style:RATreeViewStylePlain];
   }
   return self;
 }
@@ -120,7 +121,7 @@
   [self setTableView:tableView];
   
   self.rowsExpandingAnimation = RATreeViewRowAnimationTop;
-  self.rowsExpandingAnimation = RATreeViewRowAnimationBottom;
+  self.rowsCollapsingAnimation = RATreeViewRowAnimationBottom;
 }
 
 
@@ -217,12 +218,32 @@
   [self.tableView registerNib:nib forCellReuseIdentifier:identifier];
 }
 
+- (void)registerClass:(Class)cellClass forCellReuseIdentifier:(NSString *)identifier
+{
+  [self.tableView registerClass:cellClass forCellReuseIdentifier:identifier];
+}
+
 - (id)dequeueReusableCellWithIdentifier:(NSString *)identifier
 {
   return [self.tableView dequeueReusableCellWithIdentifier:identifier];
 }
 
 #pragma mark Accessing Header and Footer Views
+
+- (void)registerNib:(UINib *)nib forHeaderFooterViewReuseIdentifier:(NSString *)identifier
+{
+  [self.tableView registerNib:nib forHeaderFooterViewReuseIdentifier:identifier];
+}
+
+- (void)registerClass:(Class)aClass forHeaderFooterViewReuseIdentifier:(NSString *)identifier
+{
+  [self.tableView registerClass:aClass forHeaderFooterViewReuseIdentifier:identifier];
+}
+
+- (id)dequeueReusableHeaderFooterViewWithIdentifier:(NSString *)identifier
+{
+  return [self.tableView dequeueReusableHeaderFooterViewWithIdentifier:identifier];
+}
 
 - (UIView *)treeHeaderView
 {
