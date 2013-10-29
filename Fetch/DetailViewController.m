@@ -33,6 +33,12 @@
 
 static int const kScrollMainViewForTextView = 200;
 static float const kAnimationDuration = 0.3;
+static int const kKeyboardHeight = 352;
+
+NS_ENUM(NSInteger, CellTypeTag){
+    kHeaderCell = 0,
+    kParameterCell
+};
 
 @implementation DetailViewController
 
@@ -530,6 +536,10 @@ static float const kAnimationDuration = 0.3;
 
 -(void)loadUrl:(NSNotification *)aNotification
 {
+    if ([self masterPopoverController]) {
+        [[self masterPopoverController] dismissPopoverAnimated:YES];
+    }
+    
     [self setJsonData:nil];
     
     [[self jsonOutputButton] setEnabled:NO];
@@ -673,8 +683,11 @@ static float const kAnimationDuration = 0.3;
         
         [[cell valueTextField] setText:[tempHeader value]];
         [[cell valueTextField] setPlaceholder:@"Header Value"];
-        
+
         [cell setCellType:HeaderCell];
+        
+        [[cell valueTextField] setTag:kHeaderCell];
+        [[cell nameTextField] setTag:kHeaderCell];
         
         [cell setCurrentHeader:tempHeader];
     }
@@ -689,6 +702,9 @@ static float const kAnimationDuration = 0.3;
         
         [cell setCellType:ParameterCell];
         
+        [[cell valueTextField] setTag:kParameterCell];
+        [[cell nameTextField] setTag:kParameterCell];
+
         [cell setCurrentParameter:tempParameter];
     }
     
@@ -750,6 +766,28 @@ static float const kAnimationDuration = 0.3;
 
 #pragma mark -
 #pragma mark - UITextFieldDelegate
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if ([textField tag] == kParameterCell) {
+        [UIView animateWithDuration:kAnimationDuration animations:^{
+            [[self view] setBounds:CGRectOffset([[self view] bounds], 0, kScrollMainViewForTextView)];
+        }];
+    }
+    
+    return YES;
+}
+
+-(BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    if ([textField tag] == kParameterCell) {
+        [UIView animateWithDuration:kAnimationDuration animations:^{
+            [[self view] setBounds:CGRectOffset([[self view] bounds], 0, -kScrollMainViewForTextView)];
+        }];
+    }
+    
+    return YES;
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
