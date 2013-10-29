@@ -12,8 +12,8 @@
 
 @interface ProjectHandler : NSObject
 
-+(BOOL)importFromPath:(NSString *)path;
-+(BOOL)importFromData:(NSData *)data;
++(BOOL)importFromPath:(NSString *)path error:(NSError **)error;
++(BOOL)importFromData:(NSData *)data error:(NSError **)error;
 +(NSURL *)exportProject:(Projects *)project;
 +(NSURL *)applicationDocumentsDirectory;
 

@@ -13,12 +13,16 @@
 
 @implementation AppDelegate
 
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     UISplitViewController *splitViewController = (UISplitViewController *)[[self window] rootViewController];
     UINavigationController *navigationController = [[splitViewController viewControllers] lastObject];
     
     [splitViewController setDelegate:(id)[navigationController topViewController]];
+    
+    [[self window] setTintColor:UIColorFromRGB(0xb16e05)];
     
     return YES;
 }
@@ -48,9 +52,22 @@
             else {
                 NSURL *importedProjectUrl = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:[url lastPathComponent]];
                 
-                [ProjectHandler importFromPath:[importedProjectUrl path]];
+                NSError *error = nil;
                 
-                [[NSNotificationCenter defaultCenter] postNotificationName:RELOAD_PROJECT_TABLE object:nil];
+                [ProjectHandler importFromPath:[importedProjectUrl path] error:&error];
+                
+                if (error) {
+                    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                         message:@"There was an error importing the Fetch document."
+                                                                        delegate:nil
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil, nil];
+                    
+                    [errorAlert show];
+                }
+                else {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:RELOAD_PROJECT_TABLE object:nil];
+                }
             }
 		}
 	}
