@@ -669,7 +669,11 @@ static float const kAnimationDuration = 0.3;
         Headers *tempHeader = [self headersDataSource][[indexPath row]];
         
         [[cell nameTextField] setText:[tempHeader name]];
+        [[cell nameTextField] setPlaceholder:@"Header Name"];
+        
         [[cell valueTextField] setText:[tempHeader value]];
+        [[cell valueTextField] setPlaceholder:@"Header Value"];
+        
         [cell setCellType:HeaderCell];
         
         [cell setCurrentHeader:tempHeader];
@@ -678,7 +682,11 @@ static float const kAnimationDuration = 0.3;
         Parameters *tempParameter = [self parametersDataSource][[indexPath row]];
         
         [[cell nameTextField] setText:[tempParameter name]];
+        [[cell nameTextField] setPlaceholder:@"Parameter Name"];
+        
         [[cell valueTextField] setText:[tempParameter value]];
+        [[cell valueTextField] setPlaceholder:@"Parameter Value"];
+        
         [cell setCellType:ParameterCell];
         
         [cell setCurrentParameter:tempParameter];

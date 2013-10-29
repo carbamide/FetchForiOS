@@ -257,7 +257,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aTX-dz-ct2">
-                                <rect key="frame" x="34" y="112" width="651" height="1"/>
+                                <rect key="frame" x="34" y="112" width="602" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.79611766581632648" green="0.79611766581632648" blue="0.79611766581632648" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -265,7 +265,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r9E-Of-ayG">
-                                <rect key="frame" x="34" y="153" width="651" height="1"/>
+                                <rect key="frame" x="34" y="153" width="602" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.79611766581632648" green="0.79611766581632648" blue="0.79611766581632648" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -292,7 +292,7 @@
                             <constraint firstItem="8vR-mf-N5R" firstAttribute="top" secondItem="KQS-fg-lg3" secondAttribute="bottom" constant="16" id="LC4-JW-Krb"/>
                             <constraint firstItem="XEk-BY-CkL" firstAttribute="top" secondItem="cUa-Yy-z6N" secondAttribute="bottom" constant="44" id="Lqn-12-wQK"/>
                             <constraint firstItem="r9E-Of-ayG" firstAttribute="leading" secondItem="vps-Bx-dBg" secondAttribute="trailing" constant="-649" id="Lr4-2H-BwN"/>
-                            <constraint firstAttribute="trailing" secondItem="aTX-dz-ct2" secondAttribute="trailing" constant="18" id="M7d-DE-G18"/>
+                            <constraint firstAttribute="trailing" secondItem="aTX-dz-ct2" secondAttribute="trailing" constant="67" id="M7d-DE-G18"/>
                             <constraint firstItem="BRQ-o9-gZV" firstAttribute="top" secondItem="XEk-BY-CkL" secondAttribute="bottom" constant="14" id="MIa-jE-dqV"/>
                             <constraint firstItem="Azs-QO-f8A" firstAttribute="top" secondItem="e5E-8q-tig" secondAttribute="bottom" constant="8" id="QSh-ks-Bv3"/>
                             <constraint firstAttribute="trailing" secondItem="EeT-Tc-2h9" secondAttribute="trailing" constant="20" id="RhD-gT-pkf"/>
@@ -301,7 +301,7 @@
                             <constraint firstItem="bfn-WF-wEW" firstAttribute="top" secondItem="EeT-Tc-2h9" secondAttribute="bottom" constant="9" id="UIq-h5-oNx"/>
                             <constraint firstItem="Ado-Zc-8he" firstAttribute="leading" secondItem="vps-Bx-dBg" secondAttribute="leading" id="ULs-ne-2Gh"/>
                             <constraint firstAttribute="trailing" secondItem="kLg-57-AHq" secondAttribute="trailing" constant="20" id="Ulv-XU-8w5"/>
-                            <constraint firstAttribute="trailing" secondItem="r9E-Of-ayG" secondAttribute="trailing" constant="18" id="YAY-Ck-nGu"/>
+                            <constraint firstAttribute="trailing" secondItem="r9E-Of-ayG" secondAttribute="trailing" constant="67" id="YAY-Ck-nGu"/>
                             <constraint firstItem="Ado-Zc-8he" firstAttribute="bottom" secondItem="KQS-fg-lg3" secondAttribute="bottom" id="Z68-dh-fzP"/>
                             <constraint firstAttribute="trailing" secondItem="KQS-fg-lg3" secondAttribute="trailing" constant="20" id="Z8K-vb-sJ6"/>
                             <constraint firstItem="vps-Bx-dBg" firstAttribute="top" secondItem="Azs-QO-f8A" secondAttribute="bottom" constant="9" id="Zh0-yW-ueg"/>
