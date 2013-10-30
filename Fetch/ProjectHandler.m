@@ -33,6 +33,7 @@
     for (NSDictionary *tempDict in importedDictionary[kUrls]) {
         Urls *tempUrl = [Urls create];
         
+        [tempUrl setCreatedAt:[NSDate date]];
         [tempUrl setUrl:tempDict[kUrl]];
         [tempUrl setMethod:tempDict[kMethod]];
         
@@ -87,6 +88,7 @@
     for (NSDictionary *tempDict in importedDictionary[kUrls]) {
         Urls *tempUrl = [Urls create];
         
+        [tempUrl setCreatedAt:[NSDate date]];
         [tempUrl setUrl:tempDict[kUrl]];
         [tempUrl setMethod:tempDict[kMethod]];
         

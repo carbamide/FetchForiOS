@@ -259,8 +259,6 @@ NS_ENUM(NSInteger, CellTypeTag){
                 [[self fetchButton] setHidden:NO];
             });
         }] resume];
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:RELOAD_PROJECT_TABLE object:nil];
     }
 }
 

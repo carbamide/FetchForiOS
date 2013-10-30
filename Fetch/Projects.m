@@ -14,5 +14,4 @@
 
 @dynamic name;
 @dynamic urls;
-
 @end

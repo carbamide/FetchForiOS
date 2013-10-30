@@ -41,6 +41,9 @@
 		29463BCC17F4A44A00B2C807 /* HeaderNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = 29463BCB17F4A44A00B2C807 /* HeaderNames.plist */; };
 		29463BCF17F4A82B00B2C807 /* UrlListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 29463BCE17F4A82B00B2C807 /* UrlListViewController.m */; };
 		2974FB44182056B4007A34D5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2974FB43182056B4007A34D5 /* Reachability.m */; };
+		298347E118209DAC008D6244 /* URLCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 298347E018209DAC008D6244 /* URLCell.m */; };
+		298347E41820A086008D6244 /* NSTimer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 298347E31820A086008D6244 /* NSTimer+Blocks.m */; };
+		298347E71820A116008D6244 /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 298347E61820A116008D6244 /* NSString+Extensions.m */; };
 		299F66D1180CD08F00AC77C3 /* FetchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 299F66D0180CD08F00AC77C3 /* FetchCell.m */; };
 		D210FEA3776C4A6A83963046 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7047A5B15E4746C38C71D231 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -112,6 +115,12 @@
 		29463BCE17F4A82B00B2C807 /* UrlListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UrlListViewController.m; sourceTree = "<group>"; };
 		2974FB42182056B4007A34D5 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		2974FB43182056B4007A34D5 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		298347DF18209DAC008D6244 /* URLCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLCell.h; sourceTree = "<group>"; };
+		298347E018209DAC008D6244 /* URLCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLCell.m; sourceTree = "<group>"; };
+		298347E21820A086008D6244 /* NSTimer+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Blocks.h"; sourceTree = "<group>"; };
+		298347E31820A086008D6244 /* NSTimer+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Blocks.m"; sourceTree = "<group>"; };
+		298347E51820A116008D6244 /* NSString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extensions.h"; sourceTree = "<group>"; };
+		298347E61820A116008D6244 /* NSString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extensions.m"; sourceTree = "<group>"; };
 		299F66CF180CD08F00AC77C3 /* FetchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchCell.h; sourceTree = "<group>"; };
 		299F66D0180CD08F00AC77C3 /* FetchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchCell.m; sourceTree = "<group>"; };
 		7047A5B15E4746C38C71D231 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +190,10 @@
 		291744C017F3B8B20052A8C9 /* Fetch */ = {
 			isa = PBXGroup;
 			children = (
+				298347E51820A116008D6244 /* NSString+Extensions.h */,
+				298347E61820A116008D6244 /* NSString+Extensions.m */,
+				298347E21820A086008D6244 /* NSTimer+Blocks.h */,
+				298347E31820A086008D6244 /* NSTimer+Blocks.m */,
 				2974FB42182056B4007A34D5 /* Reachability.h */,
 				2974FB43182056B4007A34D5 /* Reachability.m */,
 				2917450517F3CBE90052A8C9 /* Data Handling */,
@@ -295,6 +308,8 @@
 				2941E18A17F85F3400D5FD44 /* Popovers */,
 				299F66CF180CD08F00AC77C3 /* FetchCell.h */,
 				299F66D0180CD08F00AC77C3 /* FetchCell.m */,
+				298347DF18209DAC008D6244 /* URLCell.h */,
+				298347E018209DAC008D6244 /* URLCell.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -473,10 +488,12 @@
 				2917451017F3CBF50052A8C9 /* JsonHandler.m in Sources */,
 				2917450E17F3CBF50052A8C9 /* ProjectHandler.m in Sources */,
 				2917450117F3CAC50052A8C9 /* Headers.m in Sources */,
+				298347E71820A116008D6244 /* NSString+Extensions.m in Sources */,
 				291744D717F3B8B20052A8C9 /* DetailViewController.m in Sources */,
 				299F66D1180CD08F00AC77C3 /* FetchCell.m in Sources */,
 				2917450317F3CAC50052A8C9 /* Projects.m in Sources */,
 				2917451817F3D7500052A8C9 /* JsonOutputViewController.m in Sources */,
+				298347E118209DAC008D6244 /* URLCell.m in Sources */,
 				2917451117F3CBF50052A8C9 /* SeparatorNodeObject.m in Sources */,
 				291744D417F3B8B20052A8C9 /* ProjectListViewController.m in Sources */,
 				2917450217F3CAC50052A8C9 /* Parameters.m in Sources */,
@@ -485,6 +502,7 @@
 				291744CB17F3B8B20052A8C9 /* AppDelegate.m in Sources */,
 				2941E17F17F5CCCB00D5FD44 /* UIView+FindAndResignFirstResponder.m in Sources */,
 				2917450017F3CAC50052A8C9 /* Urls.m in Sources */,
+				298347E41820A086008D6244 /* NSTimer+Blocks.m in Sources */,
 				29463BCF17F4A82B00B2C807 /* UrlListViewController.m in Sources */,
 				291744F717F3CAB90052A8C9 /* Fetch.xcdatamodel in Sources */,
 				2941E18417F7BE3000D5FD44 /* MSCMoreOptionTableViewCell.m in Sources */,
