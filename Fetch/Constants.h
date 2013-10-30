@@ -13,6 +13,14 @@ typedef enum CellType {
     ParameterCell = 1
 } CellType;
 
+// URL Status
+
+typedef enum URLStatus {
+    URLUp = 0,
+    URLDown
+} URLStatus;
+
+
 // Dictionary Values
 static NSString *const kInsertValue = @"Insert Value";
 static NSString *const kInsertName = @"Insert Name";
