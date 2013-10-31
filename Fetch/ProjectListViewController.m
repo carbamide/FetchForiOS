@@ -39,7 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     if ([(AppDelegate *)[[UIApplication sharedApplication] delegate] isInternetDown]) {
         [[[self navigationController] navigationBar] setBarTintColor:[UIColor redColor]];
     }
@@ -50,6 +50,16 @@
     
     [[NSNotificationCenter defaultCenter] addObserverForName:INTERNET_UP object:Nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
         [[[self navigationController] navigationBar] setBarTintColor:[UIColor clearColor]];
+    }];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
+        [[self projectList] removeAllObjects];
+        
+        [[Projects all] each:^(Projects *object) {
+            [[self projectList] addObject:object];
+        }];
+        
+        [[self tableView] reloadData];
     }];
     
     [[Projects all] each:^(Projects *object) {

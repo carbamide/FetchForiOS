@@ -42,7 +42,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
+
     if (![self urlCellArray]) {
         [self setUrlCellArray:[NSMutableArray array]];
     }
@@ -66,6 +66,14 @@
     [[NSNotificationCenter defaultCenter] addObserverForName:RELOAD_PROJECT_TABLE object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
         [[self urlList] removeAllObjects];
         
+        [self setUrlList:[NSMutableArray arrayWithArray:[[[[self currentProject] urls] allObjects] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:YES]]]]];
+        
+        [[self tableView] reloadData];
+    }];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
+        [[self urlList] removeAllObjects];
+
         [self setUrlList:[NSMutableArray arrayWithArray:[[[[self currentProject] urls] allObjects] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:YES]]]]];
         
         [[self tableView] reloadData];

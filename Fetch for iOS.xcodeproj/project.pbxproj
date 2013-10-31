@@ -113,6 +113,7 @@
 		29463BCB17F4A44A00B2C807 /* HeaderNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HeaderNames.plist; sourceTree = "<group>"; };
 		29463BCD17F4A82B00B2C807 /* UrlListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlListViewController.h; sourceTree = "<group>"; };
 		29463BCE17F4A82B00B2C807 /* UrlListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UrlListViewController.m; sourceTree = "<group>"; };
+		2951F3251822020C00DD2B36 /* Fetch for iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Fetch for iOS.entitlements"; sourceTree = "<group>"; };
 		2974FB42182056B4007A34D5 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		2974FB43182056B4007A34D5 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		298347DF18209DAC008D6244 /* URLCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLCell.h; sourceTree = "<group>"; };
@@ -157,6 +158,7 @@
 		291744AC17F3B8B20052A8C9 = {
 			isa = PBXGroup;
 			children = (
+				2951F3251822020C00DD2B36 /* Fetch for iOS.entitlements */,
 				291744C017F3B8B20052A8C9 /* Fetch */,
 				291744E617F3B8B20052A8C9 /* FetchTests */,
 				291744B717F3B8B20052A8C9 /* Frameworks */,
@@ -403,6 +405,14 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Jukaela Enterprises";
 				TargetAttributes = {
+					291744B417F3B8B20052A8C9 = {
+						DevelopmentTeam = RG2JJ52ENN;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
 					291744DD17F3B8B20052A8C9 = {
 						TestTargetID = 291744B417F3B8B20052A8C9;
 					};
@@ -638,10 +648,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Fetch for iOS.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Fetch/Fetch for iOS-Prefix.pch";
 				INFOPLIST_FILE = "Fetch/Fetch for iOS-Info.plist";
 				PRODUCT_NAME = "Fetch for iOS";
+				PROVISIONING_PROFILE = "527A3D95-637A-4300-A4E4-1010DC3AB98E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -652,10 +665,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = "Fetch for iOS.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Fetch/Fetch for iOS-Prefix.pch";
 				INFOPLIST_FILE = "Fetch/Fetch for iOS-Info.plist";
 				PRODUCT_NAME = "Fetch for iOS";
+				PROVISIONING_PROFILE = "527A3D95-637A-4300-A4E4-1010DC3AB98E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

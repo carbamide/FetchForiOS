@@ -65,6 +65,8 @@ NS_ENUM(NSInteger, CellTypeTag){
         [[self fetchActivityIndicator] setHidden:YES];
     }
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadUrl:) name:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:nil];
+    
     [[self urlDescriptionTextField] setPlaceholder:@"URL Description"];
     [[self urlTextField] setPlaceholder:@"URL"];
     
@@ -397,6 +399,15 @@ NS_ENUM(NSInteger, CellTypeTag){
 
 #pragma mark -
 #pragma mark - Methods
+
+-(void)reloadUrl:(NSNotification *)aNotification
+{
+    NSLog(@"An update is happening!!!");
+    
+    if ([self currentUrl]) {
+        [self loadUrl:[NSNotification notificationWithName:@"fake_notification" object:nil userInfo:@{@"url": [self currentUrl]}]];
+    }
+}
 
 - (void)setDetailItem:(id)newDetailItem
 {
@@ -804,7 +815,12 @@ NS_ENUM(NSInteger, CellTypeTag){
             [[self view] setBounds:CGRectOffset([[self view] bounds], 0, -kScrollMainViewForTextView)];
         }];
     }
-    
+    else if (textField == [self urlDescriptionTextField]) {
+        [[self currentUrl] setUrlDescription:[textField text]];
+        [[self currentUrl] save];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:RELOAD_PROJECT_TABLE object:nil];
+    }
     return YES;
 }
 
