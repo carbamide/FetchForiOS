@@ -15,8 +15,19 @@
 #import "AppDelegate.h"
 
 @interface ProjectListViewController ()
+/**
+ *  NSMutableArray that holds the list of projects
+ */
 @property (strong, nonatomic) NSMutableArray *projectList;
+
+/**
+ *  The currently selected Project object
+ */
 @property (strong, nonatomic) Projects *currentProject;
+
+/**
+ *  A temporary store
+ */
 @property (strong, nonatomic) Projects *tempProject;
 
 @end

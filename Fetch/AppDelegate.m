@@ -13,6 +13,9 @@
 #import "Reachability.h"
 
 @interface AppDelegate ()
+/**
+ *  Reachability object that checks the devices internet connectivity
+ */
 @property (nonatomic) Reachability *internetReachability;
 @end
 

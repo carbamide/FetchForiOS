@@ -20,14 +20,39 @@
 #import "AppDelegate.h"
 
 @interface DetailViewController ()
+/**
+ *  UIPopoverController that holds a reference to the UISplitView's 0th panel
+ */
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
+
+/**
+ *  Data source for the headersTableView
+ */
 @property (strong, nonatomic) NSMutableArray *headersDataSource;
+
+/**
+ *  Data source for the paramsTableView
+ */
 @property (strong, nonatomic) NSMutableArray *parametersDataSource;
+
+/**
+ *  List of URLs contained in the currently selected Project
+ */
 @property (strong, nonatomic) NSMutableArray *urlList;
+
+/**
+ *  The URL object currently being displayed
+ */
 @property (strong, nonatomic) Urls *currentUrl;
+
+/**
+ *  Holder for JSON data returned from a fetch
+ */
 @property (strong, nonatomic) id jsonData;
-@property (strong, nonatomic) Headers *currentHeader;
-@property (strong, nonatomic) Parameters *currentParameter;
+
+/**
+ *  NSDictionary that holds the response from the server when a fetch occurs
+ */
 @property (strong, nonatomic) NSDictionary *responseDictionary;
 
 @end
@@ -98,18 +123,6 @@ NS_ENUM(NSInteger, CellTypeTag){
         [[[self navigationController] navigationBar] setBarTintColor:[UIColor clearColor]];
         
         [self setTitle:[[self title] stringByReplacingOccurrencesOfString:@" - Internet Connection Down" withString:@""]];
-    }];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:RELOAD_HEADER_TABLE object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
-        [self setCurrentHeader:nil];
-        
-        [[self headersTableView] reloadData];
-    }];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:RELOAD_PARAMETER_TABLE object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
-        [self setCurrentParameter:nil];
-        
-        [[self parametersTableView] reloadData];
     }];
 }
 
@@ -718,8 +731,6 @@ NS_ENUM(NSInteger, CellTypeTag){
         
         [[cell valueTextField] setTag:kHeaderCell];
         [[cell nameTextField] setTag:kHeaderCell];
-        
-        [cell setCurrentHeader:tempHeader];
     }
     else {
         Parameters *tempParameter = [self parametersDataSource][[indexPath row]];
@@ -734,8 +745,6 @@ NS_ENUM(NSInteger, CellTypeTag){
         
         [[cell valueTextField] setTag:kParameterCell];
         [[cell nameTextField] setTag:kParameterCell];
-
-        [cell setCurrentParameter:tempParameter];
     }
     
     return cell;

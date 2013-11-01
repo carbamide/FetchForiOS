@@ -155,6 +155,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2914E9191823541D00ED2464 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				2941E17D17F5CCCB00D5FD44 /* UIView+FindAndResignFirstResponder.h */,
+				2941E17E17F5CCCB00D5FD44 /* UIView+FindAndResignFirstResponder.m */,
+				298347E51820A116008D6244 /* NSString+Extensions.h */,
+				298347E61820A116008D6244 /* NSString+Extensions.m */,
+				298347E21820A086008D6244 /* NSTimer+Blocks.h */,
+				298347E31820A086008D6244 /* NSTimer+Blocks.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
+		2914E91A1823542800ED2464 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				2941E18617F7BE6E00D5FD44 /* More Cell */,
+				2914E9191823541D00ED2464 /* Category */,
+				2974FB42182056B4007A34D5 /* Reachability.h */,
+				2974FB43182056B4007A34D5 /* Reachability.m */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
 		291744AC17F3B8B20052A8C9 = {
 			isa = PBXGroup;
 			children = (
@@ -192,12 +216,7 @@
 		291744C017F3B8B20052A8C9 /* Fetch */ = {
 			isa = PBXGroup;
 			children = (
-				298347E51820A116008D6244 /* NSString+Extensions.h */,
-				298347E61820A116008D6244 /* NSString+Extensions.m */,
-				298347E21820A086008D6244 /* NSTimer+Blocks.h */,
-				298347E31820A086008D6244 /* NSTimer+Blocks.m */,
-				2974FB42182056B4007A34D5 /* Reachability.h */,
-				2974FB43182056B4007A34D5 /* Reachability.m */,
+				2914E91A1823542800ED2464 /* Vendor */,
 				2917450517F3CBE90052A8C9 /* Data Handling */,
 				2941E17617F4DB8600D5FD44 /* Master View Controllers */,
 				2941E17417F4DB6900D5FD44 /* Singletons */,
@@ -211,10 +230,8 @@
 		291744C117F3B8B20052A8C9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				2941E18617F7BE6E00D5FD44 /* More Cell */,
-				2941E18017F5DADB00D5FD44 /* Categories */,
-				2917451217F3CC200052A8C9 /* Constants.h */,
 				2941E17917F4DBB700D5FD44 /* Resources */,
+				2917451217F3CC200052A8C9 /* Constants.h */,
 				29463BCB17F4A44A00B2C807 /* HeaderNames.plist */,
 				291744C217F3B8B20052A8C9 /* Fetch for iOS-Info.plist */,
 				291744C317F3B8B20052A8C9 /* InfoPlist.strings */,
@@ -322,15 +339,6 @@
 				291744D817F3B8B20052A8C9 /* Images.xcassets */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		2941E18017F5DADB00D5FD44 /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				2941E17D17F5CCCB00D5FD44 /* UIView+FindAndResignFirstResponder.h */,
-				2941E17E17F5CCCB00D5FD44 /* UIView+FindAndResignFirstResponder.m */,
-			);
-			name = Categories;
 			sourceTree = "<group>";
 		};
 		2941E18617F7BE6E00D5FD44 /* More Cell */ = {

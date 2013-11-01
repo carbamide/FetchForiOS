@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  Custom Extensions for NSString
+ */
 @interface NSString (Extensions)
 
 /** 

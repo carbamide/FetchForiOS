@@ -18,8 +18,21 @@
 
 @interface UrlListViewController ()
 
+/**
+ *  Mutable array that holds a list of Url object
+ */
 @property (strong, nonatomic) NSMutableArray *urlList;
+
+/**
+ *  NSTimer that checks the reachability status of the Url objects contained in urlCellArray
+ */
 @property (strong, nonatomic) NSTimer *pingTimer;
+
+/**
+ *  Mutable array that holds a reference to the UrlCells that are currently displayed.
+ *  This is important to do because you need to have a list of UrlCells that are currently
+ *  displayed to be a able to update the status images.
+ */
 @property (strong, nonatomic) NSMutableArray *urlCellArray;
 
 @end

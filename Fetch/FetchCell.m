@@ -12,7 +12,14 @@
 #import "SelectionViewController.h"
 
 @interface FetchCell()
+/**
+ *  NSArray of common http headers
+ */
 @property (strong, nonatomic) NSArray *headerNames;
+
+/**
+ *  UIPopoverController that holds a SelectionViewController to select a header
+ */
 @property (strong, nonatomic) UIPopoverController *selectionPopover;
 @end
 
