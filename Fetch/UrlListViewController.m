@@ -35,6 +35,29 @@
  */
 @property (strong, nonatomic) NSMutableArray *urlCellArray;
 
+/**
+ *  Creates an NSTimer object that fires at the specified interval
+ *
+ *  @param timeInterval The timer interval to wait between firings.
+ */
+-(void)createTimerWithTimeInterval:(NSTimeInterval)timeInterval;
+
+/**
+ *  Checks the urlString for Reachability status
+ *
+ *  @param urlString The url to check the reachability status of
+ *
+ *  @return NetworkStatus enum value.
+ */
+-(NetworkStatus)urlVerification:(NSString *)urlString;
+
+/**
+ *  The application's documents directory
+ *
+ *  @return NSURL file path of the application's documents directory
+ */
+- (NSURL *)applicationDocumentsDirectory;
+
 @end
 
 @implementation UrlListViewController

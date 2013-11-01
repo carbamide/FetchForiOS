@@ -30,6 +30,28 @@
  */
 @property (strong, nonatomic) Projects *tempProject;
 
+/**
+ *  Edit the name of the Project object
+ *
+ *  @param project The Project to edit the name of.
+ */
+-(void)editProjectName:(Projects *)project;
+
+/**
+ *  Being insertion process of new Project
+ *
+ *  @param sender The caller of this method.
+ */
+- (void)insertNewObject:(id)sender;
+
+/**
+ *  Gesture recognizer for long press on the table view.  This gesture is a UILongPressGesture.
+ *  This handler begins the share / export process.
+ *
+ *  @param gestureRecognizer UIGestureRecognizer that called this action.
+ */
+-(void)shareAction:(UIGestureRecognizer *)gestureRecognizer;
+
 @end
 
 @implementation ProjectListViewController
@@ -140,6 +162,34 @@
     [projectNameAlert setTag:64];
     [projectNameAlert setAlertViewStyle:UIAlertViewStylePlainTextInput];
     [projectNameAlert show];
+}
+
+
+-(void)shareAction:(UIGestureRecognizer *)gestureRecognizer
+{
+    if ([gestureRecognizer state] == UIGestureRecognizerStateBegan) {
+        NSIndexPath *indexPathOfSelectedRow = [[self tableView] indexPathForRowAtPoint:[gestureRecognizer locationInView:[self tableView]]];
+        
+        if (!indexPathOfSelectedRow) {
+            return;
+        }
+        
+        Projects *tempProject = [self projectList][[indexPathOfSelectedRow row]];
+        
+        NSURL *exportedURL = [ProjectHandler exportProject:tempProject];
+        
+        UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[exportedURL] applicationActivities:nil];
+        
+        [activityViewController setExcludedActivityTypes:@[UIActivityTypePostToFacebook, UIActivityTypePostToTwitter]];
+        
+        if (![self activityPopoverController]) {
+            [self setActivityPopoverController:[[UIPopoverController alloc] initWithContentViewController:activityViewController]];
+        }
+        
+        [[self activityPopoverController] setContentViewController:activityViewController];
+        
+        [[self activityPopoverController] presentPopoverFromRect:[[gestureRecognizer view] frame] inView:[self tableView] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
 }
 
 #pragma mark - UIAlertViewDelegate
@@ -258,36 +308,6 @@
     [[self detailViewController] setCurrentProject:tempProject];
     
     [self performSegueWithIdentifier:kShowUrlsSegue sender:nil];
-}
-
-#pragma mark -
-#pragma mark IBActions
-
--(void)shareAction:(UIGestureRecognizer *)gestureRecognizer
-{
-    if ([gestureRecognizer state] == UIGestureRecognizerStateBegan) {
-        NSIndexPath *indexPathOfSelectedRow = [[self tableView] indexPathForRowAtPoint:[gestureRecognizer locationInView:[self tableView]]];
-        
-        if (!indexPathOfSelectedRow) {
-            return;
-        }
-        
-        Projects *tempProject = [self projectList][[indexPathOfSelectedRow row]];
-        
-        NSURL *exportedURL = [ProjectHandler exportProject:tempProject];
-        
-        UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[exportedURL] applicationActivities:nil];
-        
-        [activityViewController setExcludedActivityTypes:@[UIActivityTypePostToFacebook, UIActivityTypePostToTwitter]];
-        
-        if (![self activityPopoverController]) {
-            [self setActivityPopoverController:[[UIPopoverController alloc] initWithContentViewController:activityViewController]];
-        }
-        
-        [[self activityPopoverController] setContentViewController:activityViewController];
-        
-        [[self activityPopoverController] presentPopoverFromRect:[[gestureRecognizer view] frame] inView:[self tableView] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    }
 }
 
 #pragma mark -

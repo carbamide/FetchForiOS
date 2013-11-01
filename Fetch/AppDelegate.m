@@ -17,6 +17,21 @@
  *  Reachability object that checks the devices internet connectivity
  */
 @property (nonatomic) Reachability *internetReachability;
+
+/**
+ *  Reachability NSNotification handler
+ *
+ *  @param aNotification The NSNotification to handle
+ */
+- (void)reachabilityChanged:(NSNotification *)aNotification;
+
+/**
+ *  Notify the user that the reachability status has changed, or revert the user interface 
+ *  to the non-interrupted status.
+ *
+ *  @param reachability The current Reachability status
+ */
+- (void)updateInterfaceWithReachability:(Reachability *)reachability;
 @end
 
 @implementation AppDelegate

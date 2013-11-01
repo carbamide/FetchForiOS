@@ -55,6 +55,77 @@
  */
 @property (strong, nonatomic) NSDictionary *responseDictionary;
 
+/**
+ *  Reload URL notification handler
+ *
+ *  @param aNotification The notification that was broadcast
+ */
+-(void)reloadUrl:(NSNotification *)aNotification;
+
+/**
+ *  Sets the current detail item
+ *
+ *  @param newDetailItem Detail item to set
+ */
+- (void)setDetailItem:(id)newDetailItem;
+
+/**
+ *  Sets the current Project
+ *
+ *  @param currentProject The Project object to set as the currentProject
+ */
+-(void)setCurrentProject:(Projects *)currentProject;
+
+/**
+ *  Convienence method to provide an NSArray of common HTTP methods
+ *
+ *  @return NSArray of common HTTP methods.
+ */
+-(NSArray *)httpMethods;
+
+/**
+ *  Appends the specified text, in the specified color to the outputTextView
+ *
+ *  @param text  The text to append to the outputTextView
+ *  @param color The request color of the text
+ */
+- (void)appendToOutput:(NSString *)text color:(UIColor *)color;
+
+/**
+ *  Check if URL is unique and perform several saving methods
+ *
+ *  @return Returns YES if the URL is uniquen in the Project, NO if it's not
+ */
+-(BOOL)addToUrlListIfUnique;
+
+/**
+ *  Logs the specified NSMutableURLRequest to the outputTextView
+ *
+ *  @param request The NSMutableURLRequest to log to the outputTextView
+ */
+-(void)logReqest:(NSMutableURLRequest *)request;
+
+/**
+ *  Load URL Notification Handler
+ *
+ *  @param aNotification The notification to handle
+ */
+-(void)loadUrl:(NSNotification *)aNotification;
+
+/**
+ *  Add Header notification handler
+ *
+ *  @param aNotification The Notification to handle
+ */
+-(void)addHeader:(NSNotification *)aNotification;
+
+/**
+ *  Add parameter notification handler
+ *
+ *  @param aNotification The notification to handle
+ */
+-(void)addParameter:(NSNotification *)aNotification;
+
 @end
 
 static int const kScrollMainViewForTextView = 200;
