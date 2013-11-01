@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/FetchCell.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/FetchCell</TokenIdentifier>
+			<Abstract type="html">FetchCell is the application&apos;s basic type of UITableViewCell.  It is used for displaying
+several types of information, such as Header objects and Parameter objects.</Abstract>
+			<DeclaredIn>FetchCell.h</DeclaredIn>
+			
+			<NodeRef refid="3"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/FetchCell/setNameTextField:</TokenIdentifier>
+			<Abstract type="html">The name of the Header or Parameter object</Abstract>
+			<DeclaredIn>FetchCell.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *nameTextField</Declaration>
+			
+			
+			<Anchor>//api/name/nameTextField</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/FetchCell/nameTextField</TokenIdentifier>
+			<Abstract type="html">The name of the Header or Parameter object</Abstract>
+			<DeclaredIn>FetchCell.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *nameTextField</Declaration>
+			
+			
+			<Anchor>//api/name/nameTextField</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/FetchCell/setValueTextField:</TokenIdentifier>
+			<Abstract type="html">The value of the Header or Parameter object</Abstract>
+			<DeclaredIn>FetchCell.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *valueTextField</Declaration>
+			
+			
+			<Anchor>//api/name/valueTextField</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/FetchCell/valueTextField</TokenIdentifier>
+			<Abstract type="html">The value of the Header or Parameter object</Abstract>
+			<DeclaredIn>FetchCell.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *valueTextField</Declaration>
+			
+			
+			<Anchor>//api/name/valueTextField</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/FetchCell/setCurrentHeader:</TokenIdentifier>
+			<Abstract type="html">Header object currently being displayed in this cell</Abstract>
+			<DeclaredIn>FetchCell.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) Headers *currentHeader</Declaration>
+			
+			
+			<Anchor>//api/name/currentHeader</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/FetchCell/currentHeader</TokenIdentifier>
+			<Abstract type="html">Header object currently being displayed in this cell</Abstract>
+			<DeclaredIn>FetchCell.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) Headers *currentHeader</Declaration>
+			
+			
+			<Anchor>//api/name/currentHeader</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/FetchCell/setCurrentParameter:</TokenIdentifier>
+			<Abstract type="html">Parameter object currently being displayed in this cell</Abstract>
+			<DeclaredIn>FetchCell.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) Parameters *currentParameter</Declaration>
+			
+			
+			<Anchor>//api/name/currentParameter</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/FetchCell/currentParameter</TokenIdentifier>
+			<Abstract type="html">Parameter object currently being displayed in this cell</Abstract>
+			<DeclaredIn>FetchCell.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) Parameters *currentParameter</Declaration>
+			
+			
+			<Anchor>//api/name/currentParameter</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/FetchCell/setCellType:</TokenIdentifier>
+			<Abstract type="html">cellType determines what, a Header or a Parameter, is currently being shown in this cell</Abstract>
+			<DeclaredIn>FetchCell.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) CellType cellType</Declaration>
+			
+			
+			<Anchor>//api/name/cellType</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/FetchCell/cellType</TokenIdentifier>
+			<Abstract type="html">cellType determines what, a Header or a Parameter, is currently being shown in this cell</Abstract>
+			<DeclaredIn>FetchCell.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) CellType cellType</Declaration>
+			
+			
+			<Anchor>//api/name/cellType</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/FetchCell/saveTextField:</TokenIdentifier>
+			<Abstract type="html">Determine the UITextField that called this method, then save that data to the current object, Header or Parameter</Abstract>
+			<DeclaredIn>FetchCell.m</DeclaredIn>			
+			
+			<Declaration>- (void)saveTextField:(UITextField *)textField</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>textField</Name>
+					<Abstract type="html">The caller of this method</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/saveTextField:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/FetchCell/setHeaderNames:</TokenIdentifier>
+			<Abstract type="html">NSArray of common http headers</Abstract>
+			<DeclaredIn>FetchCell.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSArray *headerNames</Declaration>
+			
+			
+			<Anchor>//api/name/headerNames</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/FetchCell/headerNames</TokenIdentifier>
+			<Abstract type="html">NSArray of common http headers</Abstract>
+			<DeclaredIn>FetchCell.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSArray *headerNames</Declaration>
+			
+			
+			<Anchor>//api/name/headerNames</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/FetchCell/setSelectionPopover:</TokenIdentifier>
+			<Abstract type="html">UIPopoverController that holds a SelectionViewController to select a header</Abstract>
+			<DeclaredIn>FetchCell.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) UIPopoverController *selectionPopover</Declaration>
+			
+			
+			<Anchor>//api/name/selectionPopover</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/FetchCell/selectionPopover</TokenIdentifier>
+			<Abstract type="html">UIPopoverController that holds a SelectionViewController to select a header</Abstract>
+			<DeclaredIn>FetchCell.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) UIPopoverController *selectionPopover</Declaration>
+			
+			
+			<Anchor>//api/name/selectionPopover</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

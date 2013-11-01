@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Categories/NSTimer+Blocks.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cat/NSTimer(Blocks)</TokenIdentifier>
+			<Abstract type="html">Block Extensions for NSTimer</Abstract>
+			<DeclaredIn>NSTimer+Blocks.h</DeclaredIn>
+			
+			<NodeRef refid="16"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSTimer(Blocks)/scheduledTimerWithTimeInterval:block:repeats:</TokenIdentifier>
+			<Abstract type="html">Block based scheduled timer</Abstract>
+			<DeclaredIn>NSTimer+Blocks.h</DeclaredIn>			
+			
+			<Declaration>+ (id)scheduledTimerWithTimeInterval:(NSTimeInterval)inTimeInterval block:(void ( ^ ) ( ))inBlock repeats:(BOOL)inRepeats</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>inTimeInterval</Name>
+					<Abstract type="html">Time to wait</Abstract>
+				</Parameter><Parameter>
+					<Name>inBlock</Name>
+					<Abstract type="html">Block to execute</Abstract>
+				</Parameter><Parameter>
+					<Name>inRepeats</Name>
+					<Abstract type="html">Should the timer repeat?</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">NSTimer object</Abstract></ReturnValue>
+			<Anchor>//api/name/scheduledTimerWithTimeInterval:block:repeats:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/NSTimer(Blocks)/timerWithTimeInterval:block:repeats:</TokenIdentifier>
+			<Abstract type="html">Block based timer</Abstract>
+			<DeclaredIn>NSTimer+Blocks.h</DeclaredIn>			
+			
+			<Declaration>+ (id)timerWithTimeInterval:(NSTimeInterval)inTimeInterval block:(void ( ^ ) ( ))inBlock repeats:(BOOL)inRepeats</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>inTimeInterval</Name>
+					<Abstract type="html">Time to wait</Abstract>
+				</Parameter><Parameter>
+					<Name>inBlock</Name>
+					<Abstract type="html">Block to execute</Abstract>
+				</Parameter><Parameter>
+					<Name>inRepeats</Name>
+					<Abstract type="html">Should the timer repeat?</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">NSTimer object</Abstract></ReturnValue>
+			<Anchor>//api/name/timerWithTimeInterval:block:repeats:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

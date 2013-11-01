@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/URLCell.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/URLCell</TokenIdentifier>
+			<Abstract type="html">URLCells are a subclass of UITableViewCell that are responsible for displaying the data contained
+in Url objects.  URLCells also display the reachability status of the Url object contained therein.</Abstract>
+			<DeclaredIn>URLCell.h</DeclaredIn>
+			
+			<NodeRef refid="13"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/URLCell/setStatusImage:</TokenIdentifier>
+			<Abstract type="html">The current reachability status of the Url being display in the cell</Abstract>
+			<DeclaredIn>URLCell.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UIImageView *statusImage</Declaration>
+			
+			
+			<Anchor>//api/name/statusImage</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/URLCell/statusImage</TokenIdentifier>
+			<Abstract type="html">The current reachability status of the Url being display in the cell</Abstract>
+			<DeclaredIn>URLCell.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UIImageView *statusImage</Declaration>
+			
+			
+			<Anchor>//api/name/statusImage</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/URLCell/setCurrentUrl:</TokenIdentifier>
+			<Abstract type="html">The URL object being displayed in the cell</Abstract>
+			<DeclaredIn>URLCell.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) Urls *currentUrl</Declaration>
+			
+			
+			<Anchor>//api/name/currentUrl</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/URLCell/currentUrl</TokenIdentifier>
+			<Abstract type="html">The URL object being displayed in the cell</Abstract>
+			<DeclaredIn>URLCell.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) Urls *currentUrl</Declaration>
+			
+			
+			<Anchor>//api/name/currentUrl</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/URLCell/setStatus:</TokenIdentifier>
+			<Abstract type="html">Method that sets the current reachability status to be displayed in statusImage.
+This status is also saved to the currentUrl so that when the Url object is next
+displayed, a fetch doesn&apos;t have to happen before a status is available to display.</Abstract>
+			<DeclaredIn>URLCell.h</DeclaredIn>			
+			
+			<Declaration>- (void)setStatus:(URLStatus)status</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>status</Name>
+					<Abstract type="html">The current URLStatus of the currentUrl Url object</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setStatus:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/JsonOutputViewController.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/JsonOutputViewController</TokenIdentifier>
+			<Abstract type="html">JsonOutputViewController is UIViewController subclass that is responsible for the displaying of the
+JSON output that is received when a fetch request occurs.  This data is displayed in an RATreeView.</Abstract>
+			<DeclaredIn>JsonOutputViewController.h</DeclaredIn>
+			
+			<NodeRef refid="5"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JsonOutputViewController/setJsonData:</TokenIdentifier>
+			<Abstract type="html">The JSON data to display in the UITableView</Abstract>
+			<DeclaredIn>JsonOutputViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) id jsonData</Declaration>
+			
+			
+			<Anchor>//api/name/jsonData</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/JsonOutputViewController/jsonData</TokenIdentifier>
+			<Abstract type="html">The JSON data to display in the UITableView</Abstract>
+			<DeclaredIn>JsonOutputViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) id jsonData</Declaration>
+			
+			
+			<Anchor>//api/name/jsonData</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JsonOutputViewController/setTreeView:</TokenIdentifier>
+			<Abstract type="html">RATreeView that displays the JSON in an awesome, awesome way.</Abstract>
+			<DeclaredIn>JsonOutputViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (weak, nonatomic) RATreeView *treeView</Declaration>
+			
+			
+			<Anchor>//api/name/treeView</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/JsonOutputViewController/treeView</TokenIdentifier>
+			<Abstract type="html">RATreeView that displays the JSON in an awesome, awesome way.</Abstract>
+			<DeclaredIn>JsonOutputViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (weak, nonatomic) RATreeView *treeView</Declaration>
+			
+			
+			<Anchor>//api/name/treeView</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JsonOutputViewController/setDataArray:</TokenIdentifier>
+			<Abstract type="html">Datasource for the RATreeView</Abstract>
+			<DeclaredIn>JsonOutputViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSArray *dataArray</Declaration>
+			
+			
+			<Anchor>//api/name/dataArray</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/JsonOutputViewController/dataArray</TokenIdentifier>
+			<Abstract type="html">Datasource for the RATreeView</Abstract>
+			<DeclaredIn>JsonOutputViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSArray *dataArray</Declaration>
+			
+			
+			<Anchor>//api/name/dataArray</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

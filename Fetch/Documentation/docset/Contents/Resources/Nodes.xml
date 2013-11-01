@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DocSetNodes version="1.0">
+    <TOC>
+        <Node type="folder">
+            <Name>Core</Name>
+            <Path>index.html</Path>
+			<Subnodes>
+                
+				
+				<Node type="folder">
+					<Name>Classes</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="1"/>
+						<NodeRef refid="2"/>
+						<NodeRef refid="3"/>
+						<NodeRef refid="4"/>
+						<NodeRef refid="5"/>
+						<NodeRef refid="6"/>
+						<NodeRef refid="7"/>
+						<NodeRef refid="8"/>
+						<NodeRef refid="9"/>
+						<NodeRef refid="10"/>
+						<NodeRef refid="11"/>
+						<NodeRef refid="12"/>
+						<NodeRef refid="13"/>
+						<NodeRef refid="14"/>
+						
+					</Subnodes>
+				</Node>
+				
+				
+				<Node type="folder">
+					<Name>Categories</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="15"/>
+						<NodeRef refid="16"/>
+						<NodeRef refid="17"/>
+						
+					</Subnodes>
+				</Node>
+				
+				
+			</Subnodes>
+        </Node>
+    </TOC>
+	<Library>
+		
+		<Node id="1">
+			<Name>AppDelegate</Name>
+			<Path>Classes/AppDelegate.html</Path>
+		</Node>
+		<Node id="2">
+			<Name>DetailViewController</Name>
+			<Path>Classes/DetailViewController.html</Path>
+		</Node>
+		<Node id="3">
+			<Name>FetchCell</Name>
+			<Path>Classes/FetchCell.html</Path>
+		</Node>
+		<Node id="4">
+			<Name>JsonHandler</Name>
+			<Path>Classes/JsonHandler.html</Path>
+		</Node>
+		<Node id="5">
+			<Name>JsonOutputViewController</Name>
+			<Path>Classes/JsonOutputViewController.html</Path>
+		</Node>
+		<Node id="6">
+			<Name>NodeObject</Name>
+			<Path>Classes/NodeObject.html</Path>
+		</Node>
+		<Node id="7">
+			<Name>ProjectHandler</Name>
+			<Path>Classes/ProjectHandler.html</Path>
+		</Node>
+		<Node id="8">
+			<Name>ProjectListViewController</Name>
+			<Path>Classes/ProjectListViewController.html</Path>
+		</Node>
+		<Node id="9">
+			<Name>Reachability</Name>
+			<Path>Classes/Reachability.html</Path>
+		</Node>
+		<Node id="10">
+			<Name>ResponseHeadersViewController</Name>
+			<Path>Classes/ResponseHeadersViewController.html</Path>
+		</Node>
+		<Node id="11">
+			<Name>SelectionViewController</Name>
+			<Path>Classes/SelectionViewController.html</Path>
+		</Node>
+		<Node id="12">
+			<Name>SeparatorNodeObject</Name>
+			<Path>Classes/SeparatorNodeObject.html</Path>
+		</Node>
+		<Node id="13">
+			<Name>URLCell</Name>
+			<Path>Classes/URLCell.html</Path>
+		</Node>
+		<Node id="14">
+			<Name>UrlListViewController</Name>
+			<Path>Classes/UrlListViewController.html</Path>
+		</Node>
+		
+		<Node id="15">
+			<Name>NSString(Extensions)</Name>
+			<Path>Categories/NSString+Extensions.html</Path>
+		</Node>
+		<Node id="16">
+			<Name>NSTimer(Blocks)</Name>
+			<Path>Categories/NSTimer+Blocks.html</Path>
+		</Node>
+		<Node id="17">
+			<Name>UIView(FindAndResignFirstResponder)</Name>
+			<Path>Categories/UIView+FindAndResignFirstResponder.html</Path>
+		</Node>
+		
+		
+	</Library>
+</DocSetNodes>

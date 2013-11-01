@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/ResponseHeadersViewController.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/ResponseHeadersViewController</TokenIdentifier>
+			<Abstract type="html">UITableViewController subclass that handles the displaying of the headers that are received
+in the response data when a fetch request occurs.</Abstract>
+			<DeclaredIn>ResponseHeadersViewController.h</DeclaredIn>
+			
+			<NodeRef refid="10"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ResponseHeadersViewController/setKeysDataSource:</TokenIdentifier>
+			<Abstract type="html">Keys to be shown in the table view</Abstract>
+			<DeclaredIn>ResponseHeadersViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSArray *keysDataSource</Declaration>
+			
+			
+			<Anchor>//api/name/keysDataSource</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/ResponseHeadersViewController/keysDataSource</TokenIdentifier>
+			<Abstract type="html">Keys to be shown in the table view</Abstract>
+			<DeclaredIn>ResponseHeadersViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSArray *keysDataSource</Declaration>
+			
+			
+			<Anchor>//api/name/keysDataSource</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ResponseHeadersViewController/setValuesDataSource:</TokenIdentifier>
+			<Abstract type="html">Values cooresponding to the keys shown in the table view</Abstract>
+			<DeclaredIn>ResponseHeadersViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSArray *valuesDataSource</Declaration>
+			
+			
+			<Anchor>//api/name/valuesDataSource</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/ResponseHeadersViewController/valuesDataSource</TokenIdentifier>
+			<Abstract type="html">Values cooresponding to the keys shown in the table view</Abstract>
+			<DeclaredIn>ResponseHeadersViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSArray *valuesDataSource</Declaration>
+			
+			
+			<Anchor>//api/name/valuesDataSource</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ResponseHeadersViewController/initWithStyle:keysArray:valuesArray:</TokenIdentifier>
+			<Abstract type="html">Custom init method that passes keys and values to this view controller</Abstract>
+			<DeclaredIn>ResponseHeadersViewController.h</DeclaredIn>			
+			
+			<Declaration>- (id)initWithStyle:(UITableViewStyle)style keysArray:(NSArray *)keys valuesArray:(NSArray *)values</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>style</Name>
+					<Abstract type="html">The UITableViewStyle to use for this table</Abstract>
+				</Parameter><Parameter>
+					<Name>keys</Name>
+					<Abstract type="html">An array of keys to show in the table</Abstract>
+				</Parameter><Parameter>
+					<Name>values</Name>
+					<Abstract type="html">An array of cooresponding values to show in the table</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">ResponseHeadersViewController object</Abstract></ReturnValue>
+			<Anchor>//api/name/initWithStyle:keysArray:valuesArray:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

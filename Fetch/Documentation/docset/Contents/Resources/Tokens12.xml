@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SeparatorNodeObject.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SeparatorNodeObject</TokenIdentifier>
+			<Abstract type="html">Helper that serves as a separator.  Subclass of NodeObject</Abstract>
+			<DeclaredIn>SeparatorNodeObject.h</DeclaredIn>
+			
+			<NodeRef refid="12"/>
+		</Token>
+		
+		
+	</File>
+</Tokens>
