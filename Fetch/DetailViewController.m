@@ -143,6 +143,7 @@
 static int const kScrollMainViewForTextView = 200;
 static float const kAnimationDuration = 0.3;
 static int const kKeyboardHeight = 352;
+#define kOriginalOutputViewRect CGRectMake(14, 575, 669, 135)
 
 NS_ENUM(NSInteger, CellTypeTag){
     kHeaderCell = 0,
@@ -172,6 +173,12 @@ NS_ENUM(NSInteger, CellTypeTag){
         
         [[self fetchActivityIndicator] setHidden:YES];
     }
+    
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandOutputTextView:)];
+    
+    [gestureRecognizer setNumberOfTapsRequired:2];
+    
+    [[self outputTextView] addGestureRecognizer:gestureRecognizer];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadUrl:) name:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:nil];
     
@@ -265,6 +272,8 @@ NS_ENUM(NSInteger, CellTypeTag){
 {
     NSLog(@"%s", __FUNCTION__);
     
+    [self setJsonData:nil];
+    
     [[self fetchActivityIndicator] setHidden:NO];
     [[self fetchActivityIndicator] startAnimating];
     [[self fetchButton] setHidden:YES];
@@ -309,8 +318,8 @@ NS_ENUM(NSInteger, CellTypeTag){
         [self logReqest:request];
         
         [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data,
-                                                                  NSURLResponse *response,
-                                                                  NSError *error) {
+                                                                                       NSURLResponse *response,
+                                                                                       NSError *error) {
             NSHTTPURLResponse *urlResponse = (NSHTTPURLResponse *)response;
             NSInteger responseCode = [urlResponse statusCode];
             NSString *responseCodeString = [NSString stringWithFormat:@"Response - %li\n", (long)responseCode];
@@ -329,7 +338,7 @@ NS_ENUM(NSInteger, CellTypeTag){
             
             if (!error) {
                 [self setResponseData:data];
-
+                
                 id jsonData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
                 
                 if (jsonData) {
@@ -784,17 +793,29 @@ NS_ENUM(NSInteger, CellTypeTag){
 
 -(void)showJsonOutputAction:(id)sender
 {
-    JsonOutputViewController *viewController = [[JsonOutputViewController alloc] init];
-    
-    [viewController setJsonData:[self jsonData]];
-    
-    if ([[self responseHeadersPopover] isPopoverVisible]) {
-        [[self responseHeadersPopover] dismissPopoverAnimated:YES];
+    if ([self jsonData]) {
+        JsonOutputViewController *viewController = [[JsonOutputViewController alloc] init];
+        
+        [viewController setJsonData:[self jsonData]];
+        
+        if ([[self responseHeadersPopover] isPopoverVisible]) {
+            [[self responseHeadersPopover] dismissPopoverAnimated:YES];
+        }
+        
+        [self setJsonPopover:[[UIPopoverController alloc] initWithContentViewController:[[UINavigationController alloc] initWithRootViewController:viewController]]];
+        
+        [[self jsonPopover] presentPopoverFromBarButtonItem:[self parseButton] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }
-    
-    [self setJsonPopover:[[UIPopoverController alloc] initWithContentViewController:[[UINavigationController alloc] initWithRootViewController:viewController]]];
-    
-    [[self jsonPopover] presentPopoverFromBarButtonItem:[self parseButton] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"The data is not in the correct format."
+                                                       delegate:Nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        
+        [alert show];
+    }
+
 }
 
 -(void)showCsvOutputAction:(id)sender
@@ -807,25 +828,41 @@ NS_ENUM(NSInteger, CellTypeTag){
         }
     }
     
-    NSLog(@"%@", rows);
     if (rows) {
         [self setCsvRows:rows];
         
         [self performSegueWithIdentifier:kShowCsvViewer sender:self];
-        
-//        [self setCsvWindow:[[CsvViewerWindowController alloc] initWithWindowNibName:@"CsvViewerWindowController" dataSource:rows]];
-//        
-//        [[self csvWindow] setNumberOfColumns:[rows[0] count]];
-//        
-//        [[[self csvWindow] window] makeKeyAndOrderFront:self];
     }
     else {
-//        NSAlert *errorAlert = [NSAlert alertWithMessageText:@"Error" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"The data is not in the correct format."];
-//        
-//        [errorAlert runModal];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"The data is not in the correct format."
+                                                       delegate:Nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        
+        [alert show];
     }
 }
 
+-(void)expandOutputTextView:(UITapGestureRecognizer *)gestureRecognizer
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        [[self outputTextView] setFrame:CGRectInset(self.view.frame, 0, 62)];
+    } completion:^(BOOL finished) {
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(minimizeOutputTextView:)];
+        
+        [[self navigationItem] setLeftBarButtonItem:doneButton];
+    }];
+}
+
+-(void)minimizeOutputTextView:(UIBarButtonItem *)sender
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        [[self outputTextView] setFrame:kOriginalOutputViewRect];
+    } completion:^(BOOL finished) {
+        [[self navigationItem] setLeftBarButtonItem:nil];
+    }];
+}
 #pragma mark -
 #pragma mark - Table View
 
@@ -861,7 +898,7 @@ NS_ENUM(NSInteger, CellTypeTag){
         
         [[cell valueTextField] setText:[tempHeader value]];
         [[cell valueTextField] setPlaceholder:@"Header Value"];
-
+        
         [cell setCellType:HeaderCell];
         
         [[cell valueTextField] setTag:kHeaderCell];
