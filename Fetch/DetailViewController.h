@@ -13,13 +13,13 @@
 
 /**
  *  The bread and butter of the application.  DetailViewController is a UIViewController subclass that conforms to
- *  UISplitViewControllerDelegate, UITextFieldDelegate, and UITextViewDelegate.  DetailViewController is responsible 
+ *  UISplitViewControllerDelegate, UITextFieldDelegate, UIActionSheetDelegate, and UITextViewDelegate.  DetailViewController is responsible
  *  for the direct manipulation of the currently selected Url object as well as the creation of new Url objects.
  *
  *  DetailViewController is also responsible for the actual fetch action, as well as handling the data that occurs
  *  from that fetch action.
  */
-@interface DetailViewController : UIViewController <UISplitViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate>
+@interface DetailViewController : UIViewController <UISplitViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate, UIActionSheetDelegate>
 
 /**
  *  The current Project
@@ -109,7 +109,7 @@
 /**
  *  UIBarButtonItem that allows the user to show the JsonOutputViewController
  */
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *jsonOutputButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *parseButton;
 
 /**
  *  UIBarButtonItem that allows the user to show the ResponseHeadersViewController
@@ -138,13 +138,6 @@
 -(IBAction)segmentedControlAction:(id)sender;
 
 /**
- *  Action that shows the JsonOutputViewController
- *
- *  @param sender The caller of this method
- */
--(IBAction)showJsonOutputAction:(id)sender;
-
-/**
  *  Clears the contents of the outputTextView
  *
  *  @param sender The caller of this method
@@ -164,5 +157,26 @@
  *  @param sender The caller of this method
  */
 -(IBAction)showResponseHeadersAction:(id)sender;
+
+/**
+ *  Action to beging the parsing of JSON or csv
+ *
+ *  @param sender The caller of this method
+ */
+-(IBAction)parseAction:(id)sender;
+
+/**
+ *  Action that shows the JsonOutputViewController
+ *
+ *  @param sender The caller of this method
+ */
+-(void)showJsonOutputAction:(id)sender;
+
+/**
+ *  Action that shows the CsvOutputViewController
+ *
+ *  @param sender The caller of this method
+ */
+-(void)showCsvOutputAction:(id)sender;
 
 @end

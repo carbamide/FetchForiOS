@@ -154,7 +154,7 @@ NS_ENUM(NSInteger, CellTypeTag){
         [[self customPayloadSwitch] setEnabled:NO];
         [[self headersSegCont] setEnabled:NO];
         [[self parametersSegCont] setEnabled:NO];
-        [[self jsonOutputButton] setEnabled:NO];
+        [[self parseButton] setEnabled:NO];
         [[self responseHeadersButton] setEnabled:NO];
         [[self clearButton] setEnabled:NO];
         
@@ -319,7 +319,7 @@ NS_ENUM(NSInteger, CellTypeTag){
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [[self fetchButton] setEnabled:YES];
-                        [[self jsonOutputButton] setEnabled:YES];
+                        [[self parseButton] setEnabled:YES];
                     });
                 }
                 else {
@@ -416,21 +416,6 @@ NS_ENUM(NSInteger, CellTypeTag){
     }
 }
 
--(IBAction)showJsonOutputAction:(id)sender
-{
-    JsonOutputViewController *viewController = [[JsonOutputViewController alloc] init];
-    
-    [viewController setJsonData:[self jsonData]];
-    
-    if ([[self responseHeadersPopover] isPopoverVisible]) {
-        [[self responseHeadersPopover] dismissPopoverAnimated:YES];
-    }
-    
-    [self setJsonPopover:[[UIPopoverController alloc] initWithContentViewController:[[UINavigationController alloc] initWithRootViewController:viewController]]];
-    
-    [[self jsonPopover] presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-}
-
 -(IBAction)clearAction:(id)sender
 {
     [[self outputTextView] setText:@""];
@@ -479,6 +464,17 @@ NS_ENUM(NSInteger, CellTypeTag){
     }
     
     [[self responseHeadersPopover] presentPopoverFromBarButtonItem:[self responseHeadersButton] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
+-(IBAction)parseAction:(id)sender
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"CSV", @"JSON", nil];
+    
+    [actionSheet showFromBarButtonItem:sender animated:YES];
 }
 
 #pragma mark -
@@ -656,7 +652,7 @@ NS_ENUM(NSInteger, CellTypeTag){
     
     [self setJsonData:nil];
     
-    [[self jsonOutputButton] setEnabled:NO];
+    [[self parseButton] setEnabled:NO];
     [[self responseHeadersButton] setEnabled:NO];
     
     [[self headersDataSource] removeAllObjects];
@@ -760,6 +756,32 @@ NS_ENUM(NSInteger, CellTypeTag){
     [[self parametersTableView] beginUpdates];
     [[self parametersTableView] insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:([[self parametersDataSource] count] - 1) inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
     [[self parametersTableView] endUpdates];
+}
+
+-(void)showJsonOutputAction:(id)sender
+{
+    JsonOutputViewController *viewController = [[JsonOutputViewController alloc] init];
+    
+    [viewController setJsonData:[self jsonData]];
+    
+    if ([[self responseHeadersPopover] isPopoverVisible]) {
+        [[self responseHeadersPopover] dismissPopoverAnimated:YES];
+    }
+    
+    [self setJsonPopover:[[UIPopoverController alloc] initWithContentViewController:[[UINavigationController alloc] initWithRootViewController:viewController]]];
+    
+    [[self jsonPopover] presentPopoverFromBarButtonItem:[self parseButton] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
+-(void)showCsvOutputAction:(id)sender
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Not Implemented"
+                                                    message:@"This feature is not yet implemented in this version of Fetch."
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil, nil];
+    
+    [alert show];
 }
 
 #pragma mark -
@@ -936,4 +958,21 @@ NS_ENUM(NSInteger, CellTypeTag){
     return YES;
 }
 
+#pragma mark -
+#pragma mark - UIActionSheetDelegate
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
+    
+    if ([title isEqualToString:@"CSV"]) {
+        [self showCsvOutputAction:actionSheet];
+    }
+    else if ([title isEqualToString:@"JSON"]) {
+        [self showJsonOutputAction:actionSheet];
+    }
+    else {
+        NSLog(@"Cancel");
+    }
+}
 @end
