@@ -138,6 +138,27 @@
  */
 -(void)addParameter:(NSNotification *)aNotification;
 
+/**
+ *  Show the CsvOutputViewController
+ *
+ *  @param sender The caller of this method
+ */
+-(void)showCsvOutputAction:(id)sender;
+
+/**
+ *  Expand the outputTextView to the full size of the view's frame.
+ *
+ *  @param gestureRecognizer The UITapGestureRecognizer that called this method
+ */
+-(void)expandOutputTextView:(UITapGestureRecognizer *)gestureRecognizer;
+
+/**
+ *  Minimize the outputTextView back to it's original size
+ *
+ *  @param sender The caller of this method
+ */
+-(void)minimizeOutputTextView:(UIBarButtonItem *)sender;
+
 @end
 
 static int const kScrollMainViewForTextView = 200;
