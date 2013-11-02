@@ -18,6 +18,8 @@
 #import "ResponseHeadersViewController.h"
 #import "FetchCell.h"
 #import "AppDelegate.h"
+#import "CHCSVParser.h"
+#import "CsvOutputViewController.h"
 
 @interface DetailViewController ()
 /**
@@ -54,6 +56,16 @@
  *  NSDictionary that holds the response from the server when a fetch occurs
  */
 @property (strong, nonatomic) NSDictionary *responseDictionary;
+
+/**
+ * JSON Data returns from fetch action.  This is either an NSDictionary or NSArray
+ */
+@property (strong, nonatomic) id responseData;
+
+/**
+ *  Reference to the csv row data
+ */
+@property (nonatomic) NSArray *csvRows;
 
 /**
  *  Reload URL notification handler
@@ -202,6 +214,16 @@ NS_ENUM(NSInteger, CellTypeTag){
     [super didReceiveMemoryWarning];
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:kShowCsvViewer]) {
+        UINavigationController *navController = [segue destinationViewController];
+        CsvOutputViewController *csvViewController = (CsvOutputViewController *)[navController topViewController];
+        
+        [csvViewController setDataSource:[[self csvRows] mutableCopy]];
+    }
+}
+
 #pragma mark -
 #pragma mark - UISplitViewDelegate
 
@@ -306,6 +328,8 @@ NS_ENUM(NSInteger, CellTypeTag){
             [self appendToOutput:[NSString stringWithFormat:@"%@", [urlResponse allHeaderFields]] color:[UIColor greenColor]];
             
             if (!error) {
+                [self setResponseData:data];
+
                 id jsonData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
                 
                 if (jsonData) {
@@ -316,15 +340,15 @@ NS_ENUM(NSInteger, CellTypeTag){
                     if (jsonHolder) {
                         [self appendToOutput:[[NSString alloc] initWithData:jsonHolder encoding:NSUTF8StringEncoding] color:[UIColor blackColor]];
                     }
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [[self fetchButton] setEnabled:YES];
-                        [[self parseButton] setEnabled:YES];
-                    });
                 }
                 else {
                     [self appendToOutput:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] color:[UIColor blackColor]];
                 }
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[self fetchButton] setEnabled:YES];
+                    [[self parseButton] setEnabled:YES];
+                });
             }
             else {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -775,13 +799,31 @@ NS_ENUM(NSInteger, CellTypeTag){
 
 -(void)showCsvOutputAction:(id)sender
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Not Implemented"
-                                                    message:@"This feature is not yet implemented in this version of Fetch."
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil, nil];
+    NSMutableArray *rows = [[NSArray arrayWithContentsOfString:[[NSString alloc] initWithData:[self responseData] encoding:NSUTF8StringEncoding] options:CHCSVParserOptionsSanitizesFields|CHCSVParserOptionsStripsLeadingAndTrailingWhitespace] mutableCopy];
     
-    [alert show];
+    for (NSArray *tempArray in rows) {
+        if ([tempArray count] == 0) {
+            [rows removeObject:tempArray];
+        }
+    }
+    
+    NSLog(@"%@", rows);
+    if (rows) {
+        [self setCsvRows:rows];
+        
+        [self performSegueWithIdentifier:kShowCsvViewer sender:self];
+        
+//        [self setCsvWindow:[[CsvViewerWindowController alloc] initWithWindowNibName:@"CsvViewerWindowController" dataSource:rows]];
+//        
+//        [[self csvWindow] setNumberOfColumns:[rows[0] count]];
+//        
+//        [[[self csvWindow] window] makeKeyAndOrderFront:self];
+    }
+    else {
+//        NSAlert *errorAlert = [NSAlert alertWithMessageText:@"Error" defaultButton:@"OK" alternateButton:nil otherButton:nil informativeTextWithFormat:@"The data is not in the correct format."];
+//        
+//        [errorAlert runModal];
+    }
 }
 
 #pragma mark -

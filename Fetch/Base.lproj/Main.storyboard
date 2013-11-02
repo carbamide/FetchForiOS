@@ -218,7 +218,7 @@
                                     <action selector="segmentedControlAction:" destination="JEX-9P-axG" eventType="valueChanged" id="4u1-a2-O27"/>
                                 </connections>
                             </segmentedControl>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEk-BY-CkL">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEk-BY-CkL">
                                 <rect key="frame" x="14" y="575" width="669" height="135"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -357,11 +357,68 @@
                         <outlet property="responseHeadersButton" destination="57j-uY-AsF" id="XCJ-Z1-dyi"/>
                         <outlet property="urlDescriptionTextField" destination="vps-Bx-dBg" id="VNH-nv-1pa"/>
                         <outlet property="urlTextField" destination="Azs-QO-f8A" id="T3c-jE-KGj"/>
+                        <segue destination="HrW-2D-iBn" kind="modal" identifier="CSVViewer" modalPresentationStyle="pageSheet" id="nC9-cO-YKw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1060" y="-1792"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="XfE-Fg-7sJ">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="HrW-2D-iBn" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uvt-Yn-r0c">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="OZH-Ke-zhD" kind="relationship" relationship="rootViewController" id="a38-yc-SXd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Mf-v2-tET" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1907" y="-1787"/>
+        </scene>
+        <!--Csv Output View Controller-->
+        <scene sceneID="Ez8-LZ-xST">
+            <objects>
+                <viewController id="OZH-Ke-zhD" customClass="CsvOutputViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RgG-9a-Axu"/>
+                        <viewControllerLayoutGuide type="bottom" id="mAg-Jh-xEp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ls3-Yc-w1r">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="768"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uI-P1-WbY" customClass="MDSpreadView">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="768"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="OZH-Ke-zhD" id="3U1-oV-IJf"/>
+                                    <outlet property="delegate" destination="OZH-Ke-zhD" id="waV-TD-5kC"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="IAf-ah-AzL">
+                        <barButtonItem key="leftBarButtonItem" title="Done" id="a4G-M6-KrV">
+                            <connections>
+                                <action selector="dismissSelf:" destination="OZH-Ke-zhD" id="IxG-33-4Ay"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="spreadView" destination="4uI-P1-WbY" id="NN2-ho-sTR"/>
+                        <outlet property="view" destination="Ls3-Yc-w1r" id="xJg-Ha-jv0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yeW-wi-3MI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3251" y="-1787"/>
         </scene>
         <!--Url List View Controller - URLs-->
         <scene sceneID="Y6b-m7-OUx">
@@ -374,7 +431,7 @@
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="URLCell" id="g1v-GS-uRV" customClass="URLCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g1v-GS-uRV" id="9zf-dF-1fw">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -436,7 +493,7 @@
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Arm-wq-HPj" style="IBUITableViewCellStyleDefault" id="WCw-Qf-5nD" customClass="MSCMoreOptionTableViewCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="fap-cD-qAX">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
