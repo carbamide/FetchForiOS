@@ -129,11 +129,11 @@
 //        self.layer.rasterizationScale = [UIScreen mainScreen].scale;
         style = aStyle;
         
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"MDSpreadViewCell.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:1]];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"MDSpreadViewCell"] stretchableImageWithLeftCapWidth:1 topCapHeight:1]];
         imageView.contentMode = UIViewContentModeScaleToFill;
         self.backgroundView = imageView;
         
-        imageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"MDSpreadViewCellSelected.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:1]];
+        imageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"MDSpreadViewCellSelected"] stretchableImageWithLeftCapWidth:1 topCapHeight:1]];
         imageView.contentMode = UIViewContentModeScaleToFill;
         self.highlightedBackgroundView = imageView;
         

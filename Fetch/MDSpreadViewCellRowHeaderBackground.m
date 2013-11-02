@@ -37,15 +37,15 @@
 
 - (void)prepareBackground
 {
-//	backgroundTop = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MDSpreadViewRowHeaderTop.png"]
-//                                      highlightedImage:[UIImage imageNamed:@"MDSpreadViewRowHeaderTopSelected.png"]];
+//	backgroundTop = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MDSpreadViewRowHeaderTop"]
+//                                      highlightedImage:[UIImage imageNamed:@"MDSpreadViewRowHeaderTopSelected"]];
 //    backgroundTop.contentMode = UIViewContentModeScaleToFill;
 //    backgroundTop.contentStretch = CGRectMake(2./backgroundTop.bounds.size.width, 3./backgroundTop.bounds.size.height, 1./backgroundTop.bounds.size.width, 1./backgroundTop.bounds.size.height);
 //	[self addSubview:backgroundTop];
 //	[backgroundTop release];
 //    
-//	backgroundBottom = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MDSpreadViewRowHeaderBottom.png"]
-//                                         highlightedImage:[UIImage imageNamed:@"MDSpreadViewRowHeaderBottomSelected.png"]];
+//	backgroundBottom = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MDSpreadViewRowHeaderBottom"]
+//                                         highlightedImage:[UIImage imageNamed:@"MDSpreadViewRowHeaderBottomSelected"]];
 //    backgroundBottom.contentMode = UIViewContentModeScaleToFill;
 //    backgroundBottom.contentStretch = CGRectMake(2./backgroundBottom.bounds.size.width, 2./backgroundBottom.bounds.size.height, 1./backgroundBottom.bounds.size.width, 1./backgroundBottom.bounds.size.height);
 //	[self addSubview:backgroundBottom];
