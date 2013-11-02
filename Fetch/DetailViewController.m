@@ -882,6 +882,8 @@ NS_ENUM(NSInteger, CellTypeTag){
         [[self outputTextView] setFrame:kOriginalOutputViewRect];
     } completion:^(BOOL finished) {
         [[self navigationItem] setLeftBarButtonItem:nil];
+        
+        [[self outputTextView] scrollRangeToVisible:NSMakeRange([[[self outputTextView] text] length], 0)];
     }];
 }
 #pragma mark -

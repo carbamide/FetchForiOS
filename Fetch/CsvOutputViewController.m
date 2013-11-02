@@ -20,6 +20,10 @@
     
     [self setColumnHeaders:[[self dataSource][0] copy]];
     [[self dataSource] removeObjectAtIndex:0];
+    
+    [self setTitle:[NSString stringWithFormat:@"%ld Rows", (unsigned long)[[self dataSource] count]]];
+    
+    [[self spreadView] reloadData];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -39,7 +43,7 @@
 
 - (NSInteger)spreadView:(MDSpreadView *)aSpreadView numberOfRowsInSection:(NSInteger)section
 {
-    return [[self dataSource][0] count] - 1;
+    return [[self dataSource] count];
 }
 
 #pragma Cells
@@ -58,18 +62,9 @@
             NSString *stringValue = tempArray[[columnPath row]];
             
             [[cell textLabel] setText:stringValue];
-            
-            return cell;
         }
-        return nil;
-        
     }
-    return nil;
-}
-
-- (id)spreadView:(MDSpreadView *)aSpreadView titleForHeaderInRowSection:(NSInteger)rowSection forColumnSection:(NSInteger)columnSection
-{
-    return [NSString string];
+    return cell;
 }
 
 - (id)spreadView:(MDSpreadView *)aSpreadView titleForHeaderInRowSection:(NSInteger)section forColumnAtIndexPath:(MDIndexPath *)columnPath
@@ -79,23 +74,17 @@
 
 - (id)spreadView:(MDSpreadView *)aSpreadView titleForHeaderInColumnSection:(NSInteger)section forRowAtIndexPath:(MDIndexPath *)rowPath
 {
-    return [NSString stringWithFormat:@"Row %d", rowPath.row+1];
-}
-
-- (id)spreadView:(MDSpreadView *)aSpreadView objectValueForRowAtIndexPath:(MDIndexPath *)rowPath forColumnAtIndexPath:(MDIndexPath *)columnPath
-{
-    return nil;
+    return [NSString stringWithFormat:@"Row %d", ([rowPath row] + 1)];
 }
 
 - (void)spreadView:(MDSpreadView *)aSpreadView didSelectCellForRowAtIndexPath:(MDIndexPath *)rowPath forColumnAtIndexPath:(MDIndexPath *)columnPath
 {
     [[self spreadView] deselectCellForRowAtIndexPath:rowPath forColumnAtIndexPath:columnPath animated:YES];
-    NSLog(@"Selected %@ x %@", rowPath, columnPath);
 }
 
 - (MDSpreadViewSelection *)spreadView:(MDSpreadView *)aSpreadView willSelectCellForSelection:(MDSpreadViewSelection *)selection
 {
-    return [MDSpreadViewSelection selectionWithRow:selection.rowPath column:selection.columnPath mode:MDSpreadViewSelectionModeRowAndColumn];
+    return [MDSpreadViewSelection selectionWithRow:[selection rowPath] column:[selection columnPath] mode:MDSpreadViewSelectionModeRowAndColumn];
 }
 
 @end
