@@ -21,6 +21,7 @@
     [self setColumnHeaders:[[self dataSource][0] copy]];
     [[self dataSource] removeObjectAtIndex:0];
     
+
     [self setTitle:[NSString stringWithFormat:@"%ld Rows", (unsigned long)[[self dataSource] count]]];
     
     [[self spreadView] reloadData];
@@ -29,6 +30,12 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [[self backgroundImageView] setImage:[self backgroundImage]];
+    
+    [[self spreadView] setOpaque:NO];
+    [[self spreadView] setBackgroundColor:[UIColor clearColor]];
+    [[self view] setOpaque:NO];
 }
 
 -(IBAction)dismissSelf:(id)sender
@@ -64,6 +71,8 @@
             [[cell textLabel] setText:stringValue];
         }
     }
+    [cell setBackgroundColor:[UIColor clearColor]];
+    [[cell backgroundView] setBackgroundColor:[UIColor clearColor]];
     return cell;
 }
 

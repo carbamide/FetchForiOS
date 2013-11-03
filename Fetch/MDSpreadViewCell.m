@@ -121,8 +121,8 @@
 {
     if (!aReuseIdentifier) return nil;
     if (self = [super initWithFrame:CGRectZero]) {
-        self.opaque = YES;
-        self.backgroundColor = [UIColor whiteColor];
+        self.opaque = NO;
+        self.backgroundColor = [UIColor clearColor];
         self.reuseIdentifier = aReuseIdentifier;
         self.multipleTouchEnabled = YES;
 //        self.layer.shouldRasterize = YES;
@@ -131,7 +131,7 @@
         
         UIImageView *imageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"MDSpreadViewCell"] stretchableImageWithLeftCapWidth:1 topCapHeight:1]];
         imageView.contentMode = UIViewContentModeScaleToFill;
-        self.backgroundView = imageView;
+        //self.backgroundView = imageView;
         
         imageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"MDSpreadViewCellSelected"] stretchableImageWithLeftCapWidth:1 topCapHeight:1]];
         imageView.contentMode = UIViewContentModeScaleToFill;
@@ -139,14 +139,14 @@
         
         UILabel *label = [[UILabel alloc] init];
 		label.opaque = YES;
-		label.backgroundColor = [UIColor whiteColor];
+		label.backgroundColor = [UIColor clearColor];
         label.font = [UIFont boldSystemFontOfSize:18];
 		label.highlightedTextColor = [UIColor blackColor];
         self.textLabel = label;
         
         label = [[UILabel alloc] init];
 		label.opaque = YES;
-		label.backgroundColor = [UIColor whiteColor];
+		label.backgroundColor = [UIColor clearColor];
         label.font = [UIFont boldSystemFontOfSize:18];
 		label.highlightedTextColor = [UIColor blackColor];
         self.detailTextLabel = label;
@@ -267,8 +267,8 @@
             textLabel.backgroundColor = [UIColor clearColor];
             detailTextLabel.backgroundColor = [UIColor clearColor];
         } else {
-            textLabel.backgroundColor = [UIColor whiteColor];
-            detailTextLabel.backgroundColor = [UIColor whiteColor];
+            textLabel.backgroundColor = [UIColor clearColor];
+            detailTextLabel.backgroundColor = [UIColor clearColor];
         }
         if (animated) {
             [UIView animateWithDuration:0.2 animations:^{

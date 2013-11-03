@@ -20,6 +20,7 @@
 #import "AppDelegate.h"
 #import "CHCSVParser.h"
 #import "CsvOutputViewController.h"
+#import "UIImage+Jukaela.h"
 
 @interface DetailViewController ()
 /**
@@ -249,6 +250,10 @@ NS_ENUM(NSInteger, CellTypeTag){
         CsvOutputViewController *csvViewController = (CsvOutputViewController *)[navController topViewController];
         
         [csvViewController setDataSource:[[self csvRows] mutableCopy]];
+        
+        UIImage *tempImage = [self imageWithView:[self view]];
+        
+        [csvViewController setBackgroundImage:tempImage];
     }
 }
 
@@ -886,6 +891,20 @@ NS_ENUM(NSInteger, CellTypeTag){
         [[self outputTextView] scrollRangeToVisible:NSMakeRange([[[self outputTextView] text] length], 0)];
     }];
 }
+
+- (UIImage *)imageWithView:(UIView *)view
+{
+    UIGraphicsBeginImageContextWithOptions(view.frame.size, NO, [[[[self view] window] screen] scale]);
+    [view drawViewHierarchyInRect:CGRectMake(view.frame.origin.x, view.frame.origin.y, CGRectGetWidth(view.frame), CGRectGetHeight(view.frame)) afterScreenUpdates:NO];
+    
+    UIImage *newBGImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    newBGImage = [newBGImage applyLightEffect];
+    
+    return newBGImage;
+}
+
 #pragma mark -
 #pragma mark - Table View
 

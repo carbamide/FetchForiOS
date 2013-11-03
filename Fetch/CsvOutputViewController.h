@@ -12,6 +12,8 @@
 @interface CsvOutputViewController : UIViewController <MDSpreadViewDataSource, MDSpreadViewDelegate>
 
 @property (strong, nonatomic) IBOutlet MDSpreadView *spreadView;
+@property (strong, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (strong, nonatomic) UIImage *backgroundImage;
 
 @property (strong, nonatomic) NSMutableArray *dataSource;
 

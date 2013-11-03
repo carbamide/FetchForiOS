@@ -492,8 +492,8 @@
 
 - (void)_performInit
 {
-    self.opaque = YES;
-    self.backgroundColor = [UIColor whiteColor];
+    self.opaque = NO;
+    self.backgroundColor = [UIColor clearColor];
     self.directionalLockEnabled = YES;
     
     _dequeuedCells = [[NSMutableSet alloc] init];

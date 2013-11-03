@@ -388,11 +388,15 @@
                         <viewControllerLayoutGuide type="bottom" id="mAg-Jh-xEp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ls3-Yc-w1r">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="768"/>
+                        <rect key="frame" x="0.0" y="44" width="768" height="724"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hSP-eU-gg3">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="724"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4uI-P1-WbY" customClass="MDSpreadView">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="768"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="724"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
@@ -404,6 +408,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="IAf-ah-AzL">
                         <barButtonItem key="leftBarButtonItem" title="Done" id="a4G-M6-KrV">
                             <connections>
@@ -412,6 +417,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backgroundImageView" destination="hSP-eU-gg3" id="72t-Xh-ASS"/>
                         <outlet property="spreadView" destination="4uI-P1-WbY" id="NN2-ho-sTR"/>
                         <outlet property="view" destination="Ls3-Yc-w1r" id="xJg-Ha-jv0"/>
                     </connections>
