@@ -158,14 +158,15 @@
  *
  *  @param sender The caller of this method
  */
--(void)minimizeOutputTextView:(UIBarButtonItem *)sender;
+-(void)minimizeOutputTextView:(id)sender;
 
 @end
 
 static int const kScrollMainViewForTextView = 200;
 static float const kAnimationDuration = 0.3;
 static int const kKeyboardHeight = 352;
-#define kOriginalOutputViewRect CGRectMake(14, 575, 669, 135)
+#define kLandscapeOutputViewRect CGRectMake(14, 575, 669, 135)
+#define kPortraitOutputViewRect CGRectMake(14, 831, 734, 135)
 
 NS_ENUM(NSInteger, CellTypeTag){
     kHeaderCell = 0,
@@ -236,6 +237,11 @@ NS_ENUM(NSInteger, CellTypeTag){
         
         [self setTitle:[[self title] stringByReplacingOccurrencesOfString:@" - Internet Connection Down" withString:@""]];
     }];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -875,20 +881,37 @@ NS_ENUM(NSInteger, CellTypeTag){
     [UIView animateWithDuration:0.3 animations:^{
         [[self outputTextView] setFrame:CGRectInset(self.view.frame, 0, 62)];
     } completion:^(BOOL finished) {
-        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(minimizeOutputTextView:)];
+        for (UIGestureRecognizer *recognizer in [[self outputTextView] gestureRecognizers]) {
+            [[self outputTextView] removeGestureRecognizer:recognizer];
+        }
         
-        [[self navigationItem] setLeftBarButtonItem:doneButton];
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(minimizeOutputTextView:)];
+        [tapGesture setNumberOfTapsRequired:2];
+        
+        [[self outputTextView] addGestureRecognizer:tapGesture];
+        
+        [[self navigationItem] setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(minimizeOutputTextView:)]];
     }];
 }
 
--(void)minimizeOutputTextView:(UIBarButtonItem *)sender
+-(void)minimizeOutputTextView:(id)sender
 {
     [UIView animateWithDuration:0.3 animations:^{
-        [[self outputTextView] setFrame:kOriginalOutputViewRect];
+        if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+            [[self outputTextView] setFrame:kLandscapeOutputViewRect];
+        }
+        else {
+            [[self outputTextView] setFrame:kPortraitOutputViewRect];
+        }
     } completion:^(BOOL finished) {
-        [[self navigationItem] setLeftBarButtonItem:nil];
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandOutputTextView:)];
         
+        [tapGesture setNumberOfTapsRequired:2];
+        
+        [[self outputTextView] addGestureRecognizer:tapGesture];
         [[self outputTextView] scrollRangeToVisible:NSMakeRange([[[self outputTextView] text] length], 0)];
+        
+        [[self navigationItem] setLeftBarButtonItem:nil];
     }];
 }
 
