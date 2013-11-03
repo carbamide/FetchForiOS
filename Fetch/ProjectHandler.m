@@ -21,7 +21,9 @@
     NSDictionary *importedDictionary = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
     if (!importedDictionary) {
-        *error = [NSError errorWithDomain:@"com.jukaela.fetch" code:100 userInfo:@{NSLocalizedDescriptionKey: @"Unable to unarchive fetch document"}];
+        if (*error) {
+            *error = [NSError errorWithDomain:@"com.jukaela.fetch" code:100 userInfo:@{NSLocalizedDescriptionKey: @"Unable to unarchive fetch document"}];
+        }
         
         return NO;
     }
@@ -76,7 +78,9 @@
     NSDictionary *importedDictionary = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
     
     if (!importedDictionary) {
-        *error = [NSError errorWithDomain:@"com.jukaela.fetch" code:100 userInfo:@{NSLocalizedDescriptionKey: @"Unable to unarchive fetch document"}];
+        if (*error) {
+            *error = [NSError errorWithDomain:@"com.jukaela.fetch" code:100 userInfo:@{NSLocalizedDescriptionKey: @"Unable to unarchive fetch document"}];
+        }
         
         return NO;
     }
