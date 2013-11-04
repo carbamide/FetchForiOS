@@ -68,6 +68,21 @@
 @property (nonatomic) NSArray *csvRows;
 
 /**
+ *  Reference to parseActionSheet
+ */
+@property (strong, nonatomic) UIActionSheet *parseActionSheet;
+
+/**
+ *  Maximize gesture for outputTextView
+ */
+@property (strong, nonatomic) UITapGestureRecognizer *maximizeGesture;
+
+/**
+ *  Minimize gesture for outputTextView
+ */
+@property (strong, nonatomic) UITapGestureRecognizer *minimizeGesture;
+
+/**
  *  Reload URL notification handler
  *
  *  @param aNotification The notification that was broadcast
@@ -189,11 +204,11 @@ NS_ENUM(NSInteger, CellTypeTag){
         [[self fetchActivityIndicator] setHidden:YES];
     }
     
-    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandOutputTextView:)];
+    _maximizeGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandOutputTextView:)];
     
-    [gestureRecognizer setNumberOfTapsRequired:2];
+    [_maximizeGesture setNumberOfTapsRequired:2];
     
-    [[self outputTextView] addGestureRecognizer:gestureRecognizer];
+    [[self outputTextView] addGestureRecognizer:_maximizeGesture];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadUrl:) name:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:nil];
     
@@ -521,13 +536,21 @@ NS_ENUM(NSInteger, CellTypeTag){
 
 -(IBAction)parseAction:(id)sender
 {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                             delegate:self
-                                                    cancelButtonTitle:@"Cancel"
-                                               destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"CSV", @"JSON", nil];
+    if ([_parseActionSheet isVisible]) {
+        [_parseActionSheet dismissWithClickedButtonIndex:[_parseActionSheet cancelButtonIndex] animated:YES];
+        
+        return;
+    }
     
-    [actionSheet showFromBarButtonItem:sender animated:YES];
+    if (!_parseActionSheet) {
+        _parseActionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                        delegate:self
+                                               cancelButtonTitle:@"Cancel"
+                                          destructiveButtonTitle:nil
+                                               otherButtonTitles:@"CSV", @"JSON", nil];
+    }
+    
+    [_parseActionSheet showFromBarButtonItem:sender animated:YES];
 }
 
 #pragma mark -
@@ -824,7 +847,7 @@ NS_ENUM(NSInteger, CellTypeTag){
         
         [alert show];
     }
-
+    
 }
 
 -(void)showCsvOutputAction:(id)sender
@@ -858,14 +881,14 @@ NS_ENUM(NSInteger, CellTypeTag){
     [UIView animateWithDuration:0.3 animations:^{
         [[self outputTextView] setFrame:CGRectInset(self.view.frame, 0, 62)];
     } completion:^(BOOL finished) {
-        for (UIGestureRecognizer *recognizer in [[self outputTextView] gestureRecognizers]) {
-            [[self outputTextView] removeGestureRecognizer:recognizer];
+        [[self outputTextView] removeGestureRecognizer:_maximizeGesture];
+        
+        if (!_minimizeGesture) {
+            _minimizeGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(minimizeOutputTextView:)];
+            [_minimizeGesture setNumberOfTapsRequired:2];
         }
         
-        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(minimizeOutputTextView:)];
-        [tapGesture setNumberOfTapsRequired:2];
-        
-        [[self outputTextView] addGestureRecognizer:tapGesture];
+        [[self outputTextView] addGestureRecognizer:_minimizeGesture];
         
         [[self navigationItem] setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(minimizeOutputTextView:)]];
     }];
@@ -874,18 +897,22 @@ NS_ENUM(NSInteger, CellTypeTag){
 -(void)minimizeOutputTextView:(id)sender
 {
     [UIView animateWithDuration:0.3 animations:^{
-        if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+        if (UIDeviceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
             [[self outputTextView] setFrame:kLandscapeOutputViewRect];
         }
         else {
             [[self outputTextView] setFrame:kPortraitOutputViewRect];
         }
     } completion:^(BOOL finished) {
-        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandOutputTextView:)];
+        [[self outputTextView] removeGestureRecognizer:_minimizeGesture];
         
-        [tapGesture setNumberOfTapsRequired:2];
+        if (!_maximizeGesture) {
+            _maximizeGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandOutputTextView:)];
+            
+            [_maximizeGesture setNumberOfTapsRequired:2];
+        }
         
-        [[self outputTextView] addGestureRecognizer:tapGesture];
+        [[self outputTextView] addGestureRecognizer:_maximizeGesture];
         [[self outputTextView] scrollRangeToVisible:NSMakeRange([[[self outputTextView] text] length], 0)];
         
         [[self navigationItem] setLeftBarButtonItem:nil];
