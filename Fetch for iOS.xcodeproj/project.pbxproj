@@ -44,7 +44,6 @@
 		2922025A182587D400EFE266 /* MDSpreadViewCellCornerHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 29220254182587D400EFE266 /* MDSpreadViewCellCornerHeaderBackground.m */; };
 		292202A61825882900EFE266 /* CsvOutputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 292202A51825882900EFE266 /* CsvOutputViewController.m */; };
 		292202A9182588C500EFE266 /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 292202A8182588C500EFE266 /* CHCSVParser.m */; };
-		292202B21825E68100EFE266 /* UIImage+Jukaela.m in Sources */ = {isa = PBXBuildFile; fileRef = 292202B11825E68100EFE266 /* UIImage+Jukaela.m */; };
 		2941E17F17F5CCCB00D5FD44 /* UIView+FindAndResignFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2941E17E17F5CCCB00D5FD44 /* UIView+FindAndResignFirstResponder.m */; };
 		2941E18417F7BE3000D5FD44 /* MSCMoreOptionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2941E18217F7BE3000D5FD44 /* MSCMoreOptionTableViewCell.m */; };
 		2941E18917F85F1100D5FD44 /* ResponseHeadersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2941E18817F85F1100D5FD44 /* ResponseHeadersViewController.m */; };
@@ -132,8 +131,6 @@
 		292202A51825882900EFE266 /* CsvOutputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CsvOutputViewController.m; sourceTree = "<group>"; };
 		292202A7182588C500EFE266 /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHCSVParser.h; sourceTree = "<group>"; };
 		292202A8182588C500EFE266 /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
-		292202B01825E68100EFE266 /* UIImage+Jukaela.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Jukaela.h"; sourceTree = "<group>"; };
-		292202B11825E68100EFE266 /* UIImage+Jukaela.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Jukaela.m"; sourceTree = "<group>"; };
 		2941E17D17F5CCCB00D5FD44 /* UIView+FindAndResignFirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FindAndResignFirstResponder.h"; sourceTree = "<group>"; };
 		2941E17E17F5CCCB00D5FD44 /* UIView+FindAndResignFirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FindAndResignFirstResponder.m"; sourceTree = "<group>"; };
 		2941E18117F7BE3000D5FD44 /* MSCMoreOptionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCMoreOptionTableViewCell.h; sourceTree = "<group>"; };
@@ -202,8 +199,6 @@
 		2914E91A1823542800ED2464 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				292202B01825E68100EFE266 /* UIImage+Jukaela.h */,
-				292202B11825E68100EFE266 /* UIImage+Jukaela.m */,
 				29220243182587BB00EFE266 /* MDSpreadView */,
 				2941E18617F7BE6E00D5FD44 /* More Cell */,
 				2914E9191823541D00ED2464 /* Category */,
@@ -586,7 +581,6 @@
 				298347E71820A116008D6244 /* NSString+Extensions.m in Sources */,
 				29220255182587D400EFE266 /* MDSpreadViewCell.m in Sources */,
 				291744D717F3B8B20052A8C9 /* DetailViewController.m in Sources */,
-				292202B21825E68100EFE266 /* UIImage+Jukaela.m in Sources */,
 				299F66D1180CD08F00AC77C3 /* FetchCell.m in Sources */,
 				2917450317F3CAC50052A8C9 /* Projects.m in Sources */,
 				2917451817F3D7500052A8C9 /* JsonOutputViewController.m in Sources */,

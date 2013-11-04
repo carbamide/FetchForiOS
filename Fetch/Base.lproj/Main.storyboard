@@ -391,10 +391,6 @@
                         <rect key="frame" x="0.0" y="44" width="768" height="724"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hSP-eU-gg3">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="724"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4uI-P1-WbY" customClass="MDSpreadView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="724"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -407,14 +403,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="mAg-Jh-xEp" firstAttribute="top" secondItem="hSP-eU-gg3" secondAttribute="bottom" id="8kH-xO-fgO"/>
                             <constraint firstItem="mAg-Jh-xEp" firstAttribute="top" secondItem="4uI-P1-WbY" secondAttribute="bottom" id="OuD-HI-Sxw"/>
                             <constraint firstAttribute="trailing" secondItem="4uI-P1-WbY" secondAttribute="trailing" id="TSn-Nb-Dsl"/>
                             <constraint firstItem="4uI-P1-WbY" firstAttribute="leading" secondItem="Ls3-Yc-w1r" secondAttribute="leading" id="eyc-Ho-Xmr"/>
-                            <constraint firstItem="hSP-eU-gg3" firstAttribute="top" secondItem="RgG-9a-Axu" secondAttribute="bottom" id="kCb-zp-Bft"/>
-                            <constraint firstItem="hSP-eU-gg3" firstAttribute="leading" secondItem="Ls3-Yc-w1r" secondAttribute="leading" id="p7s-KR-eX1"/>
                             <constraint firstItem="4uI-P1-WbY" firstAttribute="top" secondItem="RgG-9a-Axu" secondAttribute="bottom" id="pGV-i1-7jF"/>
-                            <constraint firstAttribute="trailing" secondItem="hSP-eU-gg3" secondAttribute="trailing" id="uLy-eY-j6z"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -427,7 +419,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="backgroundImageView" destination="hSP-eU-gg3" id="72t-Xh-ASS"/>
                         <outlet property="spreadView" destination="4uI-P1-WbY" id="NN2-ho-sTR"/>
                         <outlet property="view" destination="Ls3-Yc-w1r" id="xJg-Ha-jv0"/>
                     </connections>

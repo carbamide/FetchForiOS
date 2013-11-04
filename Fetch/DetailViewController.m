@@ -20,7 +20,6 @@
 #import "AppDelegate.h"
 #import "CHCSVParser.h"
 #import "CsvOutputViewController.h"
-#import "UIImage+Jukaela.h"
 
 @interface DetailViewController ()
 /**
@@ -74,13 +73,6 @@
  *  @param aNotification The notification that was broadcast
  */
 -(void)reloadUrl:(NSNotification *)aNotification;
-
-/**
- *  Sets the current detail item
- *
- *  @param newDetailItem Detail item to set
- */
-- (void)setDetailItem:(id)newDetailItem;
 
 /**
  *  Sets the current Project
@@ -256,10 +248,6 @@ NS_ENUM(NSInteger, CellTypeTag){
         CsvOutputViewController *csvViewController = (CsvOutputViewController *)[navController topViewController];
         
         [csvViewController setDataSource:[[self csvRows] mutableCopy]];
-        
-        UIImage *tempImage = [self imageWithView:[self view]];
-        
-        [csvViewController setBackgroundImage:tempImage];
     }
 }
 
@@ -554,17 +542,6 @@ NS_ENUM(NSInteger, CellTypeTag){
     }
 }
 
-- (void)setDetailItem:(id)newDetailItem
-{
-    if (_currentProject != newDetailItem) {
-        _currentProject = newDetailItem;
-    }
-    
-    if ([self masterPopoverController]) {
-        [[self masterPopoverController] dismissPopoverAnimated:YES];
-    }
-}
-
 -(void)setCurrentProject:(Projects *)currentProject
 {
     _currentProject = currentProject;
@@ -702,8 +679,8 @@ NS_ENUM(NSInteger, CellTypeTag){
 {
     NSLog(@"%s", __FUNCTION__);
     
+    [self appendToOutput:[NSString stringWithFormat:@"%@", [request URL]] color:[UIColor blueColor]];
     [self appendToOutput:kRequestSeparator color:[UIColor blueColor]];
-    
     [self appendToOutput:[request HTTPMethod] color:[UIColor greenColor]];
     [self appendToOutput:[NSString stringWithFormat:@"%@", [request allHTTPHeaderFields]] color:[UIColor greenColor]];
     [self appendToOutput:[[NSString alloc] initWithData:[request HTTPBody] encoding:NSUTF8StringEncoding] color:[UIColor greenColor]];
@@ -913,19 +890,6 @@ NS_ENUM(NSInteger, CellTypeTag){
         
         [[self navigationItem] setLeftBarButtonItem:nil];
     }];
-}
-
-- (UIImage *)imageWithView:(UIView *)view
-{
-    UIGraphicsBeginImageContextWithOptions(view.frame.size, NO, [[[[self view] window] screen] scale]);
-    [view drawViewHierarchyInRect:CGRectMake(view.frame.origin.x, view.frame.origin.y, CGRectGetWidth(view.frame), CGRectGetHeight(view.frame)) afterScreenUpdates:NO];
-    
-    UIImage *newBGImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    newBGImage = [newBGImage applyLightEffect];
-    
-    return newBGImage;
 }
 
 #pragma mark -

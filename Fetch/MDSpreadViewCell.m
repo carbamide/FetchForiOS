@@ -131,7 +131,7 @@
         
         UIImageView *imageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"MDSpreadViewCell"] stretchableImageWithLeftCapWidth:1 topCapHeight:1]];
         imageView.contentMode = UIViewContentModeScaleToFill;
-        //self.backgroundView = imageView;
+        self.backgroundView = imageView;
         
         imageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"MDSpreadViewCellSelected"] stretchableImageWithLeftCapWidth:1 topCapHeight:1]];
         imageView.contentMode = UIViewContentModeScaleToFill;

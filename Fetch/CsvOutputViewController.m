@@ -9,18 +9,23 @@
 #import "CsvOutputViewController.h"
 
 @interface CsvOutputViewController ()
+/**
+ *  Column headers for the CSV
+ */
 @property (strong, nonatomic) NSArray *columnHeaders;
 
 @end
 @implementation CsvOutputViewController
 
+#pragma mark -
+#pragma mark - View Lifecycle
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [self setColumnHeaders:[[self dataSource][0] copy]];
+    [self setColumnHeaders:[self dataSource][0]];
     [[self dataSource] removeObjectAtIndex:0];
-    
 
     [self setTitle:[NSString stringWithFormat:@"%ld Rows", (unsigned long)[[self dataSource] count]]];
     
@@ -31,8 +36,6 @@
 {
     [super viewWillAppear:animated];
     
-    [[self backgroundImageView] setImage:[self backgroundImage]];
-    
     [[self spreadView] setOpaque:NO];
     [[self spreadView] setBackgroundColor:[UIColor clearColor]];
     [[self view] setOpaque:NO];
@@ -41,6 +44,14 @@
 -(IBAction)dismissSelf:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark -
+#pragma mark - MDSpreadView DataSource and Delegate
+
+-(CGFloat)spreadView:(MDSpreadView *)aSpreadView heightForRowAtIndexPath:(MDIndexPath *)indexPath
+{
+    return 44;
 }
 
 - (NSInteger)spreadView:(MDSpreadView *)aSpreadView numberOfColumnsInSection:(NSInteger)section
@@ -53,7 +64,6 @@
     return [[self dataSource] count];
 }
 
-#pragma Cells
 - (MDSpreadViewCell *)spreadView:(MDSpreadView *)aSpreadView cellForRowAtIndexPath:(MDIndexPath *)rowPath forColumnAtIndexPath:(MDIndexPath *)columnPath
 {
     static NSString *cellIdentifier = @"Cell";
@@ -71,8 +81,10 @@
             [[cell textLabel] setText:stringValue];
         }
     }
+    
     [cell setBackgroundColor:[UIColor clearColor]];
     [[cell backgroundView] setBackgroundColor:[UIColor clearColor]];
+    
     return cell;
 }
 
