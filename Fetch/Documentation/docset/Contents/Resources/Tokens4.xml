@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/JsonHandler.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/JsonHandler</TokenIdentifier>
+			<Abstract type="html">NSObject subclass that handles creating an NSArray that&apos;s suitable for consumption by JsonOutputViewController from the raw
+JSON data from a fetch request.</Abstract>
+			<DeclaredIn>JsonHandler.h</DeclaredIn>
+			
+			<NodeRef refid="4"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JsonHandler/init</TokenIdentifier>
+			<Abstract type="html">Initilization handler</Abstract>
+			<DeclaredIn>JsonHandler.h</DeclaredIn>			
+			
+			<Declaration>- (id)init</Declaration>
+			
+			<ReturnValue><Abstract type="html">JsonHandler object</Abstract></ReturnValue>
+			<Anchor>//api/name/init</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JsonHandler/addEntries:</TokenIdentifier>
+			<Abstract type="html">Add entries to the Json</Abstract>
+			<DeclaredIn>JsonHandler.h</DeclaredIn>			
+			
+			<Declaration>- (void)addEntries:(id)entries</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>entries</Name>
+					<Abstract type="html">Entries in NSDictionary or NSArray format</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/addEntries:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JsonHandler/setDataSource:</TokenIdentifier>
+			<Abstract type="html">The data source to form the JSON result from</Abstract>
+			<DeclaredIn>JsonHandler.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSMutableArray *dataSource</Declaration>
+			
+			
+			<Anchor>//api/name/dataSource</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/JsonHandler/dataSource</TokenIdentifier>
+			<Abstract type="html">The data source to form the JSON result from</Abstract>
+			<DeclaredIn>JsonHandler.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSMutableArray *dataSource</Declaration>
+			
+			
+			<Anchor>//api/name/dataSource</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JsonHandler/addDictionary:array:separator:</TokenIdentifier>
+			<Abstract type="html">Add NSDictionary to the data source</Abstract>
+			<DeclaredIn>JsonHandler.m</DeclaredIn>			
+			
+			<Declaration>- (void)addDictionary:(NSDictionary *)dict array:(NSMutableArray **)array separator:(BOOL)needsSeparator</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>dict</Name>
+					<Abstract type="html">The dictionary to add</Abstract>
+				</Parameter><Parameter>
+					<Name>array</Name>
+					<Abstract type="html">A pointer to a pointer of the NSMutableArray to add the dictionary too (ooo fancy!)</Abstract>
+				</Parameter><Parameter>
+					<Name>needsSeparator</Name>
+					<Abstract type="html">Do we need a separator here? Yes if so.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/addDictionary:array:separator:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JsonHandler/addArray:node:</TokenIdentifier>
+			<Abstract type="html">Add an NSArray to the data source</Abstract>
+			<DeclaredIn>JsonHandler.m</DeclaredIn>			
+			
+			<Declaration>- (void)addArray:(NSArray *)array node:(NodeObject *)nodeObject</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>array</Name>
+					<Abstract type="html">The array to add to the dta soruce</Abstract>
+				</Parameter><Parameter>
+					<Name>nodeObject</Name>
+					<Abstract type="html">The node object to add the array to</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/addArray:node:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JsonHandler/addChildren:parent:</TokenIdentifier>
+			<Abstract type="html">Add chidren to parent NodeObject</Abstract>
+			<DeclaredIn>JsonHandler.m</DeclaredIn>			
+			
+			<Declaration>- (void)addChildren:(NSDictionary *)dict parent:(NodeObject *)parent</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>dict</Name>
+					<Abstract type="html">The dictionary of children to add to the parent</Abstract>
+				</Parameter><Parameter>
+					<Name>parent</Name>
+					<Abstract type="html">The parent</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/addChildren:parent:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

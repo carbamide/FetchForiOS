@@ -65,3 +65,4 @@ static NSString *const kAddParameterSegue = @"AddParameter";
 static NSString *const kAddHeaderSegue = @"AddHeader";
 static NSString *const kShowJsonOutputSegue = @"JSON Output";
 static NSString *const kShowUrlsSegue = @"ShowUrls";
+static NSString *const kShowCsvViewer = @"CSVViewer";

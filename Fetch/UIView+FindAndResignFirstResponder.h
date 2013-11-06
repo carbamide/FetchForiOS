@@ -10,6 +10,11 @@
 
 @interface UIView (FindAndResignFirstResponder)
 
+/**
+ *  Find what the current firstResponder is and resign it
+ *
+ *  @return If a firstResponder was found and resigned, return YES, else return NO
+ */
 -(BOOL)findAndResignFirstResponder;
 
 @end

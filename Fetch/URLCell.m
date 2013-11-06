@@ -10,6 +10,11 @@
 
 @implementation URLCell
 
+/**
+ *  Set current Reachability status
+ *
+ *  @param status Reachability status
+ */
 -(void)setStatus:(URLStatus)status
 {
     if (status == URLUp) {

@@ -8,6 +8,9 @@
 
 #import "NodeObject.h"
 
+/**
+ *  Helper that serves as a separator.  Subclass of NodeObject
+ */
 @interface SeparatorNodeObject : NodeObject
 
 @end

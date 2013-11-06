@@ -10,6 +10,32 @@
 #import "NodeObject.h"
 #import "SeparatorNodeObject.h"
 
+@interface JsonHandler ()
+/**
+ *  Add NSDictionary to the data source
+ *
+ *  @param dict           The dictionary to add
+ *  @param array          A pointer to a pointer of the NSMutableArray to add the dictionary too (ooo fancy!)
+ *  @param needsSeparator Do we need a separator here? Yes if so.
+ */
+-(void)addDictionary:(NSDictionary *)dict array:(NSMutableArray **)array separator:(BOOL)needsSeparator;
+
+/**
+ *  Add an NSArray to the data source
+ *
+ *  @param array      The array to add to the dta soruce
+ *  @param nodeObject The node object to add the array to
+ */
+-(void)addArray:(NSArray *)array node:(NodeObject *)nodeObject;
+
+/**
+ *  Add chidren to parent NodeObject
+ *
+ *  @param dict   The dictionary of children to add to the parent
+ *  @param parent The parent
+ */
+-(void)addChildren:(NSDictionary *)dict parent:(NodeObject *)parent;
+@end
 @implementation JsonHandler
 
 - (id)init

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/NodeObject.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/NodeObject</TokenIdentifier>
+			<Abstract type="html">NSObject subclass that holds the modeled JSON information from a fetch request.</Abstract>
+			<DeclaredIn>NodeObject.h</DeclaredIn>
+			
+			<NodeRef refid="6"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/NodeObject/setNodeTitle:</TokenIdentifier>
+			<Abstract type="html">Title of the node</Abstract>
+			<DeclaredIn>NodeObject.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSString *nodeTitle</Declaration>
+			
+			
+			<Anchor>//api/name/nodeTitle</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/NodeObject/nodeTitle</TokenIdentifier>
+			<Abstract type="html">Title of the node</Abstract>
+			<DeclaredIn>NodeObject.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSString *nodeTitle</Declaration>
+			
+			
+			<Anchor>//api/name/nodeTitle</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/NodeObject/setNodeValue:</TokenIdentifier>
+			<Abstract type="html">Value of the node</Abstract>
+			<DeclaredIn>NodeObject.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSString *nodeValue</Declaration>
+			
+			
+			<Anchor>//api/name/nodeValue</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/NodeObject/nodeValue</TokenIdentifier>
+			<Abstract type="html">Value of the node</Abstract>
+			<DeclaredIn>NodeObject.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSString *nodeValue</Declaration>
+			
+			
+			<Anchor>//api/name/nodeValue</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/NodeObject/setChildren:</TokenIdentifier>
+			<Abstract type="html">Children of the node</Abstract>
+			<DeclaredIn>NodeObject.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSArray *children</Declaration>
+			
+			
+			<Anchor>//api/name/children</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/NodeObject/children</TokenIdentifier>
+			<Abstract type="html">Children of the node</Abstract>
+			<DeclaredIn>NodeObject.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSArray *children</Declaration>
+			
+			
+			<Anchor>//api/name/children</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/NodeObject/setIsLeaf:</TokenIdentifier>
+			<Abstract type="html">Is the node a leaf?</Abstract>
+			<DeclaredIn>NodeObject.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) BOOL isLeaf</Declaration>
+			
+			
+			<Anchor>//api/name/isLeaf</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/NodeObject/isLeaf</TokenIdentifier>
+			<Abstract type="html">Is the node a leaf?</Abstract>
+			<DeclaredIn>NodeObject.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) BOOL isLeaf</Declaration>
+			
+			
+			<Anchor>//api/name/isLeaf</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/NodeObject/setIsArray:</TokenIdentifier>
+			<Abstract type="html">Is the node part of an array of nodes?</Abstract>
+			<DeclaredIn>NodeObject.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) BOOL isArray</Declaration>
+			
+			
+			<Anchor>//api/name/isArray</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/NodeObject/isArray</TokenIdentifier>
+			<Abstract type="html">Is the node part of an array of nodes?</Abstract>
+			<DeclaredIn>NodeObject.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) BOOL isArray</Declaration>
+			
+			
+			<Anchor>//api/name/isArray</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/NodeObject/setObjectCount:</TokenIdentifier>
+			<Abstract type="html">If the node has children, what is the object count?</Abstract>
+			<DeclaredIn>NodeObject.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) NSInteger objectCount</Declaration>
+			
+			
+			<Anchor>//api/name/objectCount</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/NodeObject/objectCount</TokenIdentifier>
+			<Abstract type="html">If the node has children, what is the object count?</Abstract>
+			<DeclaredIn>NodeObject.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) NSInteger objectCount</Declaration>
+			
+			
+			<Anchor>//api/name/objectCount</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

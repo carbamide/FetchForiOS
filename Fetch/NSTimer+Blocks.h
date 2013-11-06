@@ -7,7 +7,30 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  Block Extensions for NSTimer
+ */
 @interface NSTimer (Blocks)
+
+/**
+ *  Block based scheduled timer
+ *
+ *  @param inTimeInterval Time to wait
+ *  @param inBlock        Block to execute
+ *  @param inRepeats      Should the timer repeat?
+ *
+ *  @return NSTimer object
+ */
 +(id)scheduledTimerWithTimeInterval:(NSTimeInterval)inTimeInterval block:(void (^)())inBlock repeats:(BOOL)inRepeats;
+
+/**
+ *  Block based timer
+ *
+ *  @param inTimeInterval Time to wait
+ *  @param inBlock        Block to execute
+ *  @param inRepeats      Should the timer repeat?
+ *
+ *  @return NSTimer object
+ */
 +(id)timerWithTimeInterval:(NSTimeInterval)inTimeInterval block:(void (^)())inBlock repeats:(BOOL)inRepeats;
 @end

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/ProjectListViewController.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/ProjectListViewController</TokenIdentifier>
+			<Abstract type="html">UITableViewController subclass that conforms to UIAlertViewDelegate, NSCMoreOptionTableViewCellDelegate, and UIActionSheetDelegate.
+ProjectListViewController is responsible for displaying and editing the Projects that are contained in the application.</Abstract>
+			<DeclaredIn>ProjectListViewController.h</DeclaredIn>
+			
+			<NodeRef refid="8"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ProjectListViewController/setDetailViewController:</TokenIdentifier>
+			<Abstract type="html">Reference to DetailViewController</Abstract>
+			<DeclaredIn>ProjectListViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) DetailViewController *detailViewController</Declaration>
+			
+			
+			<Anchor>//api/name/detailViewController</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/ProjectListViewController/detailViewController</TokenIdentifier>
+			<Abstract type="html">Reference to DetailViewController</Abstract>
+			<DeclaredIn>ProjectListViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) DetailViewController *detailViewController</Declaration>
+			
+			
+			<Anchor>//api/name/detailViewController</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ProjectListViewController/setActivityPopoverController:</TokenIdentifier>
+			<Abstract type="html">UIPopoverController that holds the export activities</Abstract>
+			<DeclaredIn>ProjectListViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) UIPopoverController *activityPopoverController</Declaration>
+			
+			
+			<Anchor>//api/name/activityPopoverController</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/ProjectListViewController/activityPopoverController</TokenIdentifier>
+			<Abstract type="html">UIPopoverController that holds the export activities</Abstract>
+			<DeclaredIn>ProjectListViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) UIPopoverController *activityPopoverController</Declaration>
+			
+			
+			<Anchor>//api/name/activityPopoverController</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ProjectListViewController/editProjectName:</TokenIdentifier>
+			<Abstract type="html">Edit the name of the Project object</Abstract>
+			<DeclaredIn>ProjectListViewController.m</DeclaredIn>			
+			
+			<Declaration>- (void)editProjectName:(Projects *)project</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>project</Name>
+					<Abstract type="html">The Project to edit the name of.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/editProjectName:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ProjectListViewController/insertNewObject:</TokenIdentifier>
+			<Abstract type="html">Being insertion process of new Project</Abstract>
+			<DeclaredIn>ProjectListViewController.m</DeclaredIn>			
+			
+			<Declaration>- (void)insertNewObject:(id)sender</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>sender</Name>
+					<Abstract type="html">The caller of this method.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/insertNewObject:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ProjectListViewController/shareAction:</TokenIdentifier>
+			<Abstract type="html">Gesture recognizer for long press on the table view.  This gesture is a UILongPressGesture.
+This handler begins the share / export process.</Abstract>
+			<DeclaredIn>ProjectListViewController.m</DeclaredIn>			
+			
+			<Declaration>- (void)shareAction:(UIGestureRecognizer *)gestureRecognizer</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>gestureRecognizer</Name>
+					<Abstract type="html">UIGestureRecognizer that called this action.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/shareAction:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ProjectListViewController/setProjectList:</TokenIdentifier>
+			<Abstract type="html">NSMutableArray that holds the list of projects</Abstract>
+			<DeclaredIn>ProjectListViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSMutableArray *projectList</Declaration>
+			
+			
+			<Anchor>//api/name/projectList</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/ProjectListViewController/projectList</TokenIdentifier>
+			<Abstract type="html">NSMutableArray that holds the list of projects</Abstract>
+			<DeclaredIn>ProjectListViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSMutableArray *projectList</Declaration>
+			
+			
+			<Anchor>//api/name/projectList</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ProjectListViewController/setCurrentProject:</TokenIdentifier>
+			<Abstract type="html">The currently selected Project object</Abstract>
+			<DeclaredIn>ProjectListViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) Projects *currentProject</Declaration>
+			
+			
+			<Anchor>//api/name/currentProject</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/ProjectListViewController/currentProject</TokenIdentifier>
+			<Abstract type="html">The currently selected Project object</Abstract>
+			<DeclaredIn>ProjectListViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) Projects *currentProject</Declaration>
+			
+			
+			<Anchor>//api/name/currentProject</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/ProjectListViewController/setTempProject:</TokenIdentifier>
+			<Abstract type="html">A temporary store</Abstract>
+			<DeclaredIn>ProjectListViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) Projects *tempProject</Declaration>
+			
+			
+			<Anchor>//api/name/tempProject</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/ProjectListViewController/tempProject</TokenIdentifier>
+			<Abstract type="html">A temporary store</Abstract>
+			<DeclaredIn>ProjectListViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) Projects *tempProject</Declaration>
+			
+			
+			<Anchor>//api/name/tempProject</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

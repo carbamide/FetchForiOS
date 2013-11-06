@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/UrlListViewController.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/UrlListViewController</TokenIdentifier>
+			<Abstract type="html">UITableViewController subclass that is responsible for displaying the Urls that are contained in the currentlys
+selected Project object.</Abstract>
+			<DeclaredIn>UrlListViewController.h</DeclaredIn>
+			
+			<NodeRef refid="14"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UrlListViewController/setCurrentProject:</TokenIdentifier>
+			<Abstract type="html">The current select Project</Abstract>
+			<DeclaredIn>UrlListViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) Projects *currentProject</Declaration>
+			
+			
+			<Anchor>//api/name/currentProject</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UrlListViewController/currentProject</TokenIdentifier>
+			<Abstract type="html">The current select Project</Abstract>
+			<DeclaredIn>UrlListViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) Projects *currentProject</Declaration>
+			
+			
+			<Anchor>//api/name/currentProject</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UrlListViewController/addUrl:</TokenIdentifier>
+			<Abstract type="html">Add a new Url object to the currentProject</Abstract>
+			<DeclaredIn>UrlListViewController.h</DeclaredIn>			
+			
+			<Declaration>- (IBAction)addUrl:(id)sender</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>sender</Name>
+					<Abstract type="html">The caller of this method</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/addUrl:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UrlListViewController/createTimerWithTimeInterval:</TokenIdentifier>
+			<Abstract type="html">Creates an NSTimer object that fires at the specified interval</Abstract>
+			<DeclaredIn>UrlListViewController.m</DeclaredIn>			
+			
+			<Declaration>- (void)createTimerWithTimeInterval:(NSTimeInterval)timeInterval</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>timeInterval</Name>
+					<Abstract type="html">The timer interval to wait between firings.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/createTimerWithTimeInterval:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UrlListViewController/urlVerification:</TokenIdentifier>
+			<Abstract type="html">Checks the urlString for Reachability status</Abstract>
+			<DeclaredIn>UrlListViewController.m</DeclaredIn>			
+			
+			<Declaration>- (NetworkStatus)urlVerification:(NSString *)urlString</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>urlString</Name>
+					<Abstract type="html">The url to check the reachability status of</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">NetworkStatus enum value.</Abstract></ReturnValue>
+			<Anchor>//api/name/urlVerification:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UrlListViewController/applicationDocumentsDirectory</TokenIdentifier>
+			<Abstract type="html">The application&apos;s documents directory</Abstract>
+			<DeclaredIn>UrlListViewController.m</DeclaredIn>			
+			
+			<Declaration>- (NSURL *)applicationDocumentsDirectory</Declaration>
+			
+			<ReturnValue><Abstract type="html">NSURL file path of the application&apos;s documents directory</Abstract></ReturnValue>
+			<Anchor>//api/name/applicationDocumentsDirectory</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UrlListViewController/setUrlList:</TokenIdentifier>
+			<Abstract type="html">Mutable array that holds a list of Url object</Abstract>
+			<DeclaredIn>UrlListViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSMutableArray *urlList</Declaration>
+			
+			
+			<Anchor>//api/name/urlList</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UrlListViewController/urlList</TokenIdentifier>
+			<Abstract type="html">Mutable array that holds a list of Url object</Abstract>
+			<DeclaredIn>UrlListViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSMutableArray *urlList</Declaration>
+			
+			
+			<Anchor>//api/name/urlList</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UrlListViewController/setPingTimer:</TokenIdentifier>
+			<Abstract type="html">NSTimer that checks the reachability status of the Url objects contained in urlCellArray</Abstract>
+			<DeclaredIn>UrlListViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSTimer *pingTimer</Declaration>
+			
+			
+			<Anchor>//api/name/pingTimer</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UrlListViewController/pingTimer</TokenIdentifier>
+			<Abstract type="html">NSTimer that checks the reachability status of the Url objects contained in urlCellArray</Abstract>
+			<DeclaredIn>UrlListViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSTimer *pingTimer</Declaration>
+			
+			
+			<Anchor>//api/name/pingTimer</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/UrlListViewController/setUrlCellArray:</TokenIdentifier>
+			<Abstract type="html">Mutable array that holds a reference to the UrlCells that are currently displayed.
+This is important to do because you need to have a list of UrlCells that are currently
+displayed to be a able to update the status images.</Abstract>
+			<DeclaredIn>UrlListViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSMutableArray *urlCellArray</Declaration>
+			
+			
+			<Anchor>//api/name/urlCellArray</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/UrlListViewController/urlCellArray</TokenIdentifier>
+			<Abstract type="html">Mutable array that holds a reference to the UrlCells that are currently displayed.
+This is important to do because you need to have a list of UrlCells that are currently
+displayed to be a able to update the status images.</Abstract>
+			<DeclaredIn>UrlListViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSMutableArray *urlCellArray</Declaration>
+			
+			
+			<Anchor>//api/name/urlCellArray</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

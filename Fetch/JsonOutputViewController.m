@@ -13,7 +13,14 @@
 #import "Constants.h"
 
 @interface JsonOutputViewController () <RATreeViewDataSource, RATreeViewDelegate>
+/**
+ *  RATreeView that displays the JSON in an awesome, awesome way.
+ */
 @property (weak, nonatomic) RATreeView *treeView;
+
+/**
+ *  Datasource for the RATreeView
+ */
 @property (strong, nonatomic) NSArray *dataArray;
 
 @end

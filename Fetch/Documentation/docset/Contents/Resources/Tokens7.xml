@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/ProjectHandler.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/ProjectHandler</TokenIdentifier>
+			<Abstract type="html">NSObject subclass that handles the importing and exporting of Projects.</Abstract>
+			<DeclaredIn>ProjectHandler.h</DeclaredIn>
+			
+			<NodeRef refid="7"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/ProjectHandler/importFromPath:error:</TokenIdentifier>
+			<Abstract type="html">Import Project from specified path</Abstract>
+			<DeclaredIn>ProjectHandler.h</DeclaredIn>			
+			
+			<Declaration>+ (BOOL)importFromPath:(NSString *)path error:(NSError **)error</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>path</Name>
+					<Abstract type="html">Path to load the project from.</Abstract>
+				</Parameter><Parameter>
+					<Name>error</Name>
+					<Abstract type="html">Error handling.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">If the import was successful, the response will be YES, if not, it will be NO. and the error object will be non-nil;</Abstract></ReturnValue>
+			<Anchor>//api/name/importFromPath:error:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/ProjectHandler/importFromData:error:</TokenIdentifier>
+			<Abstract type="html">Import Project from NSData object</Abstract>
+			<DeclaredIn>ProjectHandler.h</DeclaredIn>			
+			
+			<Declaration>+ (BOOL)importFromData:(NSData *)data error:(NSError **)error</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>data</Name>
+					<Abstract type="html">NSData object that contains the Project data</Abstract>
+				</Parameter><Parameter>
+					<Name>error</Name>
+					<Abstract type="html">Error handling</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">If the import was successful, the response will be YES, if not, it will be NO and the error object will be non-nil.</Abstract></ReturnValue>
+			<Anchor>//api/name/importFromData:error:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/ProjectHandler/exportProject:</TokenIdentifier>
+			<Abstract type="html">Export specified project to NSURL path</Abstract>
+			<DeclaredIn>ProjectHandler.h</DeclaredIn>			
+			
+			<Declaration>+ (NSURL *)exportProject:(Projects *)project</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>project</Name>
+					<Abstract type="html">The Project object to export.</Abstract>
+				</Parameter>
+			</Parameters>
+			<ReturnValue><Abstract type="html">NSURL path of the Project that has been exported.  The exported file with be in .fetch format.</Abstract></ReturnValue>
+			<Anchor>//api/name/exportProject:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/clm/ProjectHandler/applicationDocumentsDirectory</TokenIdentifier>
+			<Abstract type="html">Path to the application&apos;s documents directory</Abstract>
+			<DeclaredIn>ProjectHandler.h</DeclaredIn>			
+			
+			<Declaration>+ (NSURL *)applicationDocumentsDirectory</Declaration>
+			
+			<ReturnValue><Abstract type="html">NSURL of the application&apos;s documents directory</Abstract></ReturnValue>
+			<Anchor>//api/name/applicationDocumentsDirectory</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

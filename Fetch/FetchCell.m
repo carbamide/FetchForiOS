@@ -12,8 +12,23 @@
 #import "SelectionViewController.h"
 
 @interface FetchCell()
+/**
+ *  NSArray of common http headers
+ */
 @property (strong, nonatomic) NSArray *headerNames;
+
+/**
+ *  UIPopoverController that holds a SelectionViewController to select a header
+ */
 @property (strong, nonatomic) UIPopoverController *selectionPopover;
+
+/**
+ *  Determine the UITextField that called this method, then save that data to the current object, Header or Parameter
+ *
+ *  @param textField The caller of this method
+ */
+-(void)saveTextField:(UITextField *)textField;
+
 @end
 
 @implementation FetchCell
@@ -34,26 +49,6 @@
     [super setSelected:selected animated:animated];
     
     // Configure the view for the selected state
-}
-
--(void)setName:(NSString *)name
-{
-    [[self nameTextField] setText:name];
-}
-
--(void)setValue:(NSString *)value
-{
-    [[self valueTextField] setText:value];
-}
-
--(void)deleteCurrent
-{
-    if ([self currentHeader]) {
-        [[self currentHeader] delete];
-    }
-    else {
-        [[self currentParameter] delete];
-    }
 }
 
 -(void)prepareForReuse

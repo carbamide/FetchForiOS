@@ -18,23 +18,162 @@
 #import "ResponseHeadersViewController.h"
 #import "FetchCell.h"
 #import "AppDelegate.h"
+#import "CHCSVParser.h"
+#import "CsvOutputViewController.h"
 
 @interface DetailViewController ()
+/**
+ *  UIPopoverController that holds a reference to the UISplitView's 0th panel
+ */
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
+
+/**
+ *  Data source for the headersTableView
+ */
 @property (strong, nonatomic) NSMutableArray *headersDataSource;
+
+/**
+ *  Data source for the paramsTableView
+ */
 @property (strong, nonatomic) NSMutableArray *parametersDataSource;
+
+/**
+ *  List of URLs contained in the currently selected Project
+ */
 @property (strong, nonatomic) NSMutableArray *urlList;
+
+/**
+ *  The URL object currently being displayed
+ */
 @property (strong, nonatomic) Urls *currentUrl;
+
+/**
+ *  Holder for JSON data returned from a fetch
+ */
 @property (strong, nonatomic) id jsonData;
-@property (strong, nonatomic) Headers *currentHeader;
-@property (strong, nonatomic) Parameters *currentParameter;
+
+/**
+ *  NSDictionary that holds the response from the server when a fetch occurs
+ */
 @property (strong, nonatomic) NSDictionary *responseDictionary;
+
+/**
+ * JSON Data returns from fetch action.  This is either an NSDictionary or NSArray
+ */
+@property (strong, nonatomic) id responseData;
+
+/**
+ *  Reference to the csv row data
+ */
+@property (nonatomic) NSArray *csvRows;
+
+/**
+ *  Reference to parseActionSheet
+ */
+@property (strong, nonatomic) UIActionSheet *parseActionSheet;
+
+/**
+ *  Maximize gesture for outputTextView
+ */
+@property (strong, nonatomic) UITapGestureRecognizer *maximizeGesture;
+
+/**
+ *  Minimize gesture for outputTextView
+ */
+@property (strong, nonatomic) UITapGestureRecognizer *minimizeGesture;
+
+/**
+ *  Reload URL notification handler
+ *
+ *  @param aNotification The notification that was broadcast
+ */
+-(void)reloadUrl:(NSNotification *)aNotification;
+
+/**
+ *  Sets the current Project
+ *
+ *  @param currentProject The Project object to set as the currentProject
+ */
+-(void)setCurrentProject:(Projects *)currentProject;
+
+/**
+ *  Convienence method to provide an NSArray of common HTTP methods
+ *
+ *  @return NSArray of common HTTP methods.
+ */
+-(NSArray *)httpMethods;
+
+/**
+ *  Appends the specified text, in the specified color to the outputTextView
+ *
+ *  @param text  The text to append to the outputTextView
+ *  @param color The request color of the text
+ */
+- (void)appendToOutput:(NSString *)text color:(UIColor *)color;
+
+/**
+ *  Check if URL is unique and perform several saving methods
+ *
+ *  @return Returns YES if the URL is uniquen in the Project, NO if it's not
+ */
+-(BOOL)addToUrlListIfUnique;
+
+/**
+ *  Logs the specified NSMutableURLRequest to the outputTextView
+ *
+ *  @param request The NSMutableURLRequest to log to the outputTextView
+ */
+-(void)logReqest:(NSMutableURLRequest *)request;
+
+/**
+ *  Load URL Notification Handler
+ *
+ *  @param aNotification The notification to handle
+ */
+-(void)loadUrl:(NSNotification *)aNotification;
+
+/**
+ *  Add Header notification handler
+ *
+ *  @param aNotification The Notification to handle
+ */
+-(void)addHeader:(NSNotification *)aNotification;
+
+/**
+ *  Add parameter notification handler
+ *
+ *  @param aNotification The notification to handle
+ */
+-(void)addParameter:(NSNotification *)aNotification;
+
+/**
+ *  Show the CsvOutputViewController
+ *
+ *  @param sender The caller of this method
+ */
+-(void)showCsvOutputAction:(id)sender;
+
+/**
+ *  Expand the outputTextView to the full size of the view's frame.
+ *
+ *  @param gestureRecognizer The UITapGestureRecognizer that called this method
+ */
+-(void)expandOutputTextView:(UITapGestureRecognizer *)gestureRecognizer;
+
+/**
+ *  Minimize the outputTextView back to it's original size
+ *
+ *  @param sender The caller of this method
+ */
+-(void)minimizeOutputTextView:(id)sender;
 
 @end
 
 static int const kScrollMainViewForTextView = 200;
 static float const kAnimationDuration = 0.3;
 static int const kKeyboardHeight = 352;
+#define kLandscapeOutputViewRect CGRectMake(14, 575, 669, 135)
+#define kPortraitOutputViewRect CGRectMake(14, 831, 734, 135)
 
 NS_ENUM(NSInteger, CellTypeTag){
     kHeaderCell = 0,
@@ -58,12 +197,20 @@ NS_ENUM(NSInteger, CellTypeTag){
         [[self customPayloadSwitch] setEnabled:NO];
         [[self headersSegCont] setEnabled:NO];
         [[self parametersSegCont] setEnabled:NO];
-        [[self jsonOutputButton] setEnabled:NO];
+        [[self parseButton] setEnabled:NO];
         [[self responseHeadersButton] setEnabled:NO];
         [[self clearButton] setEnabled:NO];
         
         [[self fetchActivityIndicator] setHidden:YES];
     }
+    
+    _maximizeGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandOutputTextView:)];
+    
+    [_maximizeGesture setNumberOfTapsRequired:2];
+    
+    [[self outputTextView] addGestureRecognizer:_maximizeGesture];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadUrl:) name:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:nil];
     
     [[self urlDescriptionTextField] setPlaceholder:@"URL Description"];
     [[self urlTextField] setPlaceholder:@"URL"];
@@ -97,23 +244,26 @@ NS_ENUM(NSInteger, CellTypeTag){
         
         [self setTitle:[[self title] stringByReplacingOccurrencesOfString:@" - Internet Connection Down" withString:@""]];
     }];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:RELOAD_HEADER_TABLE object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
-        [self setCurrentHeader:nil];
-        
-        [[self headersTableView] reloadData];
-    }];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:RELOAD_PARAMETER_TABLE object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
-        [self setCurrentParameter:nil];
-        
-        [[self parametersTableView] reloadData];
-    }];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:kShowCsvViewer]) {
+        UINavigationController *navController = [segue destinationViewController];
+        CsvOutputViewController *csvViewController = (CsvOutputViewController *)[navController topViewController];
+        
+        [csvViewController setDataSource:[[self csvRows] mutableCopy]];
+    }
 }
 
 #pragma mark -
@@ -156,6 +306,8 @@ NS_ENUM(NSInteger, CellTypeTag){
 -(IBAction)fetchAction:(id)sender
 {
     NSLog(@"%s", __FUNCTION__);
+    
+    [self setJsonData:nil];
     
     [[self fetchActivityIndicator] setHidden:NO];
     [[self fetchActivityIndicator] startAnimating];
@@ -201,8 +353,8 @@ NS_ENUM(NSInteger, CellTypeTag){
         [self logReqest:request];
         
         [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data,
-                                                                  NSURLResponse *response,
-                                                                  NSError *error) {
+                                                                                       NSURLResponse *response,
+                                                                                       NSError *error) {
             NSHTTPURLResponse *urlResponse = (NSHTTPURLResponse *)response;
             NSInteger responseCode = [urlResponse statusCode];
             NSString *responseCodeString = [NSString stringWithFormat:@"Response - %li\n", (long)responseCode];
@@ -220,6 +372,8 @@ NS_ENUM(NSInteger, CellTypeTag){
             [self appendToOutput:[NSString stringWithFormat:@"%@", [urlResponse allHeaderFields]] color:[UIColor greenColor]];
             
             if (!error) {
+                [self setResponseData:data];
+                
                 id jsonData = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
                 
                 if (jsonData) {
@@ -230,15 +384,15 @@ NS_ENUM(NSInteger, CellTypeTag){
                     if (jsonHolder) {
                         [self appendToOutput:[[NSString alloc] initWithData:jsonHolder encoding:NSUTF8StringEncoding] color:[UIColor blackColor]];
                     }
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [[self fetchButton] setEnabled:YES];
-                        [[self jsonOutputButton] setEnabled:YES];
-                    });
                 }
                 else {
                     [self appendToOutput:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] color:[UIColor blackColor]];
                 }
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[self fetchButton] setEnabled:YES];
+                    [[self parseButton] setEnabled:YES];
+                });
             }
             else {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -330,21 +484,6 @@ NS_ENUM(NSInteger, CellTypeTag){
     }
 }
 
--(IBAction)showJsonOutputAction:(id)sender
-{
-    JsonOutputViewController *viewController = [[JsonOutputViewController alloc] init];
-    
-    [viewController setJsonData:[self jsonData]];
-    
-    if ([[self responseHeadersPopover] isPopoverVisible]) {
-        [[self responseHeadersPopover] dismissPopoverAnimated:YES];
-    }
-    
-    [self setJsonPopover:[[UIPopoverController alloc] initWithContentViewController:[[UINavigationController alloc] initWithRootViewController:viewController]]];
-    
-    [[self jsonPopover] presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-}
-
 -(IBAction)clearAction:(id)sender
 {
     [[self outputTextView] setText:@""];
@@ -395,17 +534,34 @@ NS_ENUM(NSInteger, CellTypeTag){
     [[self responseHeadersPopover] presentPopoverFromBarButtonItem:[self responseHeadersButton] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
+-(IBAction)parseAction:(id)sender
+{
+    if ([_parseActionSheet isVisible]) {
+        [_parseActionSheet dismissWithClickedButtonIndex:[_parseActionSheet cancelButtonIndex] animated:YES];
+        
+        return;
+    }
+    
+    if (!_parseActionSheet) {
+        _parseActionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                        delegate:self
+                                               cancelButtonTitle:@"Cancel"
+                                          destructiveButtonTitle:nil
+                                               otherButtonTitles:@"CSV", @"JSON", nil];
+    }
+    
+    [_parseActionSheet showFromBarButtonItem:sender animated:YES];
+}
+
 #pragma mark -
 #pragma mark - Methods
 
-- (void)setDetailItem:(id)newDetailItem
+-(void)reloadUrl:(NSNotification *)aNotification
 {
-    if (_currentProject != newDetailItem) {
-        _currentProject = newDetailItem;
-    }
+    NSLog(@"An update is happening!!!");
     
-    if ([self masterPopoverController]) {
-        [[self masterPopoverController] dismissPopoverAnimated:YES];
+    if ([self currentUrl]) {
+        [self loadUrl:[NSNotification notificationWithName:@"fake_notification" object:nil userInfo:@{@"url": [self currentUrl]}]];
     }
 }
 
@@ -546,8 +702,8 @@ NS_ENUM(NSInteger, CellTypeTag){
 {
     NSLog(@"%s", __FUNCTION__);
     
+    [self appendToOutput:[NSString stringWithFormat:@"%@", [request URL]] color:[UIColor blueColor]];
     [self appendToOutput:kRequestSeparator color:[UIColor blueColor]];
-    
     [self appendToOutput:[request HTTPMethod] color:[UIColor greenColor]];
     [self appendToOutput:[NSString stringWithFormat:@"%@", [request allHTTPHeaderFields]] color:[UIColor greenColor]];
     [self appendToOutput:[[NSString alloc] initWithData:[request HTTPBody] encoding:NSUTF8StringEncoding] color:[UIColor greenColor]];
@@ -561,7 +717,7 @@ NS_ENUM(NSInteger, CellTypeTag){
     
     [self setJsonData:nil];
     
-    [[self jsonOutputButton] setEnabled:NO];
+    [[self parseButton] setEnabled:NO];
     [[self responseHeadersButton] setEnabled:NO];
     
     [[self headersDataSource] removeAllObjects];
@@ -667,6 +823,102 @@ NS_ENUM(NSInteger, CellTypeTag){
     [[self parametersTableView] endUpdates];
 }
 
+-(void)showJsonOutputAction:(id)sender
+{
+    if ([self jsonData]) {
+        JsonOutputViewController *viewController = [[JsonOutputViewController alloc] init];
+        
+        [viewController setJsonData:[self jsonData]];
+        
+        if ([[self responseHeadersPopover] isPopoverVisible]) {
+            [[self responseHeadersPopover] dismissPopoverAnimated:YES];
+        }
+        
+        [self setJsonPopover:[[UIPopoverController alloc] initWithContentViewController:[[UINavigationController alloc] initWithRootViewController:viewController]]];
+        
+        [[self jsonPopover] presentPopoverFromBarButtonItem:[self parseButton] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"The data is not in the correct format."
+                                                       delegate:Nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        
+        [alert show];
+    }
+    
+}
+
+-(void)showCsvOutputAction:(id)sender
+{
+    NSMutableArray *rows = [[NSArray arrayWithContentsOfString:[[NSString alloc] initWithData:[self responseData] encoding:NSUTF8StringEncoding] options:CHCSVParserOptionsSanitizesFields|CHCSVParserOptionsStripsLeadingAndTrailingWhitespace] mutableCopy];
+    
+    for (NSArray *tempArray in rows) {
+        if ([tempArray count] == 0) {
+            [rows removeObject:tempArray];
+        }
+    }
+    
+    if (rows) {
+        [self setCsvRows:rows];
+        
+        [self performSegueWithIdentifier:kShowCsvViewer sender:self];
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"The data is not in the correct format."
+                                                       delegate:Nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        
+        [alert show];
+    }
+}
+
+-(void)expandOutputTextView:(UITapGestureRecognizer *)gestureRecognizer
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        [[self outputTextView] setFrame:CGRectInset(self.view.frame, 0, 62)];
+    } completion:^(BOOL finished) {
+        [[self outputTextView] removeGestureRecognizer:_maximizeGesture];
+        
+        if (!_minimizeGesture) {
+            _minimizeGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(minimizeOutputTextView:)];
+            [_minimizeGesture setNumberOfTapsRequired:2];
+        }
+        
+        [[self outputTextView] addGestureRecognizer:_minimizeGesture];
+        
+        [[self navigationItem] setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(minimizeOutputTextView:)]];
+    }];
+}
+
+-(void)minimizeOutputTextView:(id)sender
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        if (UIDeviceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
+            [[self outputTextView] setFrame:kLandscapeOutputViewRect];
+        }
+        else {
+            [[self outputTextView] setFrame:kPortraitOutputViewRect];
+        }
+    } completion:^(BOOL finished) {
+        [[self outputTextView] removeGestureRecognizer:_minimizeGesture];
+        
+        if (!_maximizeGesture) {
+            _maximizeGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandOutputTextView:)];
+            
+            [_maximizeGesture setNumberOfTapsRequired:2];
+        }
+        
+        [[self outputTextView] addGestureRecognizer:_maximizeGesture];
+        [[self outputTextView] scrollRangeToVisible:NSMakeRange([[[self outputTextView] text] length], 0)];
+        
+        [[self navigationItem] setLeftBarButtonItem:nil];
+    }];
+}
+
 #pragma mark -
 #pragma mark - Table View
 
@@ -702,13 +954,11 @@ NS_ENUM(NSInteger, CellTypeTag){
         
         [[cell valueTextField] setText:[tempHeader value]];
         [[cell valueTextField] setPlaceholder:@"Header Value"];
-
+        
         [cell setCellType:HeaderCell];
         
         [[cell valueTextField] setTag:kHeaderCell];
         [[cell nameTextField] setTag:kHeaderCell];
-        
-        [cell setCurrentHeader:tempHeader];
     }
     else {
         Parameters *tempParameter = [self parametersDataSource][[indexPath row]];
@@ -723,8 +973,6 @@ NS_ENUM(NSInteger, CellTypeTag){
         
         [[cell valueTextField] setTag:kParameterCell];
         [[cell nameTextField] setTag:kParameterCell];
-
-        [cell setCurrentParameter:tempParameter];
     }
     
     return cell;
@@ -804,7 +1052,12 @@ NS_ENUM(NSInteger, CellTypeTag){
             [[self view] setBounds:CGRectOffset([[self view] bounds], 0, -kScrollMainViewForTextView)];
         }];
     }
-    
+    else if (textField == [self urlDescriptionTextField]) {
+        [[self currentUrl] setUrlDescription:[textField text]];
+        [[self currentUrl] save];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:RELOAD_PROJECT_TABLE object:nil];
+    }
     return YES;
 }
 
@@ -840,4 +1093,21 @@ NS_ENUM(NSInteger, CellTypeTag){
     return YES;
 }
 
+#pragma mark -
+#pragma mark - UIActionSheetDelegate
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
+    
+    if ([title isEqualToString:@"CSV"]) {
+        [self showCsvOutputAction:actionSheet];
+    }
+    else if ([title isEqualToString:@"JSON"]) {
+        [self showJsonOutputAction:actionSheet];
+    }
+    else {
+        NSLog(@"Cancel");
+    }
+}
 @end

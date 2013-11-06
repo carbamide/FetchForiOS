@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/DetailViewController.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/DetailViewController</TokenIdentifier>
+			<Abstract type="html">The bread and butter of the application.  DetailViewController is a UIViewController subclass that conforms to
+UISplitViewControllerDelegate, UITextFieldDelegate, and UITextViewDelegate.  DetailViewController is responsible
+for the direct manipulation of the currently selected Url object as well as the creation of new Url objects.</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>
+			
+			<NodeRef refid="2"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setCurrentProject:</TokenIdentifier>
+			<Abstract type="html">The current Project</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) Projects *currentProject</Declaration>
+			
+			
+			<Anchor>//api/name/currentProject</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/currentProject</TokenIdentifier>
+			<Abstract type="html">The current Project</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) Projects *currentProject</Declaration>
+			
+			
+			<Anchor>//api/name/currentProject</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setSelectionPopover:</TokenIdentifier>
+			<Abstract type="html">UIPopoverController that holds the SelectionViewController</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) UIPopoverController *selectionPopover</Declaration>
+			
+			
+			<Anchor>//api/name/selectionPopover</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/selectionPopover</TokenIdentifier>
+			<Abstract type="html">UIPopoverController that holds the SelectionViewController</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) UIPopoverController *selectionPopover</Declaration>
+			
+			
+			<Anchor>//api/name/selectionPopover</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setResponseHeadersPopover:</TokenIdentifier>
+			<Abstract type="html">UIPopoverController that holds the ResponseHeadersViewController</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) UIPopoverController *responseHeadersPopover</Declaration>
+			
+			
+			<Anchor>//api/name/responseHeadersPopover</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/responseHeadersPopover</TokenIdentifier>
+			<Abstract type="html">UIPopoverController that holds the ResponseHeadersViewController</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) UIPopoverController *responseHeadersPopover</Declaration>
+			
+			
+			<Anchor>//api/name/responseHeadersPopover</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setJsonPopover:</TokenIdentifier>
+			<Abstract type="html">UIPopoverController that holds the JsonOutputViewController</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) UIPopoverController *jsonPopover</Declaration>
+			
+			
+			<Anchor>//api/name/jsonPopover</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/jsonPopover</TokenIdentifier>
+			<Abstract type="html">UIPopoverController that holds the JsonOutputViewController</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) UIPopoverController *jsonPopover</Declaration>
+			
+			
+			<Anchor>//api/name/jsonPopover</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setUrlTextField:</TokenIdentifier>
+			<Abstract type="html">Text field that holds the URL of the current URL object</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *urlTextField</Declaration>
+			
+			
+			<Anchor>//api/name/urlTextField</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/urlTextField</TokenIdentifier>
+			<Abstract type="html">Text field that holds the URL of the current URL object</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *urlTextField</Declaration>
+			
+			
+			<Anchor>//api/name/urlTextField</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setUrlDescriptionTextField:</TokenIdentifier>
+			<Abstract type="html">Description of the URL contained in urlTextField</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *urlDescriptionTextField</Declaration>
+			
+			
+			<Anchor>//api/name/urlDescriptionTextField</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/urlDescriptionTextField</TokenIdentifier>
+			<Abstract type="html">Description of the URL contained in urlTextField</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *urlDescriptionTextField</Declaration>
+			
+			
+			<Anchor>//api/name/urlDescriptionTextField</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setMethodsButton:</TokenIdentifier>
+			<Abstract type="html">UIButton that shows the SelectionViewController when selected</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UIButton *methodsButton</Declaration>
+			
+			
+			<Anchor>//api/name/methodsButton</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/methodsButton</TokenIdentifier>
+			<Abstract type="html">UIButton that shows the SelectionViewController when selected</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UIButton *methodsButton</Declaration>
+			
+			
+			<Anchor>//api/name/methodsButton</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setFetchButton:</TokenIdentifier>
+			<Abstract type="html">UIButton that performs the fetchAction:</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UIButton *fetchButton</Declaration>
+			
+			
+			<Anchor>//api/name/fetchButton</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/fetchButton</TokenIdentifier>
+			<Abstract type="html">UIButton that performs the fetchAction:</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UIButton *fetchButton</Declaration>
+			
+			
+			<Anchor>//api/name/fetchButton</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setCustomPayloadSwitch:</TokenIdentifier>
+			<Abstract type="html">UISwitch that shows the customPayloadTextView that allows custom POST payloads to be attached to the fetch</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UISwitch *customPayloadSwitch</Declaration>
+			
+			
+			<Anchor>//api/name/customPayloadSwitch</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/customPayloadSwitch</TokenIdentifier>
+			<Abstract type="html">UISwitch that shows the customPayloadTextView that allows custom POST payloads to be attached to the fetch</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UISwitch *customPayloadSwitch</Declaration>
+			
+			
+			<Anchor>//api/name/customPayloadSwitch</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setHeadersTableView:</TokenIdentifier>
+			<Abstract type="html">UITableView that lets the user specify headers for the fetch</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UITableView *headersTableView</Declaration>
+			
+			
+			<Anchor>//api/name/headersTableView</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/headersTableView</TokenIdentifier>
+			<Abstract type="html">UITableView that lets the user specify headers for the fetch</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UITableView *headersTableView</Declaration>
+			
+			
+			<Anchor>//api/name/headersTableView</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setParametersTableView:</TokenIdentifier>
+			<Abstract type="html">UITableView that lets the user specify parameters for the fetch</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UITableView *parametersTableView</Declaration>
+			
+			
+			<Anchor>//api/name/parametersTableView</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/parametersTableView</TokenIdentifier>
+			<Abstract type="html">UITableView that lets the user specify parameters for the fetch</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UITableView *parametersTableView</Declaration>
+			
+			
+			<Anchor>//api/name/parametersTableView</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setOutputTextView:</TokenIdentifier>
+			<Abstract type="html">UITextView that shows the output from the fetch, as well as the HTTP response code, HEADERS, etc</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UITextView *outputTextView</Declaration>
+			
+			
+			<Anchor>//api/name/outputTextView</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/outputTextView</TokenIdentifier>
+			<Abstract type="html">UITextView that shows the output from the fetch, as well as the HTTP response code, HEADERS, etc</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UITextView *outputTextView</Declaration>
+			
+			
+			<Anchor>//api/name/outputTextView</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setCustomPayloadTextView:</TokenIdentifier>
+			<Abstract type="html">UITextView that allows the user to specify a custom payload for POST fetch actions</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UITextView *customPayloadTextView</Declaration>
+			
+			
+			<Anchor>//api/name/customPayloadTextView</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/customPayloadTextView</TokenIdentifier>
+			<Abstract type="html">UITextView that allows the user to specify a custom payload for POST fetch actions</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UITextView *customPayloadTextView</Declaration>
+			
+			
+			<Anchor>//api/name/customPayloadTextView</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setHeadersSegCont:</TokenIdentifier>
+			<Abstract type="html">UISegmentedControl that allows the user to add or remove headers</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UISegmentedControl *headersSegCont</Declaration>
+			
+			
+			<Anchor>//api/name/headersSegCont</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/headersSegCont</TokenIdentifier>
+			<Abstract type="html">UISegmentedControl that allows the user to add or remove headers</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UISegmentedControl *headersSegCont</Declaration>
+			
+			
+			<Anchor>//api/name/headersSegCont</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setParametersSegCont:</TokenIdentifier>
+			<Abstract type="html">UISegmentedControl that allows the user to add or remove parameters</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UISegmentedControl *parametersSegCont</Declaration>
+			
+			
+			<Anchor>//api/name/parametersSegCont</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/parametersSegCont</TokenIdentifier>
+			<Abstract type="html">UISegmentedControl that allows the user to add or remove parameters</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UISegmentedControl *parametersSegCont</Declaration>
+			
+			
+			<Anchor>//api/name/parametersSegCont</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setFetchActivityIndicator:</TokenIdentifier>
+			<Abstract type="html">UIActivityIndicatorView that shows when a fetch has begun, in place of the fetchButton</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *fetchActivityIndicator</Declaration>
+			
+			
+			<Anchor>//api/name/fetchActivityIndicator</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/fetchActivityIndicator</TokenIdentifier>
+			<Abstract type="html">UIActivityIndicatorView that shows when a fetch has begun, in place of the fetchButton</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *fetchActivityIndicator</Declaration>
+			
+			
+			<Anchor>//api/name/fetchActivityIndicator</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setClearButton:</TokenIdentifier>
+			<Abstract type="html">UIButton that allows the user to clear the contents of outputTextView</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UIBarButtonItem *clearButton</Declaration>
+			
+			
+			<Anchor>//api/name/clearButton</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/clearButton</TokenIdentifier>
+			<Abstract type="html">UIButton that allows the user to clear the contents of outputTextView</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UIBarButtonItem *clearButton</Declaration>
+			
+			
+			<Anchor>//api/name/clearButton</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setJsonOutputButton:</TokenIdentifier>
+			<Abstract type="html">UIBarButtonItem that allows the user to show the JsonOutputViewController</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UIBarButtonItem *jsonOutputButton</Declaration>
+			
+			
+			<Anchor>//api/name/jsonOutputButton</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/jsonOutputButton</TokenIdentifier>
+			<Abstract type="html">UIBarButtonItem that allows the user to show the JsonOutputViewController</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UIBarButtonItem *jsonOutputButton</Declaration>
+			
+			
+			<Anchor>//api/name/jsonOutputButton</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setResponseHeadersButton:</TokenIdentifier>
+			<Abstract type="html">UIBarButtonItem that allows the user to show the ResponseHeadersViewController</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UIBarButtonItem *responseHeadersButton</Declaration>
+			
+			
+			<Anchor>//api/name/responseHeadersButton</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/responseHeadersButton</TokenIdentifier>
+			<Abstract type="html">UIBarButtonItem that allows the user to show the ResponseHeadersViewController</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) IBOutlet UIBarButtonItem *responseHeadersButton</Declaration>
+			
+			
+			<Anchor>//api/name/responseHeadersButton</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/methodsAction:</TokenIdentifier>
+			<Abstract type="html">Action for methodsButton that shows the selection of HTTP methods</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>- (IBAction)methodsAction:(id)sender</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>sender</Name>
+					<Abstract type="html">The caller of this method</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/methodsAction:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/fetchAction:</TokenIdentifier>
+			<Abstract type="html">The meat and potatoes of this app.  This IBAction performs the fetch request.</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>- (IBAction)fetchAction:(id)sender</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>sender</Name>
+					<Abstract type="html">The caller of this method.</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/fetchAction:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/segmentedControlAction:</TokenIdentifier>
+			<Abstract type="html">Adds or removes headers or parameters from the headersTableView or the parametersTableView.</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>- (IBAction)segmentedControlAction:(id)sender</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>sender</Name>
+					<Abstract type="html">The caller of this method</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/segmentedControlAction:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/showJsonOutputAction:</TokenIdentifier>
+			<Abstract type="html">Action that shows the JsonOutputViewController</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>- (IBAction)showJsonOutputAction:(id)sender</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>sender</Name>
+					<Abstract type="html">The caller of this method</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/showJsonOutputAction:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/clearAction:</TokenIdentifier>
+			<Abstract type="html">Clears the contents of the outputTextView</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>- (IBAction)clearAction:(id)sender</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>sender</Name>
+					<Abstract type="html">The caller of this method</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/clearAction:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/showCustomPayloadAction:</TokenIdentifier>
+			<Abstract type="html">Shows the customPayloadTextView</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>- (IBAction)showCustomPayloadAction:(id)sender</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>sender</Name>
+					<Abstract type="html">The caller of this method</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/showCustomPayloadAction:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/showResponseHeadersAction:</TokenIdentifier>
+			<Abstract type="html">Shows the ResponseHeadersViewController</Abstract>
+			<DeclaredIn>DetailViewController.h</DeclaredIn>			
+			
+			<Declaration>- (IBAction)showResponseHeadersAction:(id)sender</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>sender</Name>
+					<Abstract type="html">The caller of this method</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/showResponseHeadersAction:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/reloadUrl:</TokenIdentifier>
+			<Abstract type="html">Reload URL notification handler</Abstract>
+			<DeclaredIn>DetailViewController.m</DeclaredIn>			
+			
+			<Declaration>- (void)reloadUrl:(NSNotification *)aNotification</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>aNotification</Name>
+					<Abstract type="html">The notification that was broadcast</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/reloadUrl:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setDetailItem:</TokenIdentifier>
+			<Abstract type="html">Sets the current detail item</Abstract>
+			<DeclaredIn>DetailViewController.m</DeclaredIn>			
+			
+			<Declaration>- (void)setDetailItem:(id)newDetailItem</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>newDetailItem</Name>
+					<Abstract type="html">Detail item to set</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setDetailItem:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/httpMethods</TokenIdentifier>
+			<Abstract type="html">Convienence method to provide an NSArray of common HTTP methods</Abstract>
+			<DeclaredIn>DetailViewController.m</DeclaredIn>			
+			
+			<Declaration>- (NSArray *)httpMethods</Declaration>
+			
+			<ReturnValue><Abstract type="html">NSArray of common HTTP methods.</Abstract></ReturnValue>
+			<Anchor>//api/name/httpMethods</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/appendToOutput:color:</TokenIdentifier>
+			<Abstract type="html">Appends the specified text, in the specified color to the outputTextView</Abstract>
+			<DeclaredIn>DetailViewController.m</DeclaredIn>			
+			
+			<Declaration>- (void)appendToOutput:(NSString *)text color:(UIColor *)color</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>text</Name>
+					<Abstract type="html">The text to append to the outputTextView</Abstract>
+				</Parameter><Parameter>
+					<Name>color</Name>
+					<Abstract type="html">The request color of the text</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/appendToOutput:color:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/addToUrlListIfUnique</TokenIdentifier>
+			<Abstract type="html">Check if URL is unique and perform several saving methods</Abstract>
+			<DeclaredIn>DetailViewController.m</DeclaredIn>			
+			
+			<Declaration>- (BOOL)addToUrlListIfUnique</Declaration>
+			
+			<ReturnValue><Abstract type="html">Returns YES if the URL is uniquen in the Project, NO if it&apos;s not</Abstract></ReturnValue>
+			<Anchor>//api/name/addToUrlListIfUnique</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/logReqest:</TokenIdentifier>
+			<Abstract type="html">Logs the specified NSMutableURLRequest to the outputTextView</Abstract>
+			<DeclaredIn>DetailViewController.m</DeclaredIn>			
+			
+			<Declaration>- (void)logReqest:(NSMutableURLRequest *)request</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>request</Name>
+					<Abstract type="html">The NSMutableURLRequest to log to the outputTextView</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/logReqest:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/loadUrl:</TokenIdentifier>
+			<Abstract type="html">Load URL Notification Handler</Abstract>
+			<DeclaredIn>DetailViewController.m</DeclaredIn>			
+			
+			<Declaration>- (void)loadUrl:(NSNotification *)aNotification</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>aNotification</Name>
+					<Abstract type="html">The notification to handle</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/loadUrl:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/addHeader:</TokenIdentifier>
+			<Abstract type="html">Add Header notification handler</Abstract>
+			<DeclaredIn>DetailViewController.m</DeclaredIn>			
+			
+			<Declaration>- (void)addHeader:(NSNotification *)aNotification</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>aNotification</Name>
+					<Abstract type="html">The Notification to handle</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/addHeader:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/addParameter:</TokenIdentifier>
+			<Abstract type="html">Add parameter notification handler</Abstract>
+			<DeclaredIn>DetailViewController.m</DeclaredIn>			
+			
+			<Declaration>- (void)addParameter:(NSNotification *)aNotification</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>aNotification</Name>
+					<Abstract type="html">The notification to handle</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/addParameter:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setMasterPopoverController:</TokenIdentifier>
+			<Abstract type="html">UIPopoverController that holds a reference to the UISplitView&apos;s 0th panel</Abstract>
+			<DeclaredIn>DetailViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) UIPopoverController *masterPopoverController</Declaration>
+			
+			
+			<Anchor>//api/name/masterPopoverController</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/masterPopoverController</TokenIdentifier>
+			<Abstract type="html">UIPopoverController that holds a reference to the UISplitView&apos;s 0th panel</Abstract>
+			<DeclaredIn>DetailViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) UIPopoverController *masterPopoverController</Declaration>
+			
+			
+			<Anchor>//api/name/masterPopoverController</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setHeadersDataSource:</TokenIdentifier>
+			<Abstract type="html">Data source for the headersTableView</Abstract>
+			<DeclaredIn>DetailViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSMutableArray *headersDataSource</Declaration>
+			
+			
+			<Anchor>//api/name/headersDataSource</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/headersDataSource</TokenIdentifier>
+			<Abstract type="html">Data source for the headersTableView</Abstract>
+			<DeclaredIn>DetailViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSMutableArray *headersDataSource</Declaration>
+			
+			
+			<Anchor>//api/name/headersDataSource</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setParametersDataSource:</TokenIdentifier>
+			<Abstract type="html">Data source for the paramsTableView</Abstract>
+			<DeclaredIn>DetailViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSMutableArray *parametersDataSource</Declaration>
+			
+			
+			<Anchor>//api/name/parametersDataSource</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/parametersDataSource</TokenIdentifier>
+			<Abstract type="html">Data source for the paramsTableView</Abstract>
+			<DeclaredIn>DetailViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSMutableArray *parametersDataSource</Declaration>
+			
+			
+			<Anchor>//api/name/parametersDataSource</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setUrlList:</TokenIdentifier>
+			<Abstract type="html">List of URLs contained in the currently selected Project</Abstract>
+			<DeclaredIn>DetailViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSMutableArray *urlList</Declaration>
+			
+			
+			<Anchor>//api/name/urlList</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/urlList</TokenIdentifier>
+			<Abstract type="html">List of URLs contained in the currently selected Project</Abstract>
+			<DeclaredIn>DetailViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSMutableArray *urlList</Declaration>
+			
+			
+			<Anchor>//api/name/urlList</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setCurrentUrl:</TokenIdentifier>
+			<Abstract type="html">The URL object currently being displayed</Abstract>
+			<DeclaredIn>DetailViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) Urls *currentUrl</Declaration>
+			
+			
+			<Anchor>//api/name/currentUrl</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/currentUrl</TokenIdentifier>
+			<Abstract type="html">The URL object currently being displayed</Abstract>
+			<DeclaredIn>DetailViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) Urls *currentUrl</Declaration>
+			
+			
+			<Anchor>//api/name/currentUrl</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setJsonData:</TokenIdentifier>
+			<Abstract type="html">Holder for JSON data returned from a fetch</Abstract>
+			<DeclaredIn>DetailViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) id jsonData</Declaration>
+			
+			
+			<Anchor>//api/name/jsonData</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/jsonData</TokenIdentifier>
+			<Abstract type="html">Holder for JSON data returned from a fetch</Abstract>
+			<DeclaredIn>DetailViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) id jsonData</Declaration>
+			
+			
+			<Anchor>//api/name/jsonData</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setResponseDictionary:</TokenIdentifier>
+			<Abstract type="html">NSDictionary that holds the response from the server when a fetch occurs</Abstract>
+			<DeclaredIn>DetailViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSDictionary *responseDictionary</Declaration>
+			
+			
+			<Anchor>//api/name/responseDictionary</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/DetailViewController/responseDictionary</TokenIdentifier>
+			<Abstract type="html">NSDictionary that holds the response from the server when a fetch occurs</Abstract>
+			<DeclaredIn>DetailViewController.m</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSDictionary *responseDictionary</Declaration>
+			
+			
+			<Anchor>//api/name/responseDictionary</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/DetailViewController/setCurrentProject:</TokenIdentifier>
+			<Abstract type="html">Sets the current Project</Abstract>
+			<DeclaredIn>DetailViewController.m</DeclaredIn>			
+			
+			<Declaration>- (void)setCurrentProject:(Projects *)currentProject</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>currentProject</Name>
+					<Abstract type="html">The Project object to set as the currentProject</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/setCurrentProject:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/SelectionViewController.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/SelectionViewController</TokenIdentifier>
+			<Abstract type="html">SelectionViewController is a UITableViewController subclass that handles selection of data from a list.  This list
+could be common HTTP headers, common HTTP methods, etc.</Abstract>
+			<DeclaredIn>SelectionViewController.h</DeclaredIn>
+			
+			<NodeRef refid="11"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SelectionViewController/setDataSource:</TokenIdentifier>
+			<Abstract type="html">The datasource to display in the UITableView.</Abstract>
+			<DeclaredIn>SelectionViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSArray *dataSource</Declaration>
+			
+			
+			<Anchor>//api/name/dataSource</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/SelectionViewController/dataSource</TokenIdentifier>
+			<Abstract type="html">The datasource to display in the UITableView.</Abstract>
+			<DeclaredIn>SelectionViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) NSArray *dataSource</Declaration>
+			
+			
+			<Anchor>//api/name/dataSource</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SelectionViewController/setSender:</TokenIdentifier>
+			<Abstract type="html">The UIControl that showed this view controller</Abstract>
+			<DeclaredIn>SelectionViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (weak, nonatomic) id sender</Declaration>
+			
+			
+			<Anchor>//api/name/sender</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/SelectionViewController/sender</TokenIdentifier>
+			<Abstract type="html">The UIControl that showed this view controller</Abstract>
+			<DeclaredIn>SelectionViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (weak, nonatomic) id sender</Declaration>
+			
+			
+			<Anchor>//api/name/sender</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/SelectionViewController/setDelegate:</TokenIdentifier>
+			<Abstract type="html">The view controller that shoed this view controller</Abstract>
+			<DeclaredIn>SelectionViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (weak, nonatomic) id delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/SelectionViewController/delegate</TokenIdentifier>
+			<Abstract type="html">The view controller that shoed this view controller</Abstract>
+			<DeclaredIn>SelectionViewController.h</DeclaredIn>			
+			
+			<Declaration>@property (weak, nonatomic) id delegate</Declaration>
+			
+			
+			<Anchor>//api/name/delegate</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

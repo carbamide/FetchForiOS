@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/AppDelegate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/AppDelegate</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>AppDelegate.h</DeclaredIn>
+			
+			<NodeRef refid="1"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AppDelegate/setWindow:</TokenIdentifier>
+			<Abstract type="html">The main UIWindow</Abstract>
+			<DeclaredIn>AppDelegate.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) UIWindow *window</Declaration>
+			
+			
+			<Anchor>//api/name/window</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/AppDelegate/window</TokenIdentifier>
+			<Abstract type="html">The main UIWindow</Abstract>
+			<DeclaredIn>AppDelegate.h</DeclaredIn>			
+			
+			<Declaration>@property (strong, nonatomic) UIWindow *window</Declaration>
+			
+			
+			<Anchor>//api/name/window</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AppDelegate/setInternetDown:</TokenIdentifier>
+			<Abstract type="html">Is the connection currently down?  If so, internetDown will be YES, else NO.</Abstract>
+			<DeclaredIn>AppDelegate.h</DeclaredIn>			
+			
+			<Declaration>@property (getter=isInternetDown) BOOL internetDown</Declaration>
+			
+			
+			<Anchor>//api/name/internetDown</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/AppDelegate/internetDown</TokenIdentifier>
+			<Abstract type="html">Is the connection currently down?  If so, internetDown will be YES, else NO.</Abstract>
+			<DeclaredIn>AppDelegate.h</DeclaredIn>			
+			
+			<Declaration>@property (getter=isInternetDown) BOOL internetDown</Declaration>
+			
+			
+			<Anchor>//api/name/internetDown</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AppDelegate/applicationDocumentsDirectory</TokenIdentifier>
+			<Abstract type="html">The application&apos;s documents directory</Abstract>
+			<DeclaredIn>AppDelegate.h</DeclaredIn>			
+			
+			<Declaration>- (NSURL *)applicationDocumentsDirectory</Declaration>
+			
+			<ReturnValue><Abstract type="html">An NSURL path of the application&apos;s documents directory</Abstract></ReturnValue>
+			<Anchor>//api/name/applicationDocumentsDirectory</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AppDelegate/reachabilityChanged:</TokenIdentifier>
+			<Abstract type="html">Reachability NSNotification handler</Abstract>
+			<DeclaredIn>AppDelegate.m</DeclaredIn>			
+			
+			<Declaration>- (void)reachabilityChanged:(NSNotification *)aNotification</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>aNotification</Name>
+					<Abstract type="html">The NSNotification to handle</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/reachabilityChanged:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AppDelegate/updateInterfaceWithReachability:</TokenIdentifier>
+			<Abstract type="html">Notify the user that the reachability status has changed, or revert the user interface
+to the non-interrupted status.</Abstract>
+			<DeclaredIn>AppDelegate.m</DeclaredIn>			
+			
+			<Declaration>- (void)updateInterfaceWithReachability:(Reachability *)reachability</Declaration>
+			<Parameters>
+				<Parameter>
+					<Name>reachability</Name>
+					<Abstract type="html">The current Reachability status</Abstract>
+				</Parameter>
+			</Parameters>
+			
+			<Anchor>//api/name/updateInterfaceWithReachability:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/AppDelegate/setInternetReachability:</TokenIdentifier>
+			<Abstract type="html">Reachability object that checks the devices internet connectivity</Abstract>
+			<DeclaredIn>AppDelegate.m</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) Reachability *internetReachability</Declaration>
+			
+			
+			<Anchor>//api/name/internetReachability</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/AppDelegate/internetReachability</TokenIdentifier>
+			<Abstract type="html">Reachability object that checks the devices internet connectivity</Abstract>
+			<DeclaredIn>AppDelegate.m</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic) Reachability *internetReachability</Declaration>
+			
+			
+			<Anchor>//api/name/internetReachability</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

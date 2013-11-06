@@ -18,9 +18,45 @@
 
 @interface UrlListViewController ()
 
+/**
+ *  Mutable array that holds a list of Url object
+ */
 @property (strong, nonatomic) NSMutableArray *urlList;
+
+/**
+ *  NSTimer that checks the reachability status of the Url objects contained in urlCellArray
+ */
 @property (strong, nonatomic) NSTimer *pingTimer;
+
+/**
+ *  Mutable array that holds a reference to the UrlCells that are currently displayed.
+ *  This is important to do because you need to have a list of UrlCells that are currently
+ *  displayed to be a able to update the status images.
+ */
 @property (strong, nonatomic) NSMutableArray *urlCellArray;
+
+/**
+ *  Creates an NSTimer object that fires at the specified interval
+ *
+ *  @param timeInterval The timer interval to wait between firings.
+ */
+-(void)createTimerWithTimeInterval:(NSTimeInterval)timeInterval;
+
+/**
+ *  Checks the urlString for Reachability status
+ *
+ *  @param urlString The url to check the reachability status of
+ *
+ *  @return NetworkStatus enum value.
+ */
+-(NetworkStatus)urlVerification:(NSString *)urlString;
+
+/**
+ *  The application's documents directory
+ *
+ *  @return NSURL file path of the application's documents directory
+ */
+- (NSURL *)applicationDocumentsDirectory;
 
 @end
 
@@ -42,7 +78,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
+
     if (![self urlCellArray]) {
         [self setUrlCellArray:[NSMutableArray array]];
     }
@@ -65,6 +101,18 @@
     
     [[NSNotificationCenter defaultCenter] addObserverForName:RELOAD_PROJECT_TABLE object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
         [[self urlList] removeAllObjects];
+        
+        [[self pingTimer] invalidate];
+
+        [self setUrlList:[NSMutableArray arrayWithArray:[[[[self currentProject] urls] allObjects] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:YES]]]]];
+        
+        [[self tableView] reloadData];
+    }];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
+        [[self urlList] removeAllObjects];
+
+        [[self pingTimer] invalidate];
         
         [self setUrlList:[NSMutableArray arrayWithArray:[[[[self currentProject] urls] allObjects] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:YES]]]]];
         
