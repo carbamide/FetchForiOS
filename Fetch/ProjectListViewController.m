@@ -67,6 +67,8 @@
     [self setProjectList:[NSMutableArray array]];
         
     [super awakeFromNib];
+    
+//this is a comment.
 }
 
 - (void)viewDidLoad
