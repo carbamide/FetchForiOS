@@ -224,6 +224,7 @@ NS_ENUM(NSInteger, CellTypeTag){
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadUrl:) name:LOAD_URL object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addHeader:) name:ADD_HEADER object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addParameter:) name:ADD_PARAMETER object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(parseAction:) name:SHOW_PARSE_ACTION object:nil];
     
     [self setTitle:@"Fetch for iOS"];
     
@@ -359,17 +360,17 @@ NS_ENUM(NSInteger, CellTypeTag){
             NSInteger responseCode = [urlResponse statusCode];
             NSString *responseCodeString = [NSString stringWithFormat:@"Response - %li\n", (long)responseCode];
             
-            [self appendToOutput:kResponseSeparator color:[UIColor blueColor]];
+            [self appendToOutput:kResponseSeparator color:kSeparatorColor];
             [self setResponseDictionary:[urlResponse allHeaderFields]];
             
             if (NSLocationInRange(responseCode, NSMakeRange(200, (299 - 200)))) {
-                [self appendToOutput:responseCodeString color:[UIColor greenColor]];
+                [self appendToOutput:responseCodeString color:kSuccessColor];
             }
             else {
-                [self appendToOutput:responseCodeString color:[UIColor redColor]];
+                [self appendToOutput:responseCodeString color:kFailureColor];
             }
             
-            [self appendToOutput:[NSString stringWithFormat:@"%@", [urlResponse allHeaderFields]] color:[UIColor greenColor]];
+            [self appendToOutput:[NSString stringWithFormat:@"%@", [urlResponse allHeaderFields]] color:kSuccessColor];
             
             if (!error) {
                 [self setResponseData:data];
@@ -382,11 +383,11 @@ NS_ENUM(NSInteger, CellTypeTag){
                     NSData *jsonHolder = [NSJSONSerialization dataWithJSONObject:jsonData options:NSJSONWritingPrettyPrinted error:nil];
                     
                     if (jsonHolder) {
-                        [self appendToOutput:[[NSString alloc] initWithData:jsonHolder encoding:NSUTF8StringEncoding] color:[UIColor blackColor]];
+                        [self appendToOutput:[[NSString alloc] initWithData:jsonHolder encoding:NSUTF8StringEncoding] color:kForegroundColor];
                     }
                 }
                 else {
-                    [self appendToOutput:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] color:[UIColor blackColor]];
+                    [self appendToOutput:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] color:kForegroundColor];
                 }
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -584,6 +585,8 @@ NS_ENUM(NSInteger, CellTypeTag){
     dispatch_async(dispatch_get_main_queue(), ^{
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[text stringByAppendingString:@"\n"]];
         
+        [attributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Courier New" size:14] range:NSMakeRange(0, [text length])];
+        
         if (color) {
             [attributedString addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, [text length])];
         }
@@ -702,11 +705,11 @@ NS_ENUM(NSInteger, CellTypeTag){
 {
     NSLog(@"%s", __FUNCTION__);
     
-    [self appendToOutput:[NSString stringWithFormat:@"%@", [request URL]] color:[UIColor blueColor]];
-    [self appendToOutput:kRequestSeparator color:[UIColor blueColor]];
-    [self appendToOutput:[request HTTPMethod] color:[UIColor greenColor]];
-    [self appendToOutput:[NSString stringWithFormat:@"%@", [request allHTTPHeaderFields]] color:[UIColor greenColor]];
-    [self appendToOutput:[[NSString alloc] initWithData:[request HTTPBody] encoding:NSUTF8StringEncoding] color:[UIColor greenColor]];
+    [self appendToOutput:[NSString stringWithFormat:@"%@", [request URL]] color:kForegroundColor];
+    [self appendToOutput:kRequestSeparator color:kSeparatorColor];
+    [self appendToOutput:[request HTTPMethod] color:kSuccessColor];
+    [self appendToOutput:[NSString stringWithFormat:@"%@", [request allHTTPHeaderFields]] color:kSuccessColor];
+    [self appendToOutput:[[NSString alloc] initWithData:[request HTTPBody] encoding:NSUTF8StringEncoding] color:kSuccessColor];
 }
 
 -(void)loadUrl:(NSNotification *)aNotification
@@ -1110,4 +1113,5 @@ NS_ENUM(NSInteger, CellTypeTag){
         NSLog(@"Cancel");
     }
 }
+
 @end

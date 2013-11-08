@@ -33,11 +33,11 @@ static NSString *const kRequestSeparator = @"---------------------------------RE
 static NSString *const kResponseSeparator = @"---------------------------------RESPONSE------------------------------------";
 
 // Output Colors
-static NSString *const kSeparatorColor = @"separator_color";
-static NSString *const kBackgroundColor = @"background_color";
-static NSString *const kForegroundColor = @"foreground_color";
-static NSString *const kSuccessColor = @"success_color";
-static NSString *const kFailureColor = @"failure_color";
+#define kSeparatorColor [UIColor colorWithRed:0.194759 green:0.33779 blue:1 alpha:1]
+#define kBackgroundColor [UIColor colorWithRed:0.813159 green:0.811473 blue:0.829574 alpha:1]
+#define kForegroundColor [UIColor colorWithRed:0.248374 green:0.23825 blue:0.242783 alpha:1]
+#define kSuccessColor [UIColor colorWithRed:0.144757 green:0.639582 blue:0.18152 alpha:1]
+#define kFailureColor [UIColor colorWithRed:0.680571 green:0.0910357 blue:0.111851 alpha:1]
 
 static NSString *const kProjectName = @"project_name";
 static NSString *const kHeaders = @"headers";
@@ -59,6 +59,7 @@ static NSString *const RELOAD_HEADER_TABLE = @"reload_header_table";
 static NSString *const RELOAD_PARAMETER_TABLE = @"reload_parameter_table";
 static NSString *const INTERNET_DOWN = @"internet_down";
 static NSString *const INTERNET_UP = @"internet_up";
+static NSString *const SHOW_PARSE_ACTION = @"show_parse_action";
 
 // Segues
 static NSString *const kAddParameterSegue = @"AddParameter";

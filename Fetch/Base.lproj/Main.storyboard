@@ -225,7 +225,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="133" id="j1P-YK-EUh"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="JEX-9P-axG" id="YvF-xo-c7b"/>
@@ -269,7 +269,7 @@
                                 <rect key="frame" x="14" y="575" width="669" height="135"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -417,8 +417,14 @@
                                 <action selector="dismissSelf:" destination="OZH-Ke-zhD" id="IxG-33-4Ay"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="eDr-OE-eEl">
+                            <connections>
+                                <action selector="share:" destination="OZH-Ke-zhD" id="qaQ-fq-lmY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="shareBarButtonItem" destination="eDr-OE-eEl" id="hz7-Sd-ZEx"/>
                         <outlet property="spreadView" destination="4uI-P1-WbY" id="NN2-ho-sTR"/>
                         <outlet property="view" destination="Ls3-Yc-w1r" id="xJg-Ha-jv0"/>
                     </connections>
