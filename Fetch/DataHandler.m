@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Jukaela Enterprises. All rights reserved.
 //
 
-#import "JsonHandler.h"
+#import "DataHandler.h"
 #import "NodeObject.h"
 #import "SeparatorNodeObject.h"
 
-@interface JsonHandler ()
+@interface DataHandler ()
 /**
  *  Add NSDictionary to the data source
  *
@@ -36,10 +36,15 @@
  */
 -(void)addChildren:(NSDictionary *)dict parent:(NodeObject *)parent;
 @end
-@implementation JsonHandler
+
+@implementation DataHandler
 
 - (id)init
 {
+#ifdef DEBUG
+    NSLog(@"%s", __FUNCTION__);
+#endif
+    
 	self = [super init];
     
     if (self) {
@@ -51,11 +56,11 @@
 
 -(void)addEntries:(id)entries
 {
-    if (!entries) {
-        return;
-    }
+#ifdef DEBUG
+    NSLog(@"%s", __FUNCTION__);
+#endif
     
-    NSAssert([entries isKindOfClass:[NSDictionary class]], @"Entries must be a dictionary");
+    NSAssert([entries isKindOfClass:[NSDictionary class]], @"Entries must be a dictionary", nil);
     
     if ([entries isKindOfClass:[NSDictionary class]]) {
         [self addDictionary:entries array:nil separator:NO];
@@ -64,6 +69,10 @@
 
 -(void)addDictionary:(NSDictionary *)dict array:(NSMutableArray **)array separator:(BOOL)needsSeparator
 {
+#ifdef DEBUG
+    NSLog(@"%s", __FUNCTION__);
+#endif
+    
     [dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         if ([obj isKindOfClass:[NSArray class]]) {
             NodeObject *tempArrayObject = [[NodeObject alloc] init];
@@ -114,6 +123,10 @@
 
 -(void)addArray:(NSArray *)array node:(NodeObject *)nodeObject
 {
+#ifdef DEBUG
+    NSLog(@"%s", __FUNCTION__);
+#endif
+    
     NSMutableArray *tempArray = [NSMutableArray array];
     
     NSInteger objectCount = 0;
@@ -121,25 +134,50 @@
     for (id tempValue in array) {
         objectCount++;
         if ([tempValue isKindOfClass:[NSDictionary class]]) {
-            if (tempValue == [array lastObject]) {
-                
-                [self addDictionary:tempValue array:&tempArray separator:NO];
-            }
-            else {
-                [self addDictionary:tempValue array:&tempArray separator:YES];
-            }
+            [self addChildren:tempValue parent:nodeObject];
         }
         else if ([tempValue isKindOfClass:[NSArray class]]) {
             [self addArray:tempValue node:nodeObject];
         }
+        else {
+            NodeObject *tempNodeObject = [[NodeObject alloc] init];
+            
+            [tempNodeObject setNodeTitle:@"text"];
+            [tempNodeObject setNodeValue:tempValue];
+            [tempNodeObject setIsArray:NO];
+            [tempNodeObject setIsLeaf:YES];
+            
+            [tempArray addObject:tempNodeObject];
+        }
+    }
+    
+    NSMutableArray *tempChildArray = nil;
+    
+    if ([nodeObject children]) {
+        tempChildArray = [[nodeObject children] mutableCopy];
+    }
+    
+    if (tempChildArray) {
+        if ([tempArray count] > 0) {
+            [tempChildArray addObject:tempArray];
+        }
+        [nodeObject setChildren:tempChildArray];
+    }
+    else {
+        if ([tempArray count] > 0) {
+            [nodeObject setChildren:tempArray];
+        }
     }
     
     [nodeObject setObjectCount:objectCount];
-    [nodeObject setChildren:tempArray];
 }
 
 -(void)addChildren:(NSDictionary *)dict parent:(NodeObject *)parent
 {
+#ifdef DEBUG
+    NSLog(@"%s", __FUNCTION__);
+#endif
+    
     NSMutableArray *tempArray = [NSMutableArray array];
     
     [dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -166,7 +204,23 @@
         }
     }];
     
-    [parent setChildren:tempArray];
+    NSMutableArray *tempChildArray = nil;
+    
+    if ([parent children]) {
+        tempChildArray = [[parent children] mutableCopy];
+    }
+    
+    if (tempChildArray) {
+        if ([tempArray count] > 0) {
+            [tempChildArray addObject:tempArray];
+        }
+        [parent setChildren:tempChildArray];
+    }
+    else {
+        if ([tempArray count] > 0) {
+            [parent setChildren:tempArray];
+        }
+    }
 }
 
 @end

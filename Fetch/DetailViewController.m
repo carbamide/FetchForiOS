@@ -204,6 +204,18 @@ NS_ENUM(NSInteger, CellTypeTag){
         [[self fetchActivityIndicator] setHidden:YES];
     }
     
+    if (![self searchBar]) {
+        [self setSearchBar:[[UISearchBar alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 44)]];
+        
+        [[self searchBar] setTranslucent:YES];
+        [[self searchBar] setBarStyle:UIBarStyleDefault];
+        [[self searchBar] setDelegate:self];
+        [[self searchBar] setAlpha:0.0];
+        [[self searchBar] setUserInteractionEnabled:NO];
+        
+        [[self view] addSubview:[self searchBar]];
+    }
+    
     _maximizeGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandOutputTextView:)];
     
     [_maximizeGesture setNumberOfTapsRequired:2];
@@ -310,6 +322,8 @@ NS_ENUM(NSInteger, CellTypeTag){
     
     [self setJsonData:nil];
     
+    [[self view] bringSubviewToFront:[self fetchActivityIndicator]];
+    
     [[self fetchActivityIndicator] setHidden:NO];
     [[self fetchActivityIndicator] startAnimating];
     [[self fetchButton] setHidden:YES];
@@ -323,13 +337,6 @@ NS_ENUM(NSInteger, CellTypeTag){
     if ([self addToUrlListIfUnique]) {
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         NSMutableString *parameters = [[NSMutableString alloc] init];
-        
-        if ([parameters length] > 0) {
-            [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", [[self urlTextField] text], parameters]]];
-        }
-        else {
-            [request setURL:[NSURL URLWithString:[[self urlTextField] text]]];
-        }
         
         [request setHTTPMethod:[[[self methodsButton] titleLabel] text]];
         
@@ -349,6 +356,13 @@ NS_ENUM(NSInteger, CellTypeTag){
                     [parameters appendString:[NSString stringWithFormat:@"&%@=%@", [tempParam name], [tempParam value]]];
                 }
             }
+        }
+        
+        if ([parameters length] > 0) {
+            [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", [[self urlTextField] text], parameters]]];
+        }
+        else {
+            [request setURL:[NSURL URLWithString:[[self urlTextField] text]]];
         }
         
         [self logReqest:request];
@@ -714,6 +728,8 @@ NS_ENUM(NSInteger, CellTypeTag){
 
 -(void)loadUrl:(NSNotification *)aNotification
 {
+    [self minimizeOutputTextView:nil];
+    
     if ([self masterPopoverController]) {
         [[self masterPopoverController] dismissPopoverAnimated:YES];
     }
@@ -881,9 +897,23 @@ NS_ENUM(NSInteger, CellTypeTag){
 
 -(void)expandOutputTextView:(UITapGestureRecognizer *)gestureRecognizer
 {
-    [UIView animateWithDuration:0.3 animations:^{
-        [[self outputTextView] setFrame:CGRectInset(self.view.frame, 0, 62)];
+    [UIView animateWithDuration:1.0 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:UIViewAnimationOptionTransitionNone animations:^{
+        [[self searchBar] setAlpha:1.0];
+        
+        if (UIDeviceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
+            [[self outputTextView] setFrame:CGRectMake(0, 0, 703, 768)];
+        }
+        else {
+            [[self outputTextView] setFrame:CGRectMake(0, 0, 768, 1024)];
+        }
     } completion:^(BOOL finished) {
+        UIEdgeInsets tempInsets = UIEdgeInsetsMake(108, 0.0, 44, 0.0);
+        
+        [[self outputTextView] setContentInset:tempInsets];
+        [[self outputTextView] setScrollIndicatorInsets:tempInsets];
+        
+        [[self searchBar] setUserInteractionEnabled:YES];
+        
         [[self outputTextView] removeGestureRecognizer:_maximizeGesture];
         
         if (!_minimizeGesture) {
@@ -899,7 +929,9 @@ NS_ENUM(NSInteger, CellTypeTag){
 
 -(void)minimizeOutputTextView:(id)sender
 {
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:1.0 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:UIViewAnimationOptionTransitionNone animations:^{
+        [[self searchBar] setAlpha:0];
+        
         if (UIDeviceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
             [[self outputTextView] setFrame:kLandscapeOutputViewRect];
         }
@@ -907,6 +939,13 @@ NS_ENUM(NSInteger, CellTypeTag){
             [[self outputTextView] setFrame:kPortraitOutputViewRect];
         }
     } completion:^(BOOL finished) {
+        UIEdgeInsets tempInsets = UIEdgeInsetsMake(0, 0.0, 0.0, 0.0);
+        
+        [[self outputTextView] setContentInset:tempInsets];
+        [[self outputTextView] setScrollIndicatorInsets:tempInsets];
+        
+        [[self searchBar] setUserInteractionEnabled:NO];
+        
         [[self outputTextView] removeGestureRecognizer:_minimizeGesture];
         
         if (!_maximizeGesture) {
@@ -1114,4 +1153,32 @@ NS_ENUM(NSInteger, CellTypeTag){
     }
 }
 
+#pragma mark -
+#pragma mark - UISearchBarDelegate
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    //    if (!searchText || [searchText isEqualToString:@""])
+    //    {
+    //        [_textView resetSearch];
+    //        return;
+    //    }
+    //    [_textView scrollToString:searchText searchOptions:NSRegularExpressionCaseInsensitive];
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+    //    [_textView becomeFirstResponder];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    //    [_textView scrollToString:searchBar.text searchOptions:NSRegularExpressionCaseInsensitive];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    //    searchBar.text = nil;
+    //    [_textView resetSearch];
+}
 @end

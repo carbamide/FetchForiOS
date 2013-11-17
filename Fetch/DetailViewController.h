@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "JVFloatLabeledTextField.h"
+#import "MRActivityIndicatorView.h"
 
 @class Projects;
 
@@ -19,7 +20,7 @@
  *  DetailViewController is also responsible for the actual fetch action, as well as handling the data that occurs
  *  from that fetch action.
  */
-@interface DetailViewController : UIViewController <UISplitViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate, UIActionSheetDelegate>
+@interface DetailViewController : UIViewController <UISplitViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate, UIActionSheetDelegate, UISearchBarDelegate>
 
 /**
  *  The current Project
@@ -97,9 +98,9 @@
 @property (strong, nonatomic) IBOutlet UISegmentedControl *parametersSegCont;
 
 /**
- *  UIActivityIndicatorView that shows when a fetch has begun, in place of the fetchButton
+ *  MRActivityIndicatorView that shows when a fetch has begun, in place of the fetchButton
  */
-@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *fetchActivityIndicator;
+@property (strong, nonatomic) IBOutlet MRActivityIndicatorView *fetchActivityIndicator;
 
 /**
  *  UIButton that allows the user to clear the contents of outputTextView
@@ -115,6 +116,11 @@
  *  UIBarButtonItem that allows the user to show the ResponseHeadersViewController
  */
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *responseHeadersButton;
+
+/**
+ *  Search bar for searching the outputTextView
+ */
+@property (strong, nonatomic) UISearchBar *searchBar;
 
 /**
  *  Action for methodsButton that shows the selection of HTTP methods

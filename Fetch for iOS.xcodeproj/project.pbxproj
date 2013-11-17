@@ -31,7 +31,7 @@
 		2917450317F3CAC50052A8C9 /* Projects.m in Sources */ = {isa = PBXBuildFile; fileRef = 291744FF17F3CAC50052A8C9 /* Projects.m */; };
 		2917450E17F3CBF50052A8C9 /* ProjectHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2917450717F3CBF50052A8C9 /* ProjectHandler.m */; };
 		2917450F17F3CBF50052A8C9 /* NodeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2917450917F3CBF50052A8C9 /* NodeObject.m */; };
-		2917451017F3CBF50052A8C9 /* JsonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2917450B17F3CBF50052A8C9 /* JsonHandler.m */; };
+		2917451017F3CBF50052A8C9 /* DataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2917450B17F3CBF50052A8C9 /* DataHandler.m */; };
 		2917451117F3CBF50052A8C9 /* SeparatorNodeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2917450D17F3CBF50052A8C9 /* SeparatorNodeObject.m */; };
 		2917451517F3CCB10052A8C9 /* SelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2917451417F3CCB10052A8C9 /* SelectionViewController.m */; };
 		2917451817F3D7500052A8C9 /* JsonOutputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2917451717F3D7500052A8C9 /* JsonOutputViewController.m */; };
@@ -53,6 +53,7 @@
 		298347E118209DAC008D6244 /* URLCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 298347E018209DAC008D6244 /* URLCell.m */; };
 		298347E41820A086008D6244 /* NSTimer+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 298347E31820A086008D6244 /* NSTimer+Blocks.m */; };
 		298347E71820A116008D6244 /* NSString+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 298347E61820A116008D6244 /* NSString+Extensions.m */; };
+		299C0A6C183503B200A1F0DF /* MRActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 299C0A6B183503B200A1F0DF /* MRActivityIndicatorView.m */; };
 		299F66D1180CD08F00AC77C3 /* FetchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 299F66D0180CD08F00AC77C3 /* FetchCell.m */; };
 		D210FEA3776C4A6A83963046 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7047A5B15E4746C38C71D231 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -103,8 +104,8 @@
 		2917450717F3CBF50052A8C9 /* ProjectHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectHandler.m; sourceTree = "<group>"; };
 		2917450817F3CBF50052A8C9 /* NodeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeObject.h; sourceTree = "<group>"; };
 		2917450917F3CBF50052A8C9 /* NodeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NodeObject.m; sourceTree = "<group>"; };
-		2917450A17F3CBF50052A8C9 /* JsonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonHandler.h; sourceTree = "<group>"; };
-		2917450B17F3CBF50052A8C9 /* JsonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonHandler.m; sourceTree = "<group>"; };
+		2917450A17F3CBF50052A8C9 /* DataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataHandler.h; sourceTree = "<group>"; };
+		2917450B17F3CBF50052A8C9 /* DataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHandler.m; sourceTree = "<group>"; };
 		2917450C17F3CBF50052A8C9 /* SeparatorNodeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeparatorNodeObject.h; sourceTree = "<group>"; };
 		2917450D17F3CBF50052A8C9 /* SeparatorNodeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeparatorNodeObject.m; sourceTree = "<group>"; };
 		2917451217F3CC200052A8C9 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -150,6 +151,8 @@
 		298347E31820A086008D6244 /* NSTimer+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Blocks.m"; sourceTree = "<group>"; };
 		298347E51820A116008D6244 /* NSString+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extensions.h"; sourceTree = "<group>"; };
 		298347E61820A116008D6244 /* NSString+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extensions.m"; sourceTree = "<group>"; };
+		299C0A6A183503B200A1F0DF /* MRActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRActivityIndicatorView.h; sourceTree = "<group>"; };
+		299C0A6B183503B200A1F0DF /* MRActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRActivityIndicatorView.m; sourceTree = "<group>"; };
 		299F66CF180CD08F00AC77C3 /* FetchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchCell.h; sourceTree = "<group>"; };
 		299F66D0180CD08F00AC77C3 /* FetchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchCell.m; sourceTree = "<group>"; };
 		7047A5B15E4746C38C71D231 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,6 +202,8 @@
 		2914E91A1823542800ED2464 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				299C0A6A183503B200A1F0DF /* MRActivityIndicatorView.h */,
+				299C0A6B183503B200A1F0DF /* MRActivityIndicatorView.m */,
 				29220243182587BB00EFE266 /* MDSpreadView */,
 				2941E18617F7BE6E00D5FD44 /* More Cell */,
 				2914E9191823541D00ED2464 /* Category */,
@@ -310,8 +315,8 @@
 			isa = PBXGroup;
 			children = (
 				2917450417F3CAC90052A8C9 /* CoreData */,
-				2917450A17F3CBF50052A8C9 /* JsonHandler.h */,
-				2917450B17F3CBF50052A8C9 /* JsonHandler.m */,
+				2917450A17F3CBF50052A8C9 /* DataHandler.h */,
+				2917450B17F3CBF50052A8C9 /* DataHandler.m */,
 				2917450817F3CBF50052A8C9 /* NodeObject.h */,
 				2917450917F3CBF50052A8C9 /* NodeObject.m */,
 				2917450617F3CBF50052A8C9 /* ProjectHandler.h */,
@@ -574,7 +579,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2917451017F3CBF50052A8C9 /* JsonHandler.m in Sources */,
+				2917451017F3CBF50052A8C9 /* DataHandler.m in Sources */,
 				29220258182587D400EFE266 /* MDSpreadViewCellRowHeaderBackground.m in Sources */,
 				2917450E17F3CBF50052A8C9 /* ProjectHandler.m in Sources */,
 				2917450117F3CAC50052A8C9 /* Headers.m in Sources */,
@@ -594,6 +599,7 @@
 				2917450F17F3CBF50052A8C9 /* NodeObject.m in Sources */,
 				291744CB17F3B8B20052A8C9 /* AppDelegate.m in Sources */,
 				2941E17F17F5CCCB00D5FD44 /* UIView+FindAndResignFirstResponder.m in Sources */,
+				299C0A6C183503B200A1F0DF /* MRActivityIndicatorView.m in Sources */,
 				29220257182587D400EFE266 /* MDSpreadViewCellBackground.m in Sources */,
 				2917450017F3CAC50052A8C9 /* Urls.m in Sources */,
 				298347E41820A086008D6244 /* NSTimer+Blocks.m in Sources */,

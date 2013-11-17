@@ -8,7 +8,7 @@
 
 #import "JsonOutputViewController.h"
 #import <RATreeView/RATreeView.h>
-#import "JsonHandler.h"
+#import "DataHandler.h"
 #import "NodeObject.h"
 #import "Constants.h"
 
@@ -51,7 +51,7 @@
         [self setJsonData:@{@"Root": [self jsonData]}];
     }
     
-    JsonHandler *tempData = [[JsonHandler alloc] init];
+    DataHandler *tempData = [[DataHandler alloc] init];
     
     [tempData addEntries:[self jsonData]];
     
@@ -73,7 +73,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
+    
     [[self treeView] setFrame:[[self view] bounds]];
 }
 
@@ -129,11 +129,18 @@
 {
     UITableViewCell *cell = nil;
     
+    static NSString *TopLevelCellIdentifer = @"TopLevelCell";
+    static NSString *ChildCellIdentifer = @"ChildCellIdentifer";
+    
     if ([treeNodeInfo treeDepthLevel] == 0 && [[item children] count] > 0) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
+        cell = [treeView dequeueReusableCellWithIdentifier:TopLevelCellIdentifer];
+        
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:TopLevelCellIdentifer];
+        }
         
         [[cell textLabel] setText:[NSString stringWithFormat:@"%@", [item nodeTitle]]];
-        [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%lu %@", (unsigned long)[[item children] count], ([[item children] count] > 1) ? @"objects" : @"object"]];
+        [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%lu %@", (unsigned long)[[item children] count], ([[item children] count] == 1) ? @"element" : @"elements"]];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         
         if ([treeNodeInfo treeDepthLevel] == 0) {
@@ -145,10 +152,26 @@
         }
     }
     else {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
+        cell = [treeView dequeueReusableCellWithIdentifier:ChildCellIdentifer];
         
-        [[cell textLabel] setText:[NSString stringWithFormat:@"%@", [item nodeTitle]]];
-        [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%@", [item nodeValue]]];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ChildCellIdentifer];
+        }
+        
+        if ([item isKindOfClass:[NSArray class]]) {
+            [[cell textLabel] setText:[NSString stringWithFormat:@"Dictionary - %lu %@", (unsigned long)[item count], [item count] == 1 ? @"element" : @"elements"]];
+        }
+        else {
+            [[cell textLabel] setText:[NSString stringWithFormat:@"%@", [item nodeTitle]]];
+        }
+        
+        if ([item isKindOfClass:[NSArray class]]) {
+            [[cell detailTextLabel] setText:[NSString string]];
+        }
+        else {
+            [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%@", [item nodeValue]]];
+        }
+        
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         
         if ([treeNodeInfo treeDepthLevel] == 0) {
@@ -169,24 +192,37 @@
 
 - (NSInteger)treeView:(RATreeView *)treeView numberOfChildrenOfItem:(id)item
 {
-    if (item == nil) {
+    id tempObject = item;
+    
+    if (!tempObject) {
         return [[self dataArray] count];
     }
-    
-    NodeObject *data = item;
-    
-    return [[data children] count];
+    else {
+        if ([tempObject isKindOfClass:[NSArray class]]) {
+            return [tempObject count];
+        }
+        else {
+            return [[tempObject children] count];
+        }
+    }
+    return 0;
 }
 
 - (id)treeView:(RATreeView *)treeView child:(NSInteger)index ofItem:(id)item
 {
-    NodeObject *data = item;
+    id tempObject = item;
     
-    if (item == nil) {
+    if (!tempObject) {
         return [self dataArray][index];
     }
+    else {
+        if ([tempObject isKindOfClass:[NSArray class]]) {
+            return tempObject[index];
+        }
+        return [tempObject children][index];
+    }
     
-    return [[data children] objectAtIndex:index];
+    return nil;
 }
 
 @end

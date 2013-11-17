@@ -12,7 +12,7 @@
  *  NSObject subclass that handles creating an NSArray that's suitable for consumption by JsonOutputViewController from the raw
  *  JSON data from a fetch request.
  */
-@interface JsonHandler : NSObject
+@interface DataHandler : NSObject
 
 /**
  *  Initilization handler
