@@ -189,6 +189,8 @@ NS_ENUM(NSInteger, CellTypeTag){
 {
     [super viewDidLoad];
     
+    [[self outputTextView] setEditable:NO];
+    
     if (![self currentUrl]) {
         [[self urlTextField] setEnabled:NO];
         [[self urlDescriptionTextField] setEnabled:NO];
@@ -1158,27 +1160,28 @@ NS_ENUM(NSInteger, CellTypeTag){
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    //    if (!searchText || [searchText isEqualToString:@""])
-    //    {
-    //        [_textView resetSearch];
-    //        return;
-    //    }
-    //    [_textView scrollToString:searchText searchOptions:NSRegularExpressionCaseInsensitive];
+//    if (!searchText || [searchText isEqualToString:@""]) {
+//        [_outputTextView resetSearch];
+//        
+//        return;
+//    }
+//    
+//    [_outputTextView scrollToString:searchText searchOptions:NSRegularExpressionCaseInsensitive];
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
 {
-    //    [_textView becomeFirstResponder];
+//    return;
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    //    [_textView scrollToString:searchBar.text searchOptions:NSRegularExpressionCaseInsensitive];
+//    [_outputTextView scrollToString:searchBar.text searchOptions:NSRegularExpressionCaseInsensitive];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-    //    searchBar.text = nil;
-    //    [_textView resetSearch];
+//    [searchBar setText:nil];
+//    [_outputTextView resetSearch];
 }
 @end

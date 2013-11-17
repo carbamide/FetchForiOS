@@ -85,10 +85,6 @@ static BOOL _highlightingSupported;
         _highlightingSupported = [self conformsToProtocol:@protocol(UITextInput)];
 }
 
--(id)initWithCoder:(NSCoder *)aDecoder
-{
-    
-}
 #pragma mark - Private methods
 
 // Adds highlight at rect (returns highlight UIView)
@@ -360,7 +356,22 @@ static BOOL _highlightingSupported;
             [self initialize];
         return self;
     }
+    
+}
 
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+#ifdef __IPHONE_7_0
+    if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1)
+        return [self initWithCoder:aDecoder textContainer:nil];
+    else
+#endif
+    {
+        if (self = [super initWithCoder:aDecoder]) {
+            [self initialize];
+        }
+    }
+    return self;
 }
 
 #ifdef __IPHONE_7_0
@@ -374,6 +385,20 @@ static BOOL _highlightingSupported;
         textContainer = [[NSTextContainer alloc] initWithSize:frame.size];
     [layoutManager addTextContainer:textContainer];
     self = [super initWithFrame:frame textContainer:textContainer];
+    if (self && _highlightingSupported)
+        [self initialize];
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder textContainer:(NSTextContainer *)textContainer
+{
+    NSTextStorage *textStorage = [[NSTextStorage alloc] init];
+    NSLayoutManager *layoutManager = [[NSLayoutManager alloc] init];
+    [textStorage addLayoutManager:layoutManager];
+    if (!textContainer)
+        textContainer = [[NSTextContainer alloc] initWithCoder:aDecoder];
+    [layoutManager addTextContainer:textContainer];
+    self = [super initWithFrame:self.frame textContainer:textContainer];
     if (self && _highlightingSupported)
         [self initialize];
     return self;

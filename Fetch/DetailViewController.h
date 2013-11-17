@@ -14,7 +14,7 @@
 
 /**
  *  The bread and butter of the application.  DetailViewController is a UIViewController subclass that conforms to
- *  UISplitViewControllerDelegate, UITextFieldDelegate, UIActionSheetDelegate, and UITextViewDelegate.  DetailViewController is responsible
+ *  UISplitViewControllerDelegate, UITextFieldDelegate, UIActionSheetDelegate, UISearchBarDelegate, and UITextViewDelegate.  DetailViewController is responsible
  *  for the direct manipulation of the currently selected Url object as well as the creation of new Url objects.
  *
  *  DetailViewController is also responsible for the actual fetch action, as well as handling the data that occurs
@@ -118,7 +118,7 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *responseHeadersButton;
 
 /**
- *  Search bar for searching the outputTextView
+ *  UISearchbar to search the outputTextView
  */
 @property (strong, nonatomic) UISearchBar *searchBar;
 
