@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "JVFloatLabeledTextField.h"
 #import "MRActivityIndicatorView.h"
+#import "ICTextView.h"
 
 @class Projects;
 
@@ -80,7 +81,7 @@
 /**
  *  UITextView that shows the output from the fetch, as well as the HTTP response code, HEADERS, etc
  */
-@property (strong, nonatomic) IBOutlet UITextView *outputTextView;
+@property (strong, nonatomic) IBOutlet ICTextView *outputTextView;
 
 /**
  *  UITextView that allows the user to specify a custom payload for POST fetch actions

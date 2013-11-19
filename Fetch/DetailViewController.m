@@ -190,7 +190,9 @@ NS_ENUM(NSInteger, CellTypeTag){
     [super viewDidLoad];
     
     [[self outputTextView] setEditable:NO];
-    
+    [[self outputTextView] setPrimaryHighlightColor:UIColorFromRGB(0xfff51d)];
+    [[self outputTextView] setSecondaryHighlightColor:UIColorFromRGB(0xfffa86)];
+
     if (![self currentUrl]) {
         [[self urlTextField] setEnabled:NO];
         [[self urlDescriptionTextField] setEnabled:NO];
@@ -207,13 +209,13 @@ NS_ENUM(NSInteger, CellTypeTag){
     }
     
     if (![self searchBar]) {
-        [self setSearchBar:[[UISearchBar alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 44)]];
+        [self setSearchBar:[[UISearchBar alloc] initWithFrame:CGRectMake(0, 64, 704, 44)]];
         
-        [[self searchBar] setTranslucent:YES];
         [[self searchBar] setBarStyle:UIBarStyleDefault];
         [[self searchBar] setDelegate:self];
         [[self searchBar] setAlpha:0.0];
         [[self searchBar] setUserInteractionEnabled:NO];
+        [[self searchBar] setBarTintColor:[UIColor clearColor]];
         
         [[self view] addSubview:[self searchBar]];
     }
@@ -1160,28 +1162,52 @@ NS_ENUM(NSInteger, CellTypeTag){
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-//    if (!searchText || [searchText isEqualToString:@""]) {
-//        [_outputTextView resetSearch];
-//        
-//        return;
-//    }
-//    
-//    [_outputTextView scrollToString:searchText searchOptions:NSRegularExpressionCaseInsensitive];
+    if (!searchText || [searchText isEqualToString:@""]) {
+        [_outputTextView resetSearch];
+        
+        return;
+    }
+    
+    [_outputTextView scrollToString:searchText searchOptions:NSRegularExpressionCaseInsensitive];
 }
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
 {
-//    return;
+    return;
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-//    [_outputTextView scrollToString:searchBar.text searchOptions:NSRegularExpressionCaseInsensitive];
+    [_outputTextView scrollToString:[searchBar text] searchOptions:NSRegularExpressionCaseInsensitive];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
-//    [searchBar setText:nil];
-//    [_outputTextView resetSearch];
+    [searchBar setText:nil];
+    [_outputTextView resetSearch];
+}
+
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
+{
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [_outputTextView setFrame:CGRectMake(self.outputTextView.frame.origin.x,
+                                             self.outputTextView.frame.origin.y,
+                                             self.outputTextView.frame.size.width,
+                                             self.outputTextView.frame.size.height - IPAD_KEYBOARD_HEIGHT)];
+    } completion:nil];
+    
+    return YES;
+}
+
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar
+{
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [_outputTextView setFrame:CGRectMake(self.outputTextView.frame.origin.x,
+                                             self.outputTextView.frame.origin.y,
+                                             self.outputTextView.frame.size.width,
+                                             self.outputTextView.frame.size.height + IPAD_KEYBOARD_HEIGHT)];
+    } completion:nil];
+    
+    return YES;
 }
 @end
