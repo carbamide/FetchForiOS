@@ -748,13 +748,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = "Fetch for iOS.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Fetch/Fetch for iOS-Prefix.pch";
 				INFOPLIST_FILE = "Fetch/Fetch for iOS-Info.plist";
 				PRODUCT_NAME = "Fetch for iOS";
-				PROVISIONING_PROFILE = "527A3D95-637A-4300-A4E4-1010DC3AB98E";
+				PROVISIONING_PROFILE = "C4916F37-ECB6-4BF6-A366-E5474557A1DB";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -765,13 +764,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = "Fetch for iOS.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Fetch/Fetch for iOS-Prefix.pch";
 				INFOPLIST_FILE = "Fetch/Fetch for iOS-Info.plist";
 				PRODUCT_NAME = "Fetch for iOS";
-				PROVISIONING_PROFILE = "527A3D95-637A-4300-A4E4-1010DC3AB98E";
+				PROVISIONING_PROFILE = "C4916F37-ECB6-4BF6-A366-E5474557A1DB";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

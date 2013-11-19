@@ -145,7 +145,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"[%d, %d]", section, row];
+    return [NSString stringWithFormat:@"[%ld, %ld]", (long)section, (long)row];
 }
 
 - (BOOL)isEqualToIndexPath:(MDIndexPath *)object
@@ -208,7 +208,7 @@
     if (numberOfSections == 0) {
         returnIndex += indexPath.row-row;
     } else if (numberOfSections > 0) {
-        for (int i = section; i <= indexPath.section; i++) {
+        for (NSInteger i = section; i <= indexPath.section; i++) {
             if (i == section) {
                 returnIndex += [spreadView numberOfRowsInRowSection:i]-row+1;
             } else if (i == indexPath.section) {
@@ -218,7 +218,7 @@
             }
         }
     } else {
-        for (int i = section; i >= indexPath.section; i--) {
+        for (NSInteger i = section; i >= indexPath.section; i--) {
             if (i == section) {
                 returnIndex -= row+1;
             } else if (i == indexPath.section) {
@@ -287,7 +287,7 @@
     if (numberOfSections == 0) {
         returnIndex += indexPath.row-row;
     } else if (numberOfSections > 0) {
-        for (int i = section; i <= indexPath.section; i++) {
+        for (NSInteger i = section; i <= indexPath.section; i++) {
             if (i == section) {
                 returnIndex += [spreadView numberOfColumnsInColumnSection:i]-row+1;
             } else if (i == indexPath.section) {
@@ -297,7 +297,7 @@
             }
         }
     } else {
-        for (int i = section; i >= indexPath.section; i--) {
+        for (NSInteger i = section; i >= indexPath.section; i--) {
             if (i == section) {
                 returnIndex -= row+1;
             } else if (i == indexPath.section) {
@@ -2160,7 +2160,7 @@
     if (numberOfSections == 0) {
         returnIndex += indexPath.row-_visibleRowIndexPath.row;
     } else if (numberOfSections > 0) {
-        for (int i = _visibleRowIndexPath.section; i <= indexPath.section; i++) {
+        for (NSInteger i = _visibleRowIndexPath.section; i <= indexPath.section; i++) {
             if (i == _visibleRowIndexPath.section) {
                 returnIndex += [self _numberOfRowsInSection:i]-_visibleRowIndexPath.row+1;
             } else if (i == indexPath.section) {
@@ -2170,7 +2170,7 @@
             }
         }
     } else {
-        for (int i = _visibleRowIndexPath.section; i >= indexPath.section; i--) {
+        for (NSInteger i = _visibleRowIndexPath.section; i >= indexPath.section; i--) {
             if (i == _visibleRowIndexPath.section) {
                 returnIndex -= _visibleRowIndexPath.row+1;
             } else if (i == indexPath.section) {
@@ -2193,7 +2193,7 @@
     if (numberOfSections == 0) {
         returnIndex += indexPath.column-_visibleColumnIndexPath.column;
     } else if (numberOfSections > 0) {
-        for (int i = _visibleColumnIndexPath.section; i <= indexPath.section; i++) {
+        for (NSInteger i = _visibleColumnIndexPath.section; i <= indexPath.section; i++) {
             if (i == _visibleColumnIndexPath.section) {
                 returnIndex += [self _numberOfColumnsInSection:i]-_visibleColumnIndexPath.column+1;
             } else if (i == indexPath.section) {
@@ -2203,7 +2203,7 @@
             }
         }
     } else {
-        for (int i = _visibleColumnIndexPath.section; i >= indexPath.section; i--) {
+        for (NSInteger i = _visibleColumnIndexPath.section; i >= indexPath.section; i--) {
             if (i == _visibleColumnIndexPath.section) {
                 returnIndex -= _visibleColumnIndexPath.column+1;
             } else if (i == indexPath.section) {
