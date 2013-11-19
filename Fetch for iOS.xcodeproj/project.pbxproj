@@ -24,7 +24,7 @@
 		291744E317F3B8B20052A8C9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 291744BE17F3B8B20052A8C9 /* CoreData.framework */; };
 		291744EB17F3B8B20052A8C9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 291744E917F3B8B20052A8C9 /* InfoPlist.strings */; };
 		291744ED17F3B8B20052A8C9 /* FetchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 291744EC17F3B8B20052A8C9 /* FetchTests.m */; };
-		291744F717F3CAB90052A8C9 /* Fetch.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 291744F617F3CAB90052A8C9 /* Fetch.xcdatamodel */; };
+		291744F717F3CAB90052A8C9 /* Fetch for iOS.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 291744F617F3CAB90052A8C9 /* Fetch for iOS.xcdatamodel */; };
 		2917450017F3CAC50052A8C9 /* Urls.m in Sources */ = {isa = PBXBuildFile; fileRef = 291744F917F3CAC50052A8C9 /* Urls.m */; };
 		2917450117F3CAC50052A8C9 /* Headers.m in Sources */ = {isa = PBXBuildFile; fileRef = 291744FB17F3CAC50052A8C9 /* Headers.m */; };
 		2917450217F3CAC50052A8C9 /* Parameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 291744FD17F3CAC50052A8C9 /* Parameters.m */; };
@@ -92,7 +92,7 @@
 		291744E817F3B8B20052A8C9 /* Fetch for iOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Fetch for iOSTests-Info.plist"; sourceTree = "<group>"; };
 		291744EA17F3B8B20052A8C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		291744EC17F3B8B20052A8C9 /* FetchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FetchTests.m; sourceTree = "<group>"; };
-		291744F617F3CAB90052A8C9 /* Fetch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Fetch.xcdatamodel; sourceTree = "<group>"; };
+		291744F617F3CAB90052A8C9 /* Fetch for iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Fetch for iOS.xcdatamodel"; sourceTree = "<group>"; };
 		291744F817F3CAC50052A8C9 /* Urls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Urls.h; sourceTree = "<group>"; };
 		291744F917F3CAC50052A8C9 /* Urls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Urls.m; sourceTree = "<group>"; };
 		291744FA17F3CAC50052A8C9 /* Headers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Headers.h; sourceTree = "<group>"; };
@@ -303,7 +303,7 @@
 		2917450417F3CAC90052A8C9 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				291744F617F3CAB90052A8C9 /* Fetch.xcdatamodel */,
+				291744F617F3CAB90052A8C9 /* Fetch for iOS.xcdatamodel */,
 				291744FA17F3CAC50052A8C9 /* Headers.h */,
 				291744FB17F3CAC50052A8C9 /* Headers.m */,
 				291744FC17F3CAC50052A8C9 /* Parameters.h */,
@@ -611,7 +611,7 @@
 				2973004E183871AD0047E9B8 /* ICTextView.m in Sources */,
 				292202A9182588C500EFE266 /* CHCSVParser.m in Sources */,
 				29463BCF17F4A82B00B2C807 /* UrlListViewController.m in Sources */,
-				291744F717F3CAB90052A8C9 /* Fetch.xcdatamodel in Sources */,
+				291744F717F3CAB90052A8C9 /* Fetch for iOS.xcdatamodel in Sources */,
 				2922025A182587D400EFE266 /* MDSpreadViewCellCornerHeaderBackground.m in Sources */,
 				2941E18417F7BE3000D5FD44 /* MSCMoreOptionTableViewCell.m in Sources */,
 				29220247182587C900EFE266 /* MDSpreadView.m in Sources */,

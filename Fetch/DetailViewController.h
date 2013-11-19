@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JVFloatLabeledTextField.h"
+#import <JVFloatLabeledTextField/JVFloatLabeledTextField.h>
+#import <JVFloatLabeledTextField/JVFloatLabeledTextView.h>
 #import "MRActivityIndicatorView.h"
 #import "ICTextView.h"
 
@@ -86,7 +87,7 @@
 /**
  *  UITextView that allows the user to specify a custom payload for POST fetch actions
  */
-@property (strong, nonatomic) IBOutlet UITextView *customPayloadTextView;
+@property (strong, nonatomic) IBOutlet JVFloatLabeledTextView *customPayloadTextView;
 
 /**
  *  UISegmentedControl that allows the user to add or remove headers

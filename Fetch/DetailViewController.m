@@ -192,7 +192,16 @@ NS_ENUM(NSInteger, CellTypeTag){
     [[self outputTextView] setEditable:NO];
     [[self outputTextView] setPrimaryHighlightColor:UIColorFromRGB(0xfff51d)];
     [[self outputTextView] setSecondaryHighlightColor:UIColorFromRGB(0xfffa86)];
-
+    
+    //Meh - I don't know about all this.  I might change it back.
+    [[[self outputTextView] layer] setBorderWidth:1];
+    [[[self outputTextView] layer] setBorderColor:[[[kAppDelegate window] tintColor] CGColor]];
+    [[self outputTextView] setBackgroundColor:[UIColor whiteColor]];
+    
+    [[[self customPayloadTextView] layer] setBorderWidth:1];
+    [[[self customPayloadTextView] layer] setBorderColor:[[[kAppDelegate window] tintColor] CGColor]];
+    [[self customPayloadTextView] setBackgroundColor:[UIColor whiteColor]];
+    
     if (![self currentUrl]) {
         [[self urlTextField] setEnabled:NO];
         [[self urlDescriptionTextField] setEnabled:NO];
@@ -233,6 +242,8 @@ NS_ENUM(NSInteger, CellTypeTag){
     
     [[[self outputTextView] layer] setCornerRadius:5];
     [[[self customPayloadTextView] layer] setCornerRadius:5];
+    
+    [[self customPayloadTextView] setPlaceholder:@"Custom Payload"];
     
     [self setHeadersDataSource:[NSMutableArray array]];
     [self setParametersDataSource:[NSMutableArray array]];
