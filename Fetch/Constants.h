@@ -6,17 +6,18 @@
 //  Copyright (c) 2013 Jukaela Enterprises. All rights reserved.
 //
 
+// Defines
 #define kAppDelegate (AppDelegate *)[[UIApplication sharedApplication] delegate]
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #define IPAD_KEYBOARD_HEIGHT 352
 
+// Cell Types
 typedef enum CellType {
     HeaderCell = 0,
     ParameterCell = 1
 } CellType;
 
 // URL Status
-
 typedef enum URLStatus {
     URLUp = 0,
     URLDown

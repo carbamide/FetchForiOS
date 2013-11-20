@@ -58,6 +58,27 @@
  */
 - (NSURL *)applicationDocumentsDirectory;
 
+/**
+ *  Handle the internet down notification
+ *
+ *  @param aNotification The notification that is sent
+ */
+-(void)internetDown:(NSNotification *)aNotification;
+
+/**
+ *  Handle the internet up notification
+ *
+ *  @param aNotification The notification that is sent
+ */
+-(void)internetUp:(NSNotification *)aNotification;
+
+/**
+ *  Reload the RELOAD_TABLE notification
+ *
+ *  @param aNotification The notification to handle
+ */
+-(void)reloadTable:(NSNotification *)aNotification;
+
 @end
 
 @implementation UrlListViewController
@@ -87,37 +108,20 @@
         [[[self navigationController] navigationBar] setBarTintColor:[UIColor redColor]];
     }
     
-    [[NSNotificationCenter defaultCenter] addObserverForName:INTERNET_DOWN object:Nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
-        [[[self navigationController] navigationBar] setBarTintColor:[UIColor redColor]];
-    }];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:INTERNET_UP object:Nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
-        [[[self navigationController] navigationBar] setBarTintColor:[UIColor clearColor]];
-    }];
-    
-    [self setUrlList:[NSMutableArray arrayWithArray:[[[[self currentProject] urls] allObjects] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:YES]]]]];
-    
-    [[self tableView] reloadData];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:RELOAD_PROJECT_TABLE object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
-        [[self urlList] removeAllObjects];
-        
-        [[self pingTimer] invalidate];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(internetDown:) name:INTERNET_DOWN object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(internetUp:) name:INTERNET_UP object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:RELOAD_PROJECT_TABLE object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTable:) name:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:nil];
 
-        [self setUrlList:[NSMutableArray arrayWithArray:[[[[self currentProject] urls] allObjects] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:YES]]]]];
-        
-        [[self tableView] reloadData];
-    }];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
-        [[self urlList] removeAllObjects];
+    [self reloadTable:nil];
+}
 
-        [[self pingTimer] invalidate];
-        
-        [self setUrlList:[NSMutableArray arrayWithArray:[[[[self currentProject] urls] allObjects] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:YES]]]]];
-        
-        [[self tableView] reloadData];
-    }];
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:INTERNET_DOWN object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:INTERNET_UP object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:RELOAD_PROJECT_TABLE object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -140,6 +144,29 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+#pragma mark - Methods
+
+-(void)reloadTable:(NSNotification *)aNotification
+{
+    [[self urlList] removeAllObjects];
+    
+    [[self pingTimer] invalidate];
+    
+    [self setUrlList:[NSMutableArray arrayWithArray:[[[[self currentProject] urls] allObjects] sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:YES]]]]];
+    
+    [[self tableView] reloadData];
+}
+
+-(void)internetDown:(NSNotification *)aNotification
+{
+    [[[self navigationController] navigationBar] setBarTintColor:[UIColor redColor]];
+}
+
+-(void)internetUp:(NSNotification *)aNotification
+{
+    [[[self navigationController] navigationBar] setBarTintColor:[UIColor clearColor]];
 }
 
 #pragma mark - IBActions

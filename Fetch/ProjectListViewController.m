@@ -52,6 +52,34 @@
  */
 -(void)shareAction:(UIGestureRecognizer *)gestureRecognizer;
 
+/**
+ *  Handle the internet down notification
+ *
+ *  @param aNotification The notification that is sent
+ */
+-(void)internetDown:(NSNotification *)aNotification;
+
+/**
+ *  Handle the internet up notification
+ *
+ *  @param aNotification The notification that is sent
+ */
+-(void)internetUp:(NSNotification *)aNotification;
+
+/**
+ *  Handle iCloud notification
+ *
+ *  @param aNotification The notification to handle
+ */
+-(void)iCloudHandler:(NSNotification *)aNotification;
+
+/**
+ *  Reload the RELOAD_TABLE notification
+ *
+ *  @param aNotification The notification to handle
+ */
+-(void)reloadProjectTable:(NSNotification *)aNotification;
+
 @end
 
 @implementation ProjectListViewController
@@ -79,45 +107,26 @@
         [[[self navigationController] navigationBar] setBarTintColor:[UIColor redColor]];
     }
     
-    [[NSNotificationCenter defaultCenter] addObserverForName:INTERNET_DOWN object:Nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
-        [[[self navigationController] navigationBar] setBarTintColor:[UIColor redColor]];
-    }];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(internetDown:) name:INTERNET_DOWN object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(internetUp:) name:INTERNET_UP object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iCloudHandler:) name:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadProjectTable:) name:RELOAD_PROJECT_TABLE object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserverForName:INTERNET_UP object:Nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
-        [[[self navigationController] navigationBar] setBarTintColor:[UIColor clearColor]];
-    }];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
-        [[self projectList] removeAllObjects];
-        
-        [[Projects all] each:^(Projects *object) {
-            [[self projectList] addObject:object];
-        }];
-        
-        [[self tableView] reloadData];
-    }];
-    
-    [[Projects all] each:^(Projects *object) {
-        [[self projectList] addObject:object];
-    }];
-    
-    [[self tableView] reloadData];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:RELOAD_PROJECT_TABLE object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
-        [[self projectList] removeAllObjects];
-        
-        [[Projects all] each:^(Projects *object) {
-            [[self projectList] addObject:object];
-        }];
-        
-        [[self tableView] reloadData];
-    }];
+    [self reloadProjectTable:nil];
     
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     
     [[self navigationItem] setRightBarButtonItem:addButton];
     
     [self setDetailViewController:(DetailViewController *)[[[[self splitViewController] viewControllers] lastObject] topViewController]];
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:INTERNET_DOWN object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:INTERNET_UP object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:RELOAD_PROJECT_TABLE object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -192,6 +201,38 @@
         
         [[self activityPopoverController] presentPopoverFromRect:[[gestureRecognizer view] frame] inView:[self tableView] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }
+}
+
+-(void)internetDown:(NSNotification *)aNotification
+{
+    [[[self navigationController] navigationBar] setBarTintColor:[UIColor redColor]];
+}
+
+-(void)internetUp:(NSNotification *)aNotification
+{
+    [[[self navigationController] navigationBar] setBarTintColor:[UIColor clearColor]];
+}
+
+-(void)iCloudHandler:(NSNotification *)aNotification
+{
+    [[self projectList] removeAllObjects];
+    
+    [[Projects all] each:^(Projects *object) {
+        [[self projectList] addObject:object];
+    }];
+    
+    [[self tableView] reloadData];
+}
+
+-(void)reloadProjectTable:(NSNotification *)aNotification
+{
+    [[self projectList] removeAllObjects];
+    
+    [[Projects all] each:^(Projects *object) {
+        [[self projectList] addObject:object];
+    }];
+    
+    [[self tableView] reloadData];
 }
 
 #pragma mark - UIAlertViewDelegate

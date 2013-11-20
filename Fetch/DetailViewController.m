@@ -167,6 +167,20 @@
  */
 -(void)minimizeOutputTextView:(id)sender;
 
+/**
+ *  Handle the internet down notification
+ *
+ *  @param aNotification The notification that is sent
+ */
+-(void)internetDown:(NSNotification *)aNotification;
+
+/**
+ *  Handle the internet up notification
+ *
+ *  @param aNotification The notification that is sent
+ */
+-(void)internetUp:(NSNotification *)aNotification;
+
 @end
 
 static int const kScrollMainViewForTextView = 200;
@@ -236,6 +250,12 @@ NS_ENUM(NSInteger, CellTypeTag){
     [[self outputTextView] addGestureRecognizer:_maximizeGesture];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadUrl:) name:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadUrl:) name:LOAD_URL object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addHeader:) name:ADD_HEADER object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addParameter:) name:ADD_PARAMETER object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(parseAction:) name:SHOW_PARSE_ACTION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(internetDown:) name:INTERNET_DOWN object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(internetUp:) name:INTERNET_UP object:nil];
     
     [[self urlDescriptionTextField] setPlaceholder:@"URL Description"];
     [[self urlTextField] setPlaceholder:@"URL"];
@@ -248,10 +268,7 @@ NS_ENUM(NSInteger, CellTypeTag){
     [self setHeadersDataSource:[NSMutableArray array]];
     [self setParametersDataSource:[NSMutableArray array]];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadUrl:) name:LOAD_URL object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addHeader:) name:ADD_HEADER object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addParameter:) name:ADD_PARAMETER object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(parseAction:) name:SHOW_PARSE_ACTION object:nil];
+
     
     [self setTitle:@"Fetch for iOS"];
     
@@ -260,18 +277,6 @@ NS_ENUM(NSInteger, CellTypeTag){
         
         [self setTitle:[[self title] stringByAppendingString:@" - Internet Connection Down"]];
     }
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:INTERNET_DOWN object:Nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
-        [[[self navigationController] navigationBar] setBarTintColor:[UIColor redColor]];
-        
-        [self setTitle:[[self title] stringByAppendingString:@" - Internet Connection Down"]];
-    }];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:INTERNET_UP object:Nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *aNotification) {
-        [[[self navigationController] navigationBar] setBarTintColor:[UIColor clearColor]];
-        
-        [self setTitle:[[self title] stringByReplacingOccurrencesOfString:@" - Internet Connection Down" withString:@""]];
-    }];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -292,6 +297,17 @@ NS_ENUM(NSInteger, CellTypeTag){
         
         [csvViewController setDataSource:[[self csvRows] mutableCopy]];
     }
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:LOAD_URL object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:ADD_HEADER object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:ADD_PARAMETER object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:SHOW_PARSE_ACTION object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:INTERNET_DOWN object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:INTERNET_UP object:nil];
 }
 
 #pragma mark -
@@ -974,6 +990,20 @@ NS_ENUM(NSInteger, CellTypeTag){
         
         [[self navigationItem] setLeftBarButtonItem:nil];
     }];
+}
+
+-(void)internetDown:(NSNotification *)aNotification
+{
+    [[[self navigationController] navigationBar] setBarTintColor:[UIColor redColor]];
+    
+    [self setTitle:[[self title] stringByAppendingString:@" - Internet Connection Down"]];
+}
+
+-(void)internetUp:(NSNotification *)aNotification
+{
+    [[[self navigationController] navigationBar] setBarTintColor:[UIColor clearColor]];
+    
+    [self setTitle:[[self title] stringByReplacingOccurrencesOfString:@" - Internet Connection Down" withString:@""]];
 }
 
 #pragma mark -
