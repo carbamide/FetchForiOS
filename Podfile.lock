@@ -2,13 +2,13 @@ PODS:
   - JVFloatLabeledTextField (0.0.4)
   - ObjectiveRecord (HEAD based on 1.4.0):
     - ObjectiveSugar
-  - ObjectiveSugar (0.9)
-  - RATreeView (HEAD based on 0.1.5)
+  - ObjectiveSugar (1.1.0)
+  - RATreeView (0.9.2)
 
 DEPENDENCIES:
   - JVFloatLabeledTextField (from `https://github.com/jverdi/JVFloatLabeledTextField.git`)
   - ObjectiveRecord (HEAD)
-  - RATreeView (HEAD)
+  - RATreeView (~> 0.9.2)
 
 EXTERNAL SOURCES:
   JVFloatLabeledTextField:
@@ -16,8 +16,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   JVFloatLabeledTextField: 479be2062a52fcc1a5d6dafc039a5949810002b9
-  ObjectiveRecord: 109a6c583284c2c9af1dc0d6ccc1dfc84e826c45
-  ObjectiveSugar: 81337e36790b5a157ee6ccdcf65c91393ca5d900
-  RATreeView: 623eb33fac519a6f13ec608fc2b477529a242ed9
+  ObjectiveRecord: d3344471fa0b00e2e620e6d9555feb07d9089eb6
+  ObjectiveSugar: f48793f5902c77cfc02a4ce46d2e8ecddcad4dc2
+  RATreeView: f603a3854c9c56ac4f586fc26f1ac13af7c3d1ba
 
-COCOAPODS: 0.27.1
+COCOAPODS: 0.32.1

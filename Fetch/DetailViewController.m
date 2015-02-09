@@ -185,7 +185,6 @@
 
 static int const kScrollMainViewForTextView = 200;
 static float const kAnimationDuration = 0.3;
-static int const kKeyboardHeight = 352;
 #define kLandscapeOutputViewRect CGRectMake(14, 575, 669, 135)
 #define kPortraitOutputViewRect CGRectMake(14, 831, 734, 135)
 
@@ -238,7 +237,6 @@ NS_ENUM(NSInteger, CellTypeTag){
         [[self searchBar] setDelegate:self];
         [[self searchBar] setAlpha:0.0];
         [[self searchBar] setUserInteractionEnabled:NO];
-        [[self searchBar] setBarTintColor:[UIColor clearColor]];
         
         [[self view] addSubview:[self searchBar]];
     }
@@ -349,8 +347,6 @@ NS_ENUM(NSInteger, CellTypeTag){
 
 -(IBAction)fetchAction:(id)sender
 {
-    NSLog(@"%s", __FUNCTION__);
-    
     [self setJsonData:nil];
     
     [[self view] bringSubviewToFront:[self fetchActivityIndicator]];
@@ -603,9 +599,7 @@ NS_ENUM(NSInteger, CellTypeTag){
 #pragma mark - Methods
 
 -(void)reloadUrl:(NSNotification *)aNotification
-{
-    NSLog(@"An update is happening!!!");
-    
+{    
     if ([self currentUrl]) {
         [self loadUrl:[NSNotification notificationWithName:@"fake_notification" object:nil userInfo:@{@"url": [self currentUrl]}]];
     }
@@ -625,8 +619,6 @@ NS_ENUM(NSInteger, CellTypeTag){
 
 - (void)appendToOutput:(NSString *)text color:(UIColor *)color
 {
-    NSLog(@"%s", __FUNCTION__);
-    
     dispatch_async(dispatch_get_main_queue(), ^{
         NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[text stringByAppendingString:@"\n"]];
         
@@ -645,8 +637,6 @@ NS_ENUM(NSInteger, CellTypeTag){
 
 -(BOOL)addToUrlListIfUnique
 {
-    NSLog(@"%s", __FUNCTION__);
-    
     if ([[self urlTextField] text] == nil || [[[self urlTextField] text] isEqualToString:@""]) {
         return NO;
     }
@@ -748,8 +738,6 @@ NS_ENUM(NSInteger, CellTypeTag){
 
 -(void)logReqest:(NSMutableURLRequest *)request
 {
-    NSLog(@"%s", __FUNCTION__);
-    
     [self appendToOutput:[NSString stringWithFormat:@"%@", [request URL]] color:kForegroundColor];
     [self appendToOutput:kRequestSeparator color:kSeparatorColor];
     [self appendToOutput:[request HTTPMethod] color:kSuccessColor];
@@ -886,7 +874,9 @@ NS_ENUM(NSInteger, CellTypeTag){
         
         [self setJsonPopover:[[UIPopoverController alloc] initWithContentViewController:[[UINavigationController alloc] initWithRootViewController:viewController]]];
         
-        [[self jsonPopover] presentPopoverFromBarButtonItem:[self parseButton] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            [[self jsonPopover] presentPopoverFromBarButtonItem:[self parseButton] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        });
     }
     else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"

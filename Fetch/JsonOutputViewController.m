@@ -7,7 +7,7 @@
 //
 
 #import "JsonOutputViewController.h"
-#import <RATreeView/RATreeView.h>
+#import <RATreeView.h>
 #import "DataHandler.h"
 #import "NodeObject.h"
 #import "Constants.h"
@@ -85,17 +85,17 @@
 #pragma mark -
 #pragma mark - TreeView Delegate methods
 
-- (CGFloat)treeView:(RATreeView *)treeView heightForRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+- (CGFloat)treeView:(RATreeView *)treeView heightForRowForItem:(id)item treeNodeInfo:(id)treeNodeInfo
 {
     return 47;
 }
 
-- (NSInteger)treeView:(RATreeView *)treeView indentationLevelForRowForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+- (NSInteger)treeView:(RATreeView *)treeView indentationLevelForRowForItem:(id)item treeNodeInfo:(id)treeNodeInfo
 {
-    return (3 * [treeNodeInfo treeDepthLevel]);
+    return (3 * [treeView levelForCellForItem:treeNodeInfo]);
 }
 
-- (BOOL)treeView:(RATreeView *)treeView shouldExpandItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+- (BOOL)treeView:(RATreeView *)treeView shouldExpandItem:(id)item treeNodeInfo:(id)treeNodeInfo
 {
     return YES;
 }
@@ -105,15 +105,17 @@
     return NO;
 }
 
-- (void)treeView:(RATreeView *)treeView willDisplayCell:(UITableViewCell *)cell forItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+- (void)treeView:(RATreeView *)treeView willDisplayCell:(UITableViewCell *)cell forItem:(id)item treeNodeInfo:(id)treeNodeInfo
 {
-    if ([treeNodeInfo treeDepthLevel] == 0) {
+    NSInteger treeDepthLevel = [treeView levelForCellForItem:treeNodeInfo];
+    
+    if (treeDepthLevel == 0) {
         [cell setBackgroundColor:UIColorFromRGB(0xF7F7F7)];
     }
-    else if ([treeNodeInfo treeDepthLevel] == 1) {
+    else if (treeDepthLevel == 1) {
         [cell setBackgroundColor:UIColorFromRGB(0xD1EEFC)];
     }
-    else if ([treeNodeInfo treeDepthLevel] == 2) {
+    else if (treeDepthLevel == 2) {
         [cell setBackgroundColor:UIColorFromRGB(0xE0F8D8)];
     }
     
@@ -125,14 +127,16 @@
 #pragma mark -
 #pragma mark - TreeView Data Source
 
-- (UITableViewCell *)treeView:(RATreeView *)treeView cellForItem:(id)item treeNodeInfo:(RATreeNodeInfo *)treeNodeInfo
+- (UITableViewCell *)treeView:(RATreeView *)treeView cellForItem:(id)item
 {
     UITableViewCell *cell = nil;
     
     static NSString *TopLevelCellIdentifer = @"TopLevelCell";
     static NSString *ChildCellIdentifer = @"ChildCellIdentifer";
     
-    if ([treeNodeInfo treeDepthLevel] == 0 && [[item children] count] > 0) {
+    NSInteger treeDepthLevel = [treeView levelForCellForItem:item];
+
+    if (treeDepthLevel == 0 && [[item children] count] > 0) {
         cell = [treeView dequeueReusableCellWithIdentifier:TopLevelCellIdentifer];
         
         if (!cell) {
@@ -143,7 +147,7 @@
         [[cell detailTextLabel] setText:[NSString stringWithFormat:@"%lu %@", (unsigned long)[[item children] count], ([[item children] count] == 1) ? @"element" : @"elements"]];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         
-        if ([treeNodeInfo treeDepthLevel] == 0) {
+        if (treeDepthLevel == 0) {
             [[cell detailTextLabel] setTextColor:[UIColor blackColor]];
             
             if ([[[cell detailTextLabel] text] isEqualToString:@"(null)"]) {
@@ -174,7 +178,7 @@
         
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         
-        if ([treeNodeInfo treeDepthLevel] == 0) {
+        if (treeDepthLevel == 0) {
             [[cell detailTextLabel] setTextColor:[UIColor blackColor]];
             
             if ([[[cell detailTextLabel] text] isEqualToString:@"(null)"]) {
