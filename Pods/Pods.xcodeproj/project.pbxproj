@@ -1,0 +1,1149 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03421DA2CFB94428ABE28CE8 /* RATreeNodeItem+ClassExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 2676866601BB4D21AA155BB0 /* RATreeNodeItem+ClassExtension.h */; };
+		08F1564118B042DCB1007C4C /* RATreeNodeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B071AE8A6F1047298B53D05B /* RATreeNodeItem.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		0AD511B409854E7F8026292A /* NSNumber+ObjectiveSugar.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F129F5AFE054B7E8705BAC5 /* NSNumber+ObjectiveSugar.h */; };
+		0BE29D31C3864B3C9CC16393 /* NSDictionary+ObjectiveSugar.h in Headers */ = {isa = PBXBuildFile; fileRef = 918BCF6EC5D74C829D347B81 /* NSDictionary+ObjectiveSugar.h */; };
+		0F521C57BD4743E2AD3AC827 /* NSManagedObject+ActiveRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = DA452E0CCA8D4DAB9FA17068 /* NSManagedObject+ActiveRecord.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		106619F397D141E1A2FE2074 /* RATreeView+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ADE99876E8343B0B4F2785E /* RATreeView+Private.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		25B7C62FF49548BBBC1301AE /* RATreeView+TableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 022F8FAFE2974D54840A2833 /* RATreeView+TableViewDataSource.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		280EAA69915C4D738F71AD17 /* RATreeNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 24EC53F5AE3D40FBB02D5CC0 /* RATreeNode.h */; };
+		2D59624591554D689760B281 /* NSManagedObject+ActiveRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = AC00878FF11B4BAC8EEFF1BA /* NSManagedObject+ActiveRecord.h */; };
+		2F35E0040EE048898A19EFFF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB1868E5E5994AD9B3AB1012 /* UIKit.framework */; };
+		2F9431E81E5C40518798AE06 /* RATreeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A0D63A6835C45DBA807092B /* RATreeView.h */; };
+		316654C8BF8A4DF6A999A9F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBFC2776CD54BD8AFC0DF4C /* Foundation.framework */; };
+		32445D40B09B4E17ABE3A172 /* NSDictionary+ObjectiveSugar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC20A16C161417C848BE4EE /* NSDictionary+ObjectiveSugar.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		32D05D069A834877B8BA2903 /* CoreDataManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B5A19F7F7AC4252846F55EA /* CoreDataManager.h */; };
+		36AB88AAC2F24EB1B8E62C88 /* RATreeNodeItem+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C9C5FEF6BBE4826A2EE2244 /* RATreeNodeItem+Private.h */; };
+		3817B51D86AF4A3F913B7EFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBFC2776CD54BD8AFC0DF4C /* Foundation.framework */; };
+		3D45B7B99DB54019A7C0D4F8 /* RATreeView+Enums.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6CA6D8D1284AEFA397A35C /* RATreeView+Enums.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		4041456DA7F1472C99244BF2 /* libPods-ObjectiveSugar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 39ABB0F50B9843B4943114CD /* libPods-ObjectiveSugar.a */; };
+		40ABC52F1505463CBE7BAD21 /* JVFloatLabeledTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 27C4CDA8D12D479F91C8894D /* JVFloatLabeledTextView.h */; };
+		426A6BD0DECF4E8BA898E30A /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8E708FE97D4A1394C935E0 /* Pods-dummy.m */; };
+		4782666095E54133A509392D /* Pods-JVFloatLabeledTextField-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FC3B21F573814680A0841DA0 /* Pods-JVFloatLabeledTextField-dummy.m */; };
+		4A91F2EB69774E91921127B1 /* RATreeView+RATreeNodeCollectionControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA89352A3324B64BE8A1889 /* RATreeView+RATreeNodeCollectionControllerDataSource.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		4E00D608A08C489CA44B4210 /* NSSet+ObjectiveSugar.m in Sources */ = {isa = PBXBuildFile; fileRef = 17880564392C49F29CB76EB8 /* NSSet+ObjectiveSugar.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		518FC73F324346BEADEADE77 /* NSArray+ObjectiveSugar.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6576BFCD614804B1B9773C /* NSArray+ObjectiveSugar.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		531794BFADE14D85830C2A73 /* NSSet+ObjectiveSugar.h in Headers */ = {isa = PBXBuildFile; fileRef = AB08F943F771462288BEAAF9 /* NSSet+ObjectiveSugar.h */; };
+		5573ED16BF7447F4961B4D7F /* Pods-ObjectiveSugar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 858A7A8168A44BF798D26AB5 /* Pods-ObjectiveSugar-dummy.m */; };
+		5AD27583251043CD826BC6C3 /* RATreeView+TableViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = CEBD924F1C8B463A974948A3 /* RATreeView+TableViewDataSource.h */; };
+		5CF7C3B609864A32894A4EAA /* JVFloatLabeledTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 912B5E1D678D49CAA2F9FB1C /* JVFloatLabeledTextView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		61ABF20B3FF9419BB301DA13 /* NSString+ObjectiveSugar.h in Headers */ = {isa = PBXBuildFile; fileRef = 23C6B9322D674B4A8E5CD606 /* NSString+ObjectiveSugar.h */; };
+		66499F50CAC142D8A40B1B78 /* ObjectiveRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = FE8F710103174BF38AFBDF15 /* ObjectiveRecord.h */; };
+		6842D7DD440F4DC89464779B /* RATreeNodeItem+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = DE3FC5D26B2A483E95BC3A3A /* RATreeNodeItem+Private.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		69B870FF10C045E9B37A467B /* RATreeView+TableViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3210CC6E1CC1420E99AE968F /* RATreeView+TableViewDelegate.h */; };
+		69C2535E97B14D0C861A966C /* JVFloatLabeledTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = FE1B6F3CCDBB4C83A88EA363 /* JVFloatLabeledTextField.h */; };
+		6A72AF1EE9E84777B596FCBD /* NSManagedObject+Mappings.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C13663DFCEB459C9D431D79 /* NSManagedObject+Mappings.h */; };
+		6AE2EA394DF74266BA8C2D73 /* ObjectiveSugar.h in Headers */ = {isa = PBXBuildFile; fileRef = 176C172DD2D64FFFB80DDB34 /* ObjectiveSugar.h */; };
+		6B90835B65FF4C22806B7ADE /* NSManagedObject+Mappings.m in Sources */ = {isa = PBXBuildFile; fileRef = 11CDD4758B624330939037D7 /* NSManagedObject+Mappings.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		75D8E7EE233542B6B17BF04D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBFC2776CD54BD8AFC0DF4C /* Foundation.framework */; };
+		765BBA6526E14836B7479DBD /* Pods-RATreeView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD79E4933DB4D4BAB6FE0BC /* Pods-RATreeView-dummy.m */; };
+		7A5F329CBCAA4BC1AE742F43 /* RATreeNodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8155DEAC5BF44172B99F32C6 /* RATreeNodeController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		7ACF0FA813FD4BFD97FA5C5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBFC2776CD54BD8AFC0DF4C /* Foundation.framework */; };
+		7B909265449D484990DACCA3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCBFC2776CD54BD8AFC0DF4C /* Foundation.framework */; };
+		7DEF4059A63147A69C5A51E4 /* libPods-ObjectiveRecord.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87FCFA22EAEE421985EC1F10 /* libPods-ObjectiveRecord.a */; };
+		7EEB1BA137354907BE6F7372 /* RATreeNodeItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 8DBACFFFBB17471DB6246010 /* RATreeNodeItem.h */; };
+		8CA23167725A4D92991802C2 /* NSNumber+ObjectiveSugar.m in Sources */ = {isa = PBXBuildFile; fileRef = 563E92F72DBB4AF0BF33F7C9 /* NSNumber+ObjectiveSugar.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		8FE74F176CEC43D6AC6D6AB4 /* RATreeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 297BFE016C0241FFA647E94D /* RATreeView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		960F2D2B5E3F4E3E8F525438 /* NSMutableArray+ObjectiveSugar.h in Headers */ = {isa = PBXBuildFile; fileRef = 6063CEE873CD43FBB5D45CF5 /* NSMutableArray+ObjectiveSugar.h */; };
+		98BB2AFE0F834A1987EEFD7E /* RABatchChanges.h in Headers */ = {isa = PBXBuildFile; fileRef = 458F447ABD5546B2AE79B728 /* RABatchChanges.h */; };
+		991CE6D5BAA24D25BA59B81F /* RATreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 22268435B2D84DEB9E02A199 /* RATreeNode.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		9E06A6BC99754425A089D3A1 /* libPods-JVFloatLabeledTextField.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CBB0D2ED4C64D78BF6C0991 /* libPods-JVFloatLabeledTextField.a */; };
+		A08FBF064D6D4B078A3EB00B /* RATreeNodeController.h in Headers */ = {isa = PBXBuildFile; fileRef = B430FC55FC074802ABF49E1D /* RATreeNodeController.h */; };
+		A22BFF9784C3447F8D4309CF /* NSArray+ObjectiveSugar.h in Headers */ = {isa = PBXBuildFile; fileRef = 469FA8B7DE3C4FADB2E53A66 /* NSArray+ObjectiveSugar.h */; };
+		A692BC7783F64997AD271EBE /* RATreeView_ClassExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = E98F4EC8AF1746F3AEC4C954 /* RATreeView_ClassExtension.h */; };
+		A79AF0F2E23A481DA71DFA9E /* libPods-RATreeView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0993750897D4BA6A0B09C97 /* libPods-RATreeView.a */; };
+		A837A96505F74AAB8AFA0795 /* JVFloatLabeledTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F76A562252E470C933A5AE5 /* JVFloatLabeledTextField.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		B2072DBC52F446329C836DC3 /* RABatchChanges.m in Sources */ = {isa = PBXBuildFile; fileRef = FF9450D4EA734F58AC73FF1E /* RABatchChanges.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		B4BAE8F9B6C54C56A6089661 /* RATreeNodeCollectionController.h in Headers */ = {isa = PBXBuildFile; fileRef = 00DA5E40FA85488F9055CF38 /* RATreeNodeCollectionController.h */; };
+		B8E98F5787D64E9AAE780C78 /* RATreeNodeCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9F87B689904669952CCEE7 /* RATreeNodeCollectionController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		BB96A0F3C02C4587B38E7E18 /* RATreeView+Enums.h in Headers */ = {isa = PBXBuildFile; fileRef = 37A5EC33641441E8B7672C4E /* RATreeView+Enums.h */; };
+		CC2381CFF382425E9D38A1E7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EBE75FB92441F9B66519F5 /* CoreData.framework */; };
+		CCE2795E024F48EDB7F36B0A /* RATreeView+RATreeNodeCollectionControllerDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 102919BC80204879AEE4A3B9 /* RATreeView+RATreeNodeCollectionControllerDataSource.h */; };
+		D4627A714ACF4CC7A097A3AE /* NSMutableArray+ObjectiveSugar.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E87920069944A093EBD59A /* NSMutableArray+ObjectiveSugar.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		D4B727E49A254458B84DB021 /* NSString+ObjectiveSugar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F31985F7A7A423FB4339575 /* NSString+ObjectiveSugar.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		D8595F5162B748DEA82668A0 /* RATreeView+UIScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C2F31592B74B64AD5CBA5B /* RATreeView+UIScrollView.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		D97192C8E07B47CDABA12660 /* RATreeView+UIScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 20E2C4AFBCEA4A3F9890725A /* RATreeView+UIScrollView.h */; };
+		DAB3483A32A1421CA4923E57 /* RATreeView+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = C6330BC0F7B047D99AD602EA /* RATreeView+Private.h */; };
+		DE3957A3F72246AD9E743986 /* RATreeView+TableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C98305F04754369A2B82B93 /* RATreeView+TableViewDelegate.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		E78876FAD9C5496984B92BBA /* RATreeNode_ClassExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = CF986D62951E4AAEAD291018 /* RATreeNode_ClassExtension.h */; };
+		F17F868003D54DC5A38CB718 /* Pods-ObjectiveRecord-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F0973C7DB80043BD828F0A7D /* Pods-ObjectiveRecord-dummy.m */; };
+		F514D6A572784F178E5EBEC2 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D92C80472CD74CCF93951D52 /* CoreDataManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		018CABA40A8649D78068379F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07ED792BA02F43808C79BB94 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D195EDB4A4564830BDD1F7DD;
+			remoteInfo = "Pods-ObjectiveSugar";
+		};
+		068839D4715641C0874D3082 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07ED792BA02F43808C79BB94 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1DA894953EB54EB095E24C98;
+			remoteInfo = "Pods-JVFloatLabeledTextField";
+		};
+		2178F3D783AF462F92F0FE4A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07ED792BA02F43808C79BB94 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 835B33957D8B4B83BC6FC4D3;
+			remoteInfo = "Pods-RATreeView";
+		};
+		2E69467294BE4ED785934651 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07ED792BA02F43808C79BB94 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B0A9CE32E334B73B3DB0477;
+			remoteInfo = "Pods-ObjectiveRecord";
+		};
+		B69F9CDC4498443DA0C11444 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07ED792BA02F43808C79BB94 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D195EDB4A4564830BDD1F7DD;
+			remoteInfo = "Pods-ObjectiveSugar";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00DA5E40FA85488F9055CF38 /* RATreeNodeCollectionController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RATreeNodeCollectionController.h; path = "RATreeView/Private Files/RATreeNodeCollectionController.h"; sourceTree = "<group>"; };
+		022F8FAFE2974D54840A2833 /* RATreeView+TableViewDataSource.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "RATreeView+TableViewDataSource.m"; path = "RATreeView/Private Files/RATreeView+TableViewDataSource.m"; sourceTree = "<group>"; };
+		0ADE99876E8343B0B4F2785E /* RATreeView+Private.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "RATreeView+Private.m"; path = "RATreeView/Private Files/RATreeView+Private.m"; sourceTree = "<group>"; };
+		0C98305F04754369A2B82B93 /* RATreeView+TableViewDelegate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "RATreeView+TableViewDelegate.m"; path = "RATreeView/Private Files/RATreeView+TableViewDelegate.m"; sourceTree = "<group>"; };
+		0CBB0D2ED4C64D78BF6C0991 /* libPods-JVFloatLabeledTextField.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JVFloatLabeledTextField.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F76A562252E470C933A5AE5 /* JVFloatLabeledTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JVFloatLabeledTextField.m; path = JVFloatLabeledTextField/JVFloatLabeledTextField/JVFloatLabeledTextField.m; sourceTree = "<group>"; };
+		102919BC80204879AEE4A3B9 /* RATreeView+RATreeNodeCollectionControllerDataSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "RATreeView+RATreeNodeCollectionControllerDataSource.h"; path = "RATreeView/Private Files/RATreeView+RATreeNodeCollectionControllerDataSource.h"; sourceTree = "<group>"; };
+		11CDD4758B624330939037D7 /* NSManagedObject+Mappings.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSManagedObject+Mappings.m"; path = "Classes/NSManagedObject+Mappings.m"; sourceTree = "<group>"; };
+		147406128A8C47DFB90CA741 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+		176C172DD2D64FFFB80DDB34 /* ObjectiveSugar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ObjectiveSugar.h; path = Classes/ObjectiveSugar.h; sourceTree = "<group>"; };
+		17880564392C49F29CB76EB8 /* NSSet+ObjectiveSugar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSSet+ObjectiveSugar.m"; path = "Classes/NSSet+ObjectiveSugar.m"; sourceTree = "<group>"; };
+		199092143E864BCBBB900AFB /* Pods-JVFloatLabeledTextField.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JVFloatLabeledTextField.xcconfig"; sourceTree = "<group>"; };
+		1B466F20B6B64432BAD2DB9D /* Pods-ObjectiveRecord-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ObjectiveRecord-prefix.pch"; sourceTree = "<group>"; };
+		1C13663DFCEB459C9D431D79 /* NSManagedObject+Mappings.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSManagedObject+Mappings.h"; path = "Classes/NSManagedObject+Mappings.h"; sourceTree = "<group>"; };
+		20E2C4AFBCEA4A3F9890725A /* RATreeView+UIScrollView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "RATreeView+UIScrollView.h"; path = "RATreeView/Private Files/RATreeView+UIScrollView.h"; sourceTree = "<group>"; };
+		22268435B2D84DEB9E02A199 /* RATreeNode.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RATreeNode.m; path = "RATreeView/Private Files/RATreeNode.m"; sourceTree = "<group>"; };
+		23C6B9322D674B4A8E5CD606 /* NSString+ObjectiveSugar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+ObjectiveSugar.h"; path = "Classes/NSString+ObjectiveSugar.h"; sourceTree = "<group>"; };
+		24EC53F5AE3D40FBB02D5CC0 /* RATreeNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RATreeNode.h; path = "RATreeView/Private Files/RATreeNode.h"; sourceTree = "<group>"; };
+		2676866601BB4D21AA155BB0 /* RATreeNodeItem+ClassExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "RATreeNodeItem+ClassExtension.h"; path = "RATreeView/Private Files/RATreeNodeItem+ClassExtension.h"; sourceTree = "<group>"; };
+		27C4CDA8D12D479F91C8894D /* JVFloatLabeledTextView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JVFloatLabeledTextView.h; path = JVFloatLabeledTextField/JVFloatLabeledTextField/JVFloatLabeledTextView.h; sourceTree = "<group>"; };
+		297BFE016C0241FFA647E94D /* RATreeView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RATreeView.m; path = RATreeView/RATreeView.m; sourceTree = "<group>"; };
+		2A0D63A6835C45DBA807092B /* RATreeView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RATreeView.h; path = RATreeView/RATreeView.h; sourceTree = "<group>"; };
+		2E8E708FE97D4A1394C935E0 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
+		3210CC6E1CC1420E99AE968F /* RATreeView+TableViewDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "RATreeView+TableViewDelegate.h"; path = "RATreeView/Private Files/RATreeView+TableViewDelegate.h"; sourceTree = "<group>"; };
+		36FB42A3C5BB4CFDBD01BCE4 /* Pods-ObjectiveSugar-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ObjectiveSugar-prefix.pch"; sourceTree = "<group>"; };
+		37A5EC33641441E8B7672C4E /* RATreeView+Enums.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "RATreeView+Enums.h"; path = "RATreeView/Private Files/RATreeView+Enums.h"; sourceTree = "<group>"; };
+		39ABB0F50B9843B4943114CD /* libPods-ObjectiveSugar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ObjectiveSugar.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B4664DB7CC04EB08D1EC1A0 /* Pods-RATreeView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RATreeView-prefix.pch"; sourceTree = "<group>"; };
+		3DD79E4933DB4D4BAB6FE0BC /* Pods-RATreeView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RATreeView-dummy.m"; sourceTree = "<group>"; };
+		415145E7D0E242C9B42E8E21 /* Pods-ObjectiveRecord.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ObjectiveRecord.xcconfig"; sourceTree = "<group>"; };
+		458F447ABD5546B2AE79B728 /* RABatchChanges.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RABatchChanges.h; path = "RATreeView/Private Files/RABatchChanges.h"; sourceTree = "<group>"; };
+		469FA8B7DE3C4FADB2E53A66 /* NSArray+ObjectiveSugar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+ObjectiveSugar.h"; path = "Classes/NSArray+ObjectiveSugar.h"; sourceTree = "<group>"; };
+		4A26B5AF0758447FB845A253 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		4BBB5BDF7D1342C8AFCC190A /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+		4FE258E2C8024EE9A8B2F02F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		563E92F72DBB4AF0BF33F7C9 /* NSNumber+ObjectiveSugar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSNumber+ObjectiveSugar.m"; path = "Classes/NSNumber+ObjectiveSugar.m"; sourceTree = "<group>"; };
+		5CA89352A3324B64BE8A1889 /* RATreeView+RATreeNodeCollectionControllerDataSource.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "RATreeView+RATreeNodeCollectionControllerDataSource.m"; path = "RATreeView/Private Files/RATreeView+RATreeNodeCollectionControllerDataSource.m"; sourceTree = "<group>"; };
+		5E11F675C4434FDABB37F148 /* Pods-ObjectiveSugar-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ObjectiveSugar-Private.xcconfig"; sourceTree = "<group>"; };
+		6063CEE873CD43FBB5D45CF5 /* NSMutableArray+ObjectiveSugar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+ObjectiveSugar.h"; path = "Classes/NSMutableArray+ObjectiveSugar.h"; sourceTree = "<group>"; };
+		6A9E580C5F994C0B84637DE6 /* Pods-JVFloatLabeledTextField-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JVFloatLabeledTextField-prefix.pch"; sourceTree = "<group>"; };
+		6C9C5FEF6BBE4826A2EE2244 /* RATreeNodeItem+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "RATreeNodeItem+Private.h"; path = "RATreeView/Private Files/RATreeNodeItem+Private.h"; sourceTree = "<group>"; };
+		6E1E90EA56A849499FD6D545 /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
+		76786098F35E4077A941963A /* Pods-RATreeView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RATreeView.xcconfig"; sourceTree = "<group>"; };
+		7B5A19F7F7AC4252846F55EA /* CoreDataManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CoreDataManager.h; path = Classes/CoreDataManager.h; sourceTree = "<group>"; };
+		8155DEAC5BF44172B99F32C6 /* RATreeNodeController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RATreeNodeController.m; path = "RATreeView/Private Files/RATreeNodeController.m"; sourceTree = "<group>"; };
+		858A7A8168A44BF798D26AB5 /* Pods-ObjectiveSugar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ObjectiveSugar-dummy.m"; sourceTree = "<group>"; };
+		87FCFA22EAEE421985EC1F10 /* libPods-ObjectiveRecord.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ObjectiveRecord.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A63D1B2785D403CBE556128 /* Pods-JVFloatLabeledTextField-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JVFloatLabeledTextField-Private.xcconfig"; sourceTree = "<group>"; };
+		8CBDE7CEB9804F0AA0FA21C2 /* Pods-ObjectiveSugar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ObjectiveSugar.xcconfig"; sourceTree = "<group>"; };
+		8DBACFFFBB17471DB6246010 /* RATreeNodeItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RATreeNodeItem.h; path = "RATreeView/Private Files/RATreeNodeItem.h"; sourceTree = "<group>"; };
+		8F129F5AFE054B7E8705BAC5 /* NSNumber+ObjectiveSugar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSNumber+ObjectiveSugar.h"; path = "Classes/NSNumber+ObjectiveSugar.h"; sourceTree = "<group>"; };
+		912B5E1D678D49CAA2F9FB1C /* JVFloatLabeledTextView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JVFloatLabeledTextView.m; path = JVFloatLabeledTextField/JVFloatLabeledTextField/JVFloatLabeledTextView.m; sourceTree = "<group>"; };
+		918BCF6EC5D74C829D347B81 /* NSDictionary+ObjectiveSugar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+ObjectiveSugar.h"; path = "Classes/NSDictionary+ObjectiveSugar.h"; sourceTree = "<group>"; };
+		94E0166CCC66432FB4C84E55 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		97EBE75FB92441F9B66519F5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
+		9F31985F7A7A423FB4339575 /* NSString+ObjectiveSugar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+ObjectiveSugar.m"; path = "Classes/NSString+ObjectiveSugar.m"; sourceTree = "<group>"; };
+		9FC20A16C161417C848BE4EE /* NSDictionary+ObjectiveSugar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+ObjectiveSugar.m"; path = "Classes/NSDictionary+ObjectiveSugar.m"; sourceTree = "<group>"; };
+		AB08F943F771462288BEAAF9 /* NSSet+ObjectiveSugar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSSet+ObjectiveSugar.h"; path = "Classes/NSSet+ObjectiveSugar.h"; sourceTree = "<group>"; };
+		AC00878FF11B4BAC8EEFF1BA /* NSManagedObject+ActiveRecord.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSManagedObject+ActiveRecord.h"; path = "Classes/NSManagedObject+ActiveRecord.h"; sourceTree = "<group>"; };
+		AF6CA6D8D1284AEFA397A35C /* RATreeView+Enums.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "RATreeView+Enums.m"; path = "RATreeView/Private Files/RATreeView+Enums.m"; sourceTree = "<group>"; };
+		B071AE8A6F1047298B53D05B /* RATreeNodeItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RATreeNodeItem.m; path = "RATreeView/Private Files/RATreeNodeItem.m"; sourceTree = "<group>"; };
+		B40858B059944113A0CFC98D /* Pods-RATreeView-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RATreeView-Private.xcconfig"; sourceTree = "<group>"; };
+		B430FC55FC074802ABF49E1D /* RATreeNodeController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RATreeNodeController.h; path = "RATreeView/Private Files/RATreeNodeController.h"; sourceTree = "<group>"; };
+		BB1868E5E5994AD9B3AB1012 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		BCBFC2776CD54BD8AFC0DF4C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		C6330BC0F7B047D99AD602EA /* RATreeView+Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "RATreeView+Private.h"; path = "RATreeView/Private Files/RATreeView+Private.h"; sourceTree = "<group>"; };
+		C9C33D52BA2F4758B250697D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.xcconfig; sourceTree = "<group>"; };
+		CEBD924F1C8B463A974948A3 /* RATreeView+TableViewDataSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "RATreeView+TableViewDataSource.h"; path = "RATreeView/Private Files/RATreeView+TableViewDataSource.h"; sourceTree = "<group>"; };
+		CF986D62951E4AAEAD291018 /* RATreeNode_ClassExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RATreeNode_ClassExtension.h; path = "RATreeView/Private Files/RATreeNode_ClassExtension.h"; sourceTree = "<group>"; };
+		D7541E9784CD40E08D38FCCB /* Pods-ObjectiveRecord-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ObjectiveRecord-Private.xcconfig"; sourceTree = "<group>"; };
+		D7C2F31592B74B64AD5CBA5B /* RATreeView+UIScrollView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "RATreeView+UIScrollView.m"; path = "RATreeView/Private Files/RATreeView+UIScrollView.m"; sourceTree = "<group>"; };
+		D92C80472CD74CCF93951D52 /* CoreDataManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CoreDataManager.m; path = Classes/CoreDataManager.m; sourceTree = "<group>"; };
+		DA452E0CCA8D4DAB9FA17068 /* NSManagedObject+ActiveRecord.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSManagedObject+ActiveRecord.m"; path = "Classes/NSManagedObject+ActiveRecord.m"; sourceTree = "<group>"; };
+		DE3FC5D26B2A483E95BC3A3A /* RATreeNodeItem+Private.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "RATreeNodeItem+Private.m"; path = "RATreeView/Private Files/RATreeNodeItem+Private.m"; sourceTree = "<group>"; };
+		E98F4EC8AF1746F3AEC4C954 /* RATreeView_ClassExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RATreeView_ClassExtension.h; path = "RATreeView/Private Files/RATreeView_ClassExtension.h"; sourceTree = "<group>"; };
+		EC9F87B689904669952CCEE7 /* RATreeNodeCollectionController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RATreeNodeCollectionController.m; path = "RATreeView/Private Files/RATreeNodeCollectionController.m"; sourceTree = "<group>"; };
+		EF6576BFCD614804B1B9773C /* NSArray+ObjectiveSugar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSArray+ObjectiveSugar.m"; path = "Classes/NSArray+ObjectiveSugar.m"; sourceTree = "<group>"; };
+		F0973C7DB80043BD828F0A7D /* Pods-ObjectiveRecord-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ObjectiveRecord-dummy.m"; sourceTree = "<group>"; };
+		F0993750897D4BA6A0B09C97 /* libPods-RATreeView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RATreeView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9E87920069944A093EBD59A /* NSMutableArray+ObjectiveSugar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+ObjectiveSugar.m"; path = "Classes/NSMutableArray+ObjectiveSugar.m"; sourceTree = "<group>"; };
+		FC3B21F573814680A0841DA0 /* Pods-JVFloatLabeledTextField-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JVFloatLabeledTextField-dummy.m"; sourceTree = "<group>"; };
+		FE1B6F3CCDBB4C83A88EA363 /* JVFloatLabeledTextField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JVFloatLabeledTextField.h; path = JVFloatLabeledTextField/JVFloatLabeledTextField/JVFloatLabeledTextField.h; sourceTree = "<group>"; };
+		FE8F710103174BF38AFBDF15 /* ObjectiveRecord.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ObjectiveRecord.h; path = Classes/ObjectiveRecord.h; sourceTree = "<group>"; };
+		FF9450D4EA734F58AC73FF1E /* RABatchChanges.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RABatchChanges.m; path = "RATreeView/Private Files/RABatchChanges.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		41641439C4CD46F793AF18B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7ACF0FA813FD4BFD97FA5C5F /* Foundation.framework in Frameworks */,
+				2F35E0040EE048898A19EFFF /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D0D4F75EBB64D159F861F8D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC2381CFF382425E9D38A1E7 /* CoreData.framework in Frameworks */,
+				75D8E7EE233542B6B17BF04D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		957929E8549F43AB84F76D1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				316654C8BF8A4DF6A999A9F9 /* Foundation.framework in Frameworks */,
+				9E06A6BC99754425A089D3A1 /* libPods-JVFloatLabeledTextField.a in Frameworks */,
+				7DEF4059A63147A69C5A51E4 /* libPods-ObjectiveRecord.a in Frameworks */,
+				4041456DA7F1472C99244BF2 /* libPods-ObjectiveSugar.a in Frameworks */,
+				A79AF0F2E23A481DA71DFA9E /* libPods-RATreeView.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA5E19F23DCD4220A2037BC6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B909265449D484990DACCA3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA472E93F1174B829B4C2552 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3817B51D86AF4A3F913B7EFB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089DDDBCC8F54A7DA983F2EE /* JVFloatLabeledTextField */ = {
+			isa = PBXGroup;
+			children = (
+				FE1B6F3CCDBB4C83A88EA363 /* JVFloatLabeledTextField.h */,
+				0F76A562252E470C933A5AE5 /* JVFloatLabeledTextField.m */,
+				27C4CDA8D12D479F91C8894D /* JVFloatLabeledTextView.h */,
+				912B5E1D678D49CAA2F9FB1C /* JVFloatLabeledTextView.m */,
+				B4F195739EE8416787C35CA9 /* Support Files */,
+			);
+			path = JVFloatLabeledTextField;
+			sourceTree = "<group>";
+		};
+		30E9C42BFBC54F23AAA8CC4B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				76786098F35E4077A941963A /* Pods-RATreeView.xcconfig */,
+				B40858B059944113A0CFC98D /* Pods-RATreeView-Private.xcconfig */,
+				3DD79E4933DB4D4BAB6FE0BC /* Pods-RATreeView-dummy.m */,
+				3B4664DB7CC04EB08D1EC1A0 /* Pods-RATreeView-prefix.pch */,
+			);
+			name = "Support Files";
+			sourceTree = SOURCE_ROOT;
+		};
+		3190B12FF4114BAC81AE77D9 /* ObjectiveSugar */ = {
+			isa = PBXGroup;
+			children = (
+				469FA8B7DE3C4FADB2E53A66 /* NSArray+ObjectiveSugar.h */,
+				EF6576BFCD614804B1B9773C /* NSArray+ObjectiveSugar.m */,
+				918BCF6EC5D74C829D347B81 /* NSDictionary+ObjectiveSugar.h */,
+				9FC20A16C161417C848BE4EE /* NSDictionary+ObjectiveSugar.m */,
+				6063CEE873CD43FBB5D45CF5 /* NSMutableArray+ObjectiveSugar.h */,
+				F9E87920069944A093EBD59A /* NSMutableArray+ObjectiveSugar.m */,
+				8F129F5AFE054B7E8705BAC5 /* NSNumber+ObjectiveSugar.h */,
+				563E92F72DBB4AF0BF33F7C9 /* NSNumber+ObjectiveSugar.m */,
+				AB08F943F771462288BEAAF9 /* NSSet+ObjectiveSugar.h */,
+				17880564392C49F29CB76EB8 /* NSSet+ObjectiveSugar.m */,
+				23C6B9322D674B4A8E5CD606 /* NSString+ObjectiveSugar.h */,
+				9F31985F7A7A423FB4339575 /* NSString+ObjectiveSugar.m */,
+				176C172DD2D64FFFB80DDB34 /* ObjectiveSugar.h */,
+				8BCC1D36DB9749BA82FB5A11 /* Support Files */,
+			);
+			path = ObjectiveSugar;
+			sourceTree = "<group>";
+		};
+		49E5EA41961F473CA0EDB942 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4FE258E2C8024EE9A8B2F02F /* libPods.a */,
+				0CBB0D2ED4C64D78BF6C0991 /* libPods-JVFloatLabeledTextField.a */,
+				87FCFA22EAEE421985EC1F10 /* libPods-ObjectiveRecord.a */,
+				39ABB0F50B9843B4943114CD /* libPods-ObjectiveSugar.a */,
+				F0993750897D4BA6A0B09C97 /* libPods-RATreeView.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		54865F6A63774617A91DDC3A /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				97EBE75FB92441F9B66519F5 /* CoreData.framework */,
+				BCBFC2776CD54BD8AFC0DF4C /* Foundation.framework */,
+				BB1868E5E5994AD9B3AB1012 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		5C07B2A4393F4055B7013F14 = {
+			isa = PBXGroup;
+			children = (
+				94E0166CCC66432FB4C84E55 /* Podfile */,
+				FB437065266D4EBA8EEDD618 /* Frameworks */,
+				F2237F1EF32B4914A699BD42 /* Pods */,
+				49E5EA41961F473CA0EDB942 /* Products */,
+				BF1CCEB234DC4EF8A201E493 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		7E88A89CD48A4346AD6D00DC /* RATreeView */ = {
+			isa = PBXGroup;
+			children = (
+				458F447ABD5546B2AE79B728 /* RABatchChanges.h */,
+				FF9450D4EA734F58AC73FF1E /* RABatchChanges.m */,
+				24EC53F5AE3D40FBB02D5CC0 /* RATreeNode.h */,
+				22268435B2D84DEB9E02A199 /* RATreeNode.m */,
+				00DA5E40FA85488F9055CF38 /* RATreeNodeCollectionController.h */,
+				EC9F87B689904669952CCEE7 /* RATreeNodeCollectionController.m */,
+				B430FC55FC074802ABF49E1D /* RATreeNodeController.h */,
+				8155DEAC5BF44172B99F32C6 /* RATreeNodeController.m */,
+				8DBACFFFBB17471DB6246010 /* RATreeNodeItem.h */,
+				B071AE8A6F1047298B53D05B /* RATreeNodeItem.m */,
+				2676866601BB4D21AA155BB0 /* RATreeNodeItem+ClassExtension.h */,
+				6C9C5FEF6BBE4826A2EE2244 /* RATreeNodeItem+Private.h */,
+				DE3FC5D26B2A483E95BC3A3A /* RATreeNodeItem+Private.m */,
+				CF986D62951E4AAEAD291018 /* RATreeNode_ClassExtension.h */,
+				2A0D63A6835C45DBA807092B /* RATreeView.h */,
+				297BFE016C0241FFA647E94D /* RATreeView.m */,
+				37A5EC33641441E8B7672C4E /* RATreeView+Enums.h */,
+				AF6CA6D8D1284AEFA397A35C /* RATreeView+Enums.m */,
+				C6330BC0F7B047D99AD602EA /* RATreeView+Private.h */,
+				0ADE99876E8343B0B4F2785E /* RATreeView+Private.m */,
+				102919BC80204879AEE4A3B9 /* RATreeView+RATreeNodeCollectionControllerDataSource.h */,
+				5CA89352A3324B64BE8A1889 /* RATreeView+RATreeNodeCollectionControllerDataSource.m */,
+				CEBD924F1C8B463A974948A3 /* RATreeView+TableViewDataSource.h */,
+				022F8FAFE2974D54840A2833 /* RATreeView+TableViewDataSource.m */,
+				3210CC6E1CC1420E99AE968F /* RATreeView+TableViewDelegate.h */,
+				0C98305F04754369A2B82B93 /* RATreeView+TableViewDelegate.m */,
+				20E2C4AFBCEA4A3F9890725A /* RATreeView+UIScrollView.h */,
+				D7C2F31592B74B64AD5CBA5B /* RATreeView+UIScrollView.m */,
+				E98F4EC8AF1746F3AEC4C954 /* RATreeView_ClassExtension.h */,
+				30E9C42BFBC54F23AAA8CC4B /* Support Files */,
+			);
+			path = RATreeView;
+			sourceTree = "<group>";
+		};
+		8956768B78D245CC8DA88585 /* ObjectiveRecord */ = {
+			isa = PBXGroup;
+			children = (
+				7B5A19F7F7AC4252846F55EA /* CoreDataManager.h */,
+				D92C80472CD74CCF93951D52 /* CoreDataManager.m */,
+				AC00878FF11B4BAC8EEFF1BA /* NSManagedObject+ActiveRecord.h */,
+				DA452E0CCA8D4DAB9FA17068 /* NSManagedObject+ActiveRecord.m */,
+				1C13663DFCEB459C9D431D79 /* NSManagedObject+Mappings.h */,
+				11CDD4758B624330939037D7 /* NSManagedObject+Mappings.m */,
+				FE8F710103174BF38AFBDF15 /* ObjectiveRecord.h */,
+				9EB9979971C34132B90C12B5 /* Support Files */,
+			);
+			path = ObjectiveRecord;
+			sourceTree = "<group>";
+		};
+		8BCC1D36DB9749BA82FB5A11 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				8CBDE7CEB9804F0AA0FA21C2 /* Pods-ObjectiveSugar.xcconfig */,
+				5E11F675C4434FDABB37F148 /* Pods-ObjectiveSugar-Private.xcconfig */,
+				858A7A8168A44BF798D26AB5 /* Pods-ObjectiveSugar-dummy.m */,
+				36FB42A3C5BB4CFDBD01BCE4 /* Pods-ObjectiveSugar-prefix.pch */,
+			);
+			name = "Support Files";
+			sourceTree = SOURCE_ROOT;
+		};
+		9EB9979971C34132B90C12B5 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				415145E7D0E242C9B42E8E21 /* Pods-ObjectiveRecord.xcconfig */,
+				D7541E9784CD40E08D38FCCB /* Pods-ObjectiveRecord-Private.xcconfig */,
+				F0973C7DB80043BD828F0A7D /* Pods-ObjectiveRecord-dummy.m */,
+				1B466F20B6B64432BAD2DB9D /* Pods-ObjectiveRecord-prefix.pch */,
+			);
+			name = "Support Files";
+			sourceTree = SOURCE_ROOT;
+		};
+		B4F195739EE8416787C35CA9 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				199092143E864BCBBB900AFB /* Pods-JVFloatLabeledTextField.xcconfig */,
+				8A63D1B2785D403CBE556128 /* Pods-JVFloatLabeledTextField-Private.xcconfig */,
+				FC3B21F573814680A0841DA0 /* Pods-JVFloatLabeledTextField-dummy.m */,
+				6A9E580C5F994C0B84637DE6 /* Pods-JVFloatLabeledTextField-prefix.pch */,
+			);
+			name = "Support Files";
+			sourceTree = SOURCE_ROOT;
+		};
+		B877230058B34124B156FA31 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C9C33D52BA2F4758B250697D /* Pods.xcconfig */,
+				4BBB5BDF7D1342C8AFCC190A /* Pods-acknowledgements.markdown */,
+				4A26B5AF0758447FB845A253 /* Pods-acknowledgements.plist */,
+				2E8E708FE97D4A1394C935E0 /* Pods-dummy.m */,
+				6E1E90EA56A849499FD6D545 /* Pods-environment.h */,
+				147406128A8C47DFB90CA741 /* Pods-resources.sh */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BF1CCEB234DC4EF8A201E493 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B877230058B34124B156FA31 /* Pods */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		F2237F1EF32B4914A699BD42 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				089DDDBCC8F54A7DA983F2EE /* JVFloatLabeledTextField */,
+				8956768B78D245CC8DA88585 /* ObjectiveRecord */,
+				3190B12FF4114BAC81AE77D9 /* ObjectiveSugar */,
+				7E88A89CD48A4346AD6D00DC /* RATreeView */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FB437065266D4EBA8EEDD618 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				54865F6A63774617A91DDC3A /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		32F64E793C3741328BB93C55 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32D05D069A834877B8BA2903 /* CoreDataManager.h in Headers */,
+				2D59624591554D689760B281 /* NSManagedObject+ActiveRecord.h in Headers */,
+				6A72AF1EE9E84777B596FCBD /* NSManagedObject+Mappings.h in Headers */,
+				66499F50CAC142D8A40B1B78 /* ObjectiveRecord.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B455FE82BDC94C508A483C56 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98BB2AFE0F834A1987EEFD7E /* RABatchChanges.h in Headers */,
+				280EAA69915C4D738F71AD17 /* RATreeNode.h in Headers */,
+				B4BAE8F9B6C54C56A6089661 /* RATreeNodeCollectionController.h in Headers */,
+				A08FBF064D6D4B078A3EB00B /* RATreeNodeController.h in Headers */,
+				03421DA2CFB94428ABE28CE8 /* RATreeNodeItem+ClassExtension.h in Headers */,
+				36AB88AAC2F24EB1B8E62C88 /* RATreeNodeItem+Private.h in Headers */,
+				7EEB1BA137354907BE6F7372 /* RATreeNodeItem.h in Headers */,
+				E78876FAD9C5496984B92BBA /* RATreeNode_ClassExtension.h in Headers */,
+				BB96A0F3C02C4587B38E7E18 /* RATreeView+Enums.h in Headers */,
+				DAB3483A32A1421CA4923E57 /* RATreeView+Private.h in Headers */,
+				CCE2795E024F48EDB7F36B0A /* RATreeView+RATreeNodeCollectionControllerDataSource.h in Headers */,
+				5AD27583251043CD826BC6C3 /* RATreeView+TableViewDataSource.h in Headers */,
+				69B870FF10C045E9B37A467B /* RATreeView+TableViewDelegate.h in Headers */,
+				D97192C8E07B47CDABA12660 /* RATreeView+UIScrollView.h in Headers */,
+				2F9431E81E5C40518798AE06 /* RATreeView.h in Headers */,
+				A692BC7783F64997AD271EBE /* RATreeView_ClassExtension.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D97431B567904BD5851E6DCB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69C2535E97B14D0C861A966C /* JVFloatLabeledTextField.h in Headers */,
+				40ABC52F1505463CBE7BAD21 /* JVFloatLabeledTextView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFCB6B7DC7164646985F3CBA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A22BFF9784C3447F8D4309CF /* NSArray+ObjectiveSugar.h in Headers */,
+				0BE29D31C3864B3C9CC16393 /* NSDictionary+ObjectiveSugar.h in Headers */,
+				960F2D2B5E3F4E3E8F525438 /* NSMutableArray+ObjectiveSugar.h in Headers */,
+				0AD511B409854E7F8026292A /* NSNumber+ObjectiveSugar.h in Headers */,
+				531794BFADE14D85830C2A73 /* NSSet+ObjectiveSugar.h in Headers */,
+				61ABF20B3FF9419BB301DA13 /* NSString+ObjectiveSugar.h in Headers */,
+				6AE2EA394DF74266BA8C2D73 /* ObjectiveSugar.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0417BC814A344D82854E62CB /* Pods */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9ED67F297AC64A199606B3B6 /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildPhases = (
+				644B9BC97FD844C5962CF985 /* Sources */,
+				957929E8549F43AB84F76D1E /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8664CAF3BD93431980645516 /* PBXTargetDependency */,
+				2329B0D71B30432BBA21DE36 /* PBXTargetDependency */,
+				1FAA88FA70ED44C8A768320D /* PBXTargetDependency */,
+				B1F373D4EE424FD7A4154AF3 /* PBXTargetDependency */,
+			);
+			name = Pods;
+			productName = Pods;
+			productReference = 4FE258E2C8024EE9A8B2F02F /* libPods.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		1DA894953EB54EB095E24C98 /* Pods-JVFloatLabeledTextField */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9D146A2AC7F749239B11759A /* Build configuration list for PBXNativeTarget "Pods-JVFloatLabeledTextField" */;
+			buildPhases = (
+				B9286DA921C04A1CA18FE44C /* Sources */,
+				41641439C4CD46F793AF18B6 /* Frameworks */,
+				D97431B567904BD5851E6DCB /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-JVFloatLabeledTextField";
+			productName = "Pods-JVFloatLabeledTextField";
+			productReference = 0CBB0D2ED4C64D78BF6C0991 /* libPods-JVFloatLabeledTextField.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		5B0A9CE32E334B73B3DB0477 /* Pods-ObjectiveRecord */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB23515B4E2A4697AFAD4A57 /* Build configuration list for PBXNativeTarget "Pods-ObjectiveRecord" */;
+			buildPhases = (
+				E257BAD840FB479D82A0E6D2 /* Sources */,
+				8D0D4F75EBB64D159F861F8D /* Frameworks */,
+				32F64E793C3741328BB93C55 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				58DD375DB8784768B8D80FAB /* PBXTargetDependency */,
+			);
+			name = "Pods-ObjectiveRecord";
+			productName = "Pods-ObjectiveRecord";
+			productReference = 87FCFA22EAEE421985EC1F10 /* libPods-ObjectiveRecord.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		835B33957D8B4B83BC6FC4D3 /* Pods-RATreeView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3E0519968B814DE7B3BCA125 /* Build configuration list for PBXNativeTarget "Pods-RATreeView" */;
+			buildPhases = (
+				92A426A7323F479C958F8C52 /* Sources */,
+				DA472E93F1174B829B4C2552 /* Frameworks */,
+				B455FE82BDC94C508A483C56 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-RATreeView";
+			productName = "Pods-RATreeView";
+			productReference = F0993750897D4BA6A0B09C97 /* libPods-RATreeView.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		D195EDB4A4564830BDD1F7DD /* Pods-ObjectiveSugar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F45A027D85E84837A0F30DE0 /* Build configuration list for PBXNativeTarget "Pods-ObjectiveSugar" */;
+			buildPhases = (
+				F2A86795EEDA4D269D2B46C0 /* Sources */,
+				BA5E19F23DCD4220A2037BC6 /* Frameworks */,
+				FFCB6B7DC7164646985F3CBA /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-ObjectiveSugar";
+			productName = "Pods-ObjectiveSugar";
+			productReference = 39ABB0F50B9843B4943114CD /* libPods-ObjectiveSugar.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		07ED792BA02F43808C79BB94 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+			};
+			buildConfigurationList = 3325D64790114E1FB40A6BFA /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5C07B2A4393F4055B7013F14;
+			productRefGroup = 49E5EA41961F473CA0EDB942 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0417BC814A344D82854E62CB /* Pods */,
+				1DA894953EB54EB095E24C98 /* Pods-JVFloatLabeledTextField */,
+				5B0A9CE32E334B73B3DB0477 /* Pods-ObjectiveRecord */,
+				D195EDB4A4564830BDD1F7DD /* Pods-ObjectiveSugar */,
+				835B33957D8B4B83BC6FC4D3 /* Pods-RATreeView */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		644B9BC97FD844C5962CF985 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				426A6BD0DECF4E8BA898E30A /* Pods-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92A426A7323F479C958F8C52 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				765BBA6526E14836B7479DBD /* Pods-RATreeView-dummy.m in Sources */,
+				B2072DBC52F446329C836DC3 /* RABatchChanges.m in Sources */,
+				991CE6D5BAA24D25BA59B81F /* RATreeNode.m in Sources */,
+				B8E98F5787D64E9AAE780C78 /* RATreeNodeCollectionController.m in Sources */,
+				7A5F329CBCAA4BC1AE742F43 /* RATreeNodeController.m in Sources */,
+				6842D7DD440F4DC89464779B /* RATreeNodeItem+Private.m in Sources */,
+				08F1564118B042DCB1007C4C /* RATreeNodeItem.m in Sources */,
+				3D45B7B99DB54019A7C0D4F8 /* RATreeView+Enums.m in Sources */,
+				106619F397D141E1A2FE2074 /* RATreeView+Private.m in Sources */,
+				4A91F2EB69774E91921127B1 /* RATreeView+RATreeNodeCollectionControllerDataSource.m in Sources */,
+				25B7C62FF49548BBBC1301AE /* RATreeView+TableViewDataSource.m in Sources */,
+				DE3957A3F72246AD9E743986 /* RATreeView+TableViewDelegate.m in Sources */,
+				D8595F5162B748DEA82668A0 /* RATreeView+UIScrollView.m in Sources */,
+				8FE74F176CEC43D6AC6D6AB4 /* RATreeView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9286DA921C04A1CA18FE44C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A837A96505F74AAB8AFA0795 /* JVFloatLabeledTextField.m in Sources */,
+				5CF7C3B609864A32894A4EAA /* JVFloatLabeledTextView.m in Sources */,
+				4782666095E54133A509392D /* Pods-JVFloatLabeledTextField-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E257BAD840FB479D82A0E6D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F514D6A572784F178E5EBEC2 /* CoreDataManager.m in Sources */,
+				0F521C57BD4743E2AD3AC827 /* NSManagedObject+ActiveRecord.m in Sources */,
+				6B90835B65FF4C22806B7ADE /* NSManagedObject+Mappings.m in Sources */,
+				F17F868003D54DC5A38CB718 /* Pods-ObjectiveRecord-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2A86795EEDA4D269D2B46C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				518FC73F324346BEADEADE77 /* NSArray+ObjectiveSugar.m in Sources */,
+				32445D40B09B4E17ABE3A172 /* NSDictionary+ObjectiveSugar.m in Sources */,
+				D4627A714ACF4CC7A097A3AE /* NSMutableArray+ObjectiveSugar.m in Sources */,
+				8CA23167725A4D92991802C2 /* NSNumber+ObjectiveSugar.m in Sources */,
+				4E00D608A08C489CA44B4210 /* NSSet+ObjectiveSugar.m in Sources */,
+				D4B727E49A254458B84DB021 /* NSString+ObjectiveSugar.m in Sources */,
+				5573ED16BF7447F4961B4D7F /* Pods-ObjectiveSugar-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1FAA88FA70ED44C8A768320D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D195EDB4A4564830BDD1F7DD /* Pods-ObjectiveSugar */;
+			targetProxy = 018CABA40A8649D78068379F /* PBXContainerItemProxy */;
+		};
+		2329B0D71B30432BBA21DE36 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B0A9CE32E334B73B3DB0477 /* Pods-ObjectiveRecord */;
+			targetProxy = 2E69467294BE4ED785934651 /* PBXContainerItemProxy */;
+		};
+		58DD375DB8784768B8D80FAB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D195EDB4A4564830BDD1F7DD /* Pods-ObjectiveSugar */;
+			targetProxy = B69F9CDC4498443DA0C11444 /* PBXContainerItemProxy */;
+		};
+		8664CAF3BD93431980645516 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1DA894953EB54EB095E24C98 /* Pods-JVFloatLabeledTextField */;
+			targetProxy = 068839D4715641C0874D3082 /* PBXContainerItemProxy */;
+		};
+		B1F373D4EE424FD7A4154AF3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 835B33957D8B4B83BC6FC4D3 /* Pods-RATreeView */;
+			targetProxy = 2178F3D783AF462F92F0FE4A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1C0B2021D63847E5BE6FE766 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A63D1B2785D403CBE556128 /* Pods-JVFloatLabeledTextField-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-JVFloatLabeledTextField-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		34A9D0483336406A8FFC5B00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		351CEBE28E864AD3B4CC7AEA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E11F675C4434FDABB37F148 /* Pods-ObjectiveSugar-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-ObjectiveSugar-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		37236C09C31E4B47BD50388A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7541E9784CD40E08D38FCCB /* Pods-ObjectiveRecord-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-ObjectiveRecord-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		816C81BE9B3B47DA9256DEB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B40858B059944113A0CFC98D /* Pods-RATreeView-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-RATreeView-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		87D4EA0EE79F47149FD189FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+			};
+			name = Debug;
+		};
+		B82BB372188A423890E65AC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9C33D52BA2F4758B250697D /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C76CBF1901914C338444960A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9C33D52BA2F4758B250697D /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C9A84EE4DF024A518E91E178 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A63D1B2785D403CBE556128 /* Pods-JVFloatLabeledTextField-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-JVFloatLabeledTextField-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D582E85F393F447CA86DA6C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7541E9784CD40E08D38FCCB /* Pods-ObjectiveRecord-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-ObjectiveRecord-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		DB3E4A0BEDF64B068203B992 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B40858B059944113A0CFC98D /* Pods-RATreeView-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-RATreeView-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		ED6060DFA88A4FBF844DAE85 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E11F675C4434FDABB37F148 /* Pods-ObjectiveSugar-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-ObjectiveSugar-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3325D64790114E1FB40A6BFA /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87D4EA0EE79F47149FD189FE /* Debug */,
+				34A9D0483336406A8FFC5B00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3E0519968B814DE7B3BCA125 /* Build configuration list for PBXNativeTarget "Pods-RATreeView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB3E4A0BEDF64B068203B992 /* Debug */,
+				816C81BE9B3B47DA9256DEB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9D146A2AC7F749239B11759A /* Build configuration list for PBXNativeTarget "Pods-JVFloatLabeledTextField" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9A84EE4DF024A518E91E178 /* Debug */,
+				1C0B2021D63847E5BE6FE766 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9ED67F297AC64A199606B3B6 /* Build configuration list for PBXNativeTarget "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C76CBF1901914C338444960A /* Debug */,
+				B82BB372188A423890E65AC1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB23515B4E2A4697AFAD4A57 /* Build configuration list for PBXNativeTarget "Pods-ObjectiveRecord" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D582E85F393F447CA86DA6C0 /* Debug */,
+				37236C09C31E4B47BD50388A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F45A027D85E84837A0F30DE0 /* Build configuration list for PBXNativeTarget "Pods-ObjectiveSugar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ED6060DFA88A4FBF844DAE85 /* Debug */,
+				351CEBE28E864AD3B4CC7AEA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 07ED792BA02F43808C79BB94 /* Project object */;
+}
