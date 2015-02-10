@@ -13,6 +13,7 @@
 #import "Constants.h"
 
 @interface JsonOutputViewController () <RATreeViewDataSource, RATreeViewDelegate>
+
 /**
  *  RATreeView that displays the JSON in an awesome, awesome way.
  */
@@ -90,12 +91,12 @@
     return 47;
 }
 
-- (NSInteger)treeView:(RATreeView *)treeView indentationLevelForRowForItem:(id)item treeNodeInfo:(id)treeNodeInfo
+- (NSInteger)treeView:(RATreeView *)treeView indentationLevelForRowForItem:(id)item
 {
-    return (3 * [treeView levelForCellForItem:treeNodeInfo]);
+    return (3 * [treeView levelForCellForItem:item]);
 }
 
-- (BOOL)treeView:(RATreeView *)treeView shouldExpandItem:(id)item treeNodeInfo:(id)treeNodeInfo
+- (BOOL)treeView:(RATreeView *)treeView shouldExpandItem:(id)item
 {
     return YES;
 }
@@ -105,9 +106,9 @@
     return NO;
 }
 
-- (void)treeView:(RATreeView *)treeView willDisplayCell:(UITableViewCell *)cell forItem:(id)item treeNodeInfo:(id)treeNodeInfo
+- (void)treeView:(RATreeView *)treeView willDisplayCell:(UITableViewCell *)cell forItem:(id)item;
 {
-    NSInteger treeDepthLevel = [treeView levelForCellForItem:treeNodeInfo];
+    NSInteger treeDepthLevel = [treeView levelForCellForItem:item];
     
     if (treeDepthLevel == 0) {
         [cell setBackgroundColor:UIColorFromRGB(0xF7F7F7)];
@@ -223,7 +224,9 @@
         if ([tempObject isKindOfClass:[NSArray class]]) {
             return tempObject[index];
         }
-        return [tempObject children][index];
+        else {
+            return [tempObject children][index];
+        }
     }
     
     return nil;
