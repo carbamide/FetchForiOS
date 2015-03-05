@@ -64,7 +64,6 @@
 {
     if (url != nil && [url isFileURL]) {
 		if ([[url lastPathComponent] rangeOfString:@"fetch" options:NSCaseInsensitiveSearch].location != NSNotFound) {
-            
             if ([[NSFileManager defaultManager] fileExistsAtPath:[[[self applicationDocumentsDirectory] URLByAppendingPathComponent:[url lastPathComponent]] path] isDirectory:nil]) {
                 [[NSFileManager defaultManager] removeItemAtURL:[[self applicationDocumentsDirectory] URLByAppendingPathComponent:[url lastPathComponent]] error:nil];
             }

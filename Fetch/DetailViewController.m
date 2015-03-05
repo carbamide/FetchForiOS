@@ -198,10 +198,8 @@ NS_ENUM(NSInteger, CellTypeTag){
 #pragma mark -
 #pragma mark - Lifecycle
 
-- (void)viewDidLoad
+-(void)setupUserInterface
 {
-    [super viewDidLoad];
-    
     [[self outputTextView] setEditable:NO];
     [[self outputTextView] setPrimaryHighlightColor:UIColorFromRGB(0xfff51d)];
     [[self outputTextView] setSecondaryHighlightColor:UIColorFromRGB(0xfffa86)];
@@ -241,20 +239,6 @@ NS_ENUM(NSInteger, CellTypeTag){
         [[self view] addSubview:[self searchBar]];
     }
     
-    _maximizeGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandOutputTextView:)];
-    
-    [_maximizeGesture setNumberOfTapsRequired:2];
-    
-    [[self outputTextView] addGestureRecognizer:_maximizeGesture];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadUrl:) name:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadUrl:) name:LOAD_URL object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addHeader:) name:ADD_HEADER object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addParameter:) name:ADD_PARAMETER object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(parseAction:) name:SHOW_PARSE_ACTION object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(internetDown:) name:INTERNET_DOWN object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(internetUp:) name:INTERNET_UP object:nil];
-    
     [[self urlDescriptionTextField] setPlaceholder:@"URL Description"];
     [[self urlTextField] setPlaceholder:@"URL"];
     
@@ -262,11 +246,6 @@ NS_ENUM(NSInteger, CellTypeTag){
     [[[self customPayloadTextView] layer] setCornerRadius:5];
     
     [[self customPayloadTextView] setPlaceholder:@"Custom Payload"];
-    
-    [self setHeadersDataSource:[NSMutableArray array]];
-    [self setParametersDataSource:[NSMutableArray array]];
-    
-
     
     [self setTitle:@"Fetch for iOS"];
     
@@ -277,14 +256,32 @@ NS_ENUM(NSInteger, CellTypeTag){
     }
 }
 
--(void)viewDidAppear:(BOOL)animated
+-(void)setupNotifications
 {
-    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadUrl:) name:NSPersistentStoreDidImportUbiquitousContentChangesNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadUrl:) name:LOAD_URL object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addHeader:) name:ADD_HEADER object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addParameter:) name:ADD_PARAMETER object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(parseAction:) name:SHOW_PARSE_ACTION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(internetDown:) name:INTERNET_DOWN object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(internetUp:) name:INTERNET_UP object:nil];
 }
 
-- (void)didReceiveMemoryWarning
+-(void)viewDidLoad
 {
-    [super didReceiveMemoryWarning];
+    [super viewDidLoad];
+    
+    [self setupUserInterface];
+    
+    _maximizeGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandOutputTextView:)];
+    [_maximizeGesture setNumberOfTapsRequired:2];
+    
+    [[self outputTextView] addGestureRecognizer:_maximizeGesture];
+    
+    [self setupNotifications];
+    
+    [self setHeadersDataSource:[NSMutableArray array]];
+    [self setParametersDataSource:[NSMutableArray array]];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -306,25 +303,6 @@ NS_ENUM(NSInteger, CellTypeTag){
     [[NSNotificationCenter defaultCenter] removeObserver:self name:SHOW_PARSE_ACTION object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:INTERNET_DOWN object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:INTERNET_UP object:nil];
-}
-
-#pragma mark -
-#pragma mark - UISplitViewDelegate
-
-- (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
-{
-    [barButtonItem setTitle:@"Projects"];
-    
-    [[self navigationItem] setLeftBarButtonItem:barButtonItem animated:YES];
-    
-    [self setMasterPopoverController:popoverController];
-}
-
-- (void)splitViewController:(UISplitViewController *)splitController willShowViewController:(UIViewController *)viewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
-{
-    [[self navigationItem] setLeftBarButtonItem:nil animated:YES];
-    
-    [self setMasterPopoverController:nil];
 }
 
 #pragma mark -
@@ -1147,6 +1125,26 @@ NS_ENUM(NSInteger, CellTypeTag){
     [[self view] findAndResignFirstResponder];
     
     return NO;
+}
+
+
+#pragma mark -
+#pragma mark - UISplitViewDelegate
+
+- (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
+{
+    [barButtonItem setTitle:@"Projects"];
+    
+    [[self navigationItem] setLeftBarButtonItem:barButtonItem animated:YES];
+    
+    [self setMasterPopoverController:popoverController];
+}
+
+- (void)splitViewController:(UISplitViewController *)splitController willShowViewController:(UIViewController *)viewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
+{
+    [[self navigationItem] setLeftBarButtonItem:nil animated:YES];
+    
+    [self setMasterPopoverController:nil];
 }
 
 #pragma mark -
