@@ -148,31 +148,56 @@
 
 -(void)editProjectName:(Projects *)project
 {
-    UIAlertView *projectNameAlert = [[UIAlertView alloc] initWithTitle:[project name]
-                                                               message:@"New name?"
-                                                              delegate:self
-                                                     cancelButtonTitle:@"Cancel"
-                                                     otherButtonTitles:@"Update", nil];
+    __block UIAlertController *projectNameAlert = [UIAlertController alertControllerWithTitle:[project name]
+                                                                              message:@"New name?"
+                                                                       preferredStyle:UIAlertControllerStyleAlert];
     
-    [projectNameAlert setTag:65];
-    [projectNameAlert setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    [projectNameAlert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        [textField setPlaceholder:[project name]];
+    }];
     
-    [[projectNameAlert textFieldAtIndex:0] setPlaceholder:[project name]];
+    [projectNameAlert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+    [projectNameAlert addAction:[UIAlertAction actionWithTitle:@"Update" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        Projects *tempProject = [self tempProject];
+        
+        UITextField *tempTextField = [projectNameAlert textFields][0];
+        
+        [tempProject setName:[tempTextField text]];
+        [tempProject save];
+        
+        [[self projectList] replaceObjectAtIndex:[[self projectList] indexOfObject:[self tempProject]] withObject:tempProject];
+        
+        [[self tableView] reloadData];
+    }]];
     
-    [projectNameAlert show];
+    [self presentViewController:projectNameAlert animated:YES completion:nil];
 }
 
 - (void)insertNewObject:(id)sender
 {
-    UIAlertView *projectNameAlert = [[UIAlertView alloc] initWithTitle:@"New Project"
-                                                               message:@"Project name?"
-                                                              delegate:self
-                                                     cancelButtonTitle:@"Cancel"
-                                                     otherButtonTitles:@"Create", nil];
+    __block UIAlertController *projectNameAlert = [UIAlertController alertControllerWithTitle:@"New Project"
+                                                                                      message:@"Project name?"
+                                                                               preferredStyle:UIAlertControllerStyleAlert];
     
-    [projectNameAlert setTag:64];
-    [projectNameAlert setAlertViewStyle:UIAlertViewStylePlainTextInput];
-    [projectNameAlert show];
+    [projectNameAlert addTextFieldWithConfigurationHandler:nil];
+    
+    [projectNameAlert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+    [projectNameAlert addAction:[UIAlertAction actionWithTitle:@"Create" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        Projects *tempProject = [Projects create];
+        
+        UITextField *tempTextField = [projectNameAlert textFields][0];
+        
+        [tempProject setName:[tempTextField text]];
+        [tempProject save];
+        
+        [[self projectList] addObject:tempProject];
+        
+        [[self tableView] beginUpdates];
+        [[self tableView] insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:([[self projectList] count] - 1) inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [[self tableView] endUpdates];
+    }]];
+    
+    [self presentViewController:projectNameAlert animated:YES completion:nil];
 }
 
 
@@ -233,42 +258,6 @@
     }];
     
     [[self tableView] reloadData];
-}
-
-#pragma mark - UIAlertViewDelegate
-
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if ([alertView tag] == 64) {
-        if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Create"]) {
-            Projects *tempProject = [Projects create];
-            
-            UITextField *tempTextField = [alertView textFieldAtIndex:0];
-            
-            [tempProject setName:[tempTextField text]];
-            [tempProject save];
-            
-            [[self projectList] addObject:tempProject];
-            
-            [[self tableView] beginUpdates];
-            [[self tableView] insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:([[self projectList] count] - 1) inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
-            [[self tableView] endUpdates];
-        }
-    }
-    else if ([alertView tag] == 65) {
-        if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Update"]) {
-            Projects *tempProject = [self tempProject];
-            
-            UITextField *tempTextField = [alertView textFieldAtIndex:0];
-            
-            [tempProject setName:[tempTextField text]];
-            [tempProject save];
-            
-            [[self projectList] replaceObjectAtIndex:[[self projectList] indexOfObject:[self tempProject]] withObject:tempProject];
-            
-            [[self tableView] reloadData];
-        }
-    }
 }
 
 #pragma mark -

@@ -132,13 +132,13 @@
         
         switch (netStatus) {
             case NotReachable: {
-                UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Internet Connection"
-                                                                     message:@"An active Internet connection is required to use this application."
-                                                                    delegate:nil
-                                                           cancelButtonTitle:@"OK"
-                                                           otherButtonTitles:nil, nil];
+                UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:@"Internet Connection"
+                                                                                    message:@"An active Internet connection is required to use this application."
+                                                                             preferredStyle:UIAlertControllerStyleAlert];
                 
-                [errorAlert show];
+                [errorAlert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+                
+                [[[self window] rootViewController] presentViewController:errorAlert animated:YES completion:nil];
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName:INTERNET_DOWN object:nil];
                 

@@ -416,13 +416,13 @@ NS_ENUM(NSInteger, CellTypeTag){
             }
             else {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                                         message:[error localizedDescription]
-                                                                        delegate:nil
-                                                               cancelButtonTitle:@"OK"
-                                                               otherButtonTitles:nil, nil];
+                    UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                                                      message:[error localizedDescription]
+                                                                                               preferredStyle:UIAlertControllerStyleAlert];
                     
-                    [errorAlert show];
+                    [errorAlert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+                    
+                    [self presentViewController:errorAlert animated:YES completion:nil];
                 });
             }
             
@@ -645,13 +645,13 @@ NS_ENUM(NSInteger, CellTypeTag){
         [[self fetchActivityIndicator] stopAnimating];
         [[self fetchButton] setHidden:NO];
         
-        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                             message:@"The URL is invalid."
-                                                            delegate:nil
-                                                   cancelButtonTitle:@"OK"
-                                                   otherButtonTitles:nil, nil];
+        UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                            message:@"The URL is invalid."
+                                                                     preferredStyle:UIAlertControllerStyleAlert];
         
-        [errorAlert show];
+        [errorAlert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+        
+        [self presentViewController:errorAlert animated:YES completion:nil];
         
         return NO;
     }
@@ -689,13 +689,13 @@ NS_ENUM(NSInteger, CellTypeTag){
             [[self fetchActivityIndicator] stopAnimating];
             [[self fetchButton] setHidden:NO];
             
-            UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                                 message:@"The HTTP method is invalid."
-                                                                delegate:nil
-                                                       cancelButtonTitle:@"OK"
-                                                       otherButtonTitles:nil, nil];
+            UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                                message:@"The HTTP Method is invalid."
+                                                                         preferredStyle:UIAlertControllerStyleAlert];
             
-            [errorAlert show];
+            [errorAlert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+            
+            [self presentViewController:errorAlert animated:YES completion:nil];
             
             return NO;
         }
@@ -868,13 +868,13 @@ NS_ENUM(NSInteger, CellTypeTag){
         });
     }
     else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                        message:@"The data is not in the correct format."
-                                                       delegate:Nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil, nil];
+        UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                            message:@"The data is not in the correct format."
+                                                                     preferredStyle:UIAlertControllerStyleAlert];
         
-        [alert show];
+        [errorAlert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+        
+        [self presentViewController:errorAlert animated:YES completion:nil];
     }
     
 }
@@ -895,13 +895,13 @@ NS_ENUM(NSInteger, CellTypeTag){
         [self performSegueWithIdentifier:kShowCsvViewer sender:self];
     }
     else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                        message:@"The data is not in the correct format."
-                                                       delegate:Nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil, nil];
+        UIAlertController *errorAlert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                            message:@"The data is not in the correct format."
+                                                                     preferredStyle:UIAlertControllerStyleAlert];
         
-        [alert show];
+        [errorAlert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:nil]];
+        
+        [self presentViewController:errorAlert animated:YES completion:nil];
     }
 }
 
