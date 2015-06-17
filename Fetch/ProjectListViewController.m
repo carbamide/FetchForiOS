@@ -272,19 +272,6 @@
 }
 
 #pragma mark -
-#pragma mark - UIActionSheetDelegate
-
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if ([actionSheet tag] == 66) {
-        if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Edit Name..."]) {
-            [self editProjectName:[self tempProject]];
-        }
-        
-    }
-}
-
-#pragma mark -
 #pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -361,15 +348,17 @@
     Projects *tempProject = [self projectList][[indexPath row]];
     
     [self setTempProject:tempProject];
+    UIAlertController *editNameActionSheet = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIActionSheet *editNameActionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                                     delegate:self
-                                                            cancelButtonTitle:@"Cancel"
-                                                       destructiveButtonTitle:nil
-                                                            otherButtonTitles:@"Edit Name...", nil];
+    [editNameActionSheet addAction:[UIAlertAction actionWithTitle:@"Edit Name..." style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self editProjectName:[self tempProject]];
+    }]];
     
-    [editNameActionSheet setTag:66];
-    [editNameActionSheet showFromRect:[[[self tableView] cellForRowAtIndexPath:indexPath] frame] inView:[self tableView] animated:YES];
+    [editNameActionSheet addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+    [[editNameActionSheet popoverPresentationController] setSourceView:[self tableView]];
+    [[editNameActionSheet popoverPresentationController] setSourceRect:[[[self tableView] cellForRowAtIndexPath:indexPath] frame]];
+    
+    [self presentViewController:editNameActionSheet animated:YES completion:nil];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForMoreOptionButtonForRowAtIndexPath:(NSIndexPath *)indexPath

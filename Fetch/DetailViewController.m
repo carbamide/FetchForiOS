@@ -70,7 +70,7 @@
 /**
  *  Reference to parseActionSheet
  */
-@property (strong, nonatomic) UIActionSheet *parseActionSheet;
+@property (strong, nonatomic) UIAlertController *parseActionSheet;
 
 /**
  *  Maximize gesture for outputTextView
@@ -556,28 +556,39 @@ NS_ENUM(NSInteger, CellTypeTag){
 
 -(IBAction)parseAction:(id)sender
 {
-    if ([_parseActionSheet isVisible]) {
-        [_parseActionSheet dismissWithClickedButtonIndex:[_parseActionSheet cancelButtonIndex] animated:YES];
+    if ([[self presentedViewController] isKindOfClass:[UIAlertController class]]) {
+        if (_parseActionSheet) {
+            [_parseActionSheet dismissViewControllerAnimated:YES completion:nil];
+            
+            return;
+        }
+    }
+    
+    _parseActionSheet = [UIAlertController alertControllerWithTitle:nil
+                                                            message:nil
+                                                     preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [[_parseActionSheet popoverPresentationController] setBarButtonItem:sender];
+    [_parseActionSheet setModalPresentationStyle:UIModalPresentationPopover];
+    
+    [_parseActionSheet addAction:[UIAlertAction actionWithTitle:@"CSV" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self showCsvOutputAction:nil];
+    }]];
+    
+    [_parseActionSheet addAction:[UIAlertAction actionWithTitle:@"JSON" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self showJsonOutputAction:nil];
         
-        return;
-    }
+    }]];
     
-    if (!_parseActionSheet) {
-        _parseActionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                        delegate:self
-                                               cancelButtonTitle:@"Cancel"
-                                          destructiveButtonTitle:nil
-                                               otherButtonTitles:@"CSV", @"JSON", nil];
-    }
     
-    [_parseActionSheet showFromBarButtonItem:sender animated:YES];
+    [self presentViewController:_parseActionSheet animated:YES completion:nil];
 }
 
 #pragma mark -
 #pragma mark - Methods
 
 -(void)reloadUrl:(NSNotification *)aNotification
-{    
+{
     if ([self currentUrl]) {
         [self loadUrl:[NSNotification notificationWithName:@"fake_notification" object:nil userInfo:@{@"url": [self currentUrl]}]];
     }
@@ -899,7 +910,7 @@ NS_ENUM(NSInteger, CellTypeTag){
     [UIView animateWithDuration:1.0 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:UIViewAnimationOptionTransitionNone animations:^{
         [[self searchBar] setAlpha:1.0];
         
-        if (UIDeviceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
+        if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
             [[self outputTextView] setFrame:CGRectMake(0, 0, 703, 768)];
         }
         else {
@@ -931,7 +942,7 @@ NS_ENUM(NSInteger, CellTypeTag){
     [UIView animateWithDuration:1.0 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:UIViewAnimationOptionTransitionNone animations:^{
         [[self searchBar] setAlpha:0];
         
-        if (UIDeviceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
+        if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
             [[self outputTextView] setFrame:kLandscapeOutputViewRect];
         }
         else {
@@ -1166,24 +1177,6 @@ NS_ENUM(NSInteger, CellTypeTag){
     }];
     
     return YES;
-}
-
-#pragma mark -
-#pragma mark - UIActionSheetDelegate
-
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    NSString *title = [actionSheet buttonTitleAtIndex:buttonIndex];
-    
-    if ([title isEqualToString:@"CSV"]) {
-        [self showCsvOutputAction:actionSheet];
-    }
-    else if ([title isEqualToString:@"JSON"]) {
-        [self showJsonOutputAction:actionSheet];
-    }
-    else {
-        NSLog(@"Cancel");
-    }
 }
 
 #pragma mark -

@@ -38,6 +38,7 @@
 		2922025A182587D400EFE266 /* MDSpreadViewCellCornerHeaderBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 29220254182587D400EFE266 /* MDSpreadViewCellCornerHeaderBackground.m */; };
 		292202A61825882900EFE266 /* CsvOutputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 292202A51825882900EFE266 /* CsvOutputViewController.m */; };
 		292202A9182588C500EFE266 /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 292202A8182588C500EFE266 /* CHCSVParser.m */; };
+		29231CE51B30DD7300ED855E /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29231CE41B30DD7300ED855E /* Launch Screen.storyboard */; };
 		2941E17F17F5CCCB00D5FD44 /* UIView+FindAndResignFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2941E17E17F5CCCB00D5FD44 /* UIView+FindAndResignFirstResponder.m */; };
 		2941E18417F7BE3000D5FD44 /* MSCMoreOptionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2941E18217F7BE3000D5FD44 /* MSCMoreOptionTableViewCell.m */; };
 		2941E18917F85F1100D5FD44 /* ResponseHeadersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2941E18817F85F1100D5FD44 /* ResponseHeadersViewController.m */; };
@@ -114,6 +115,7 @@
 		292202A51825882900EFE266 /* CsvOutputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CsvOutputViewController.m; sourceTree = "<group>"; };
 		292202A7182588C500EFE266 /* CHCSVParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHCSVParser.h; sourceTree = "<group>"; };
 		292202A8182588C500EFE266 /* CHCSVParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
+		29231CE41B30DD7300ED855E /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		2941E17D17F5CCCB00D5FD44 /* UIView+FindAndResignFirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FindAndResignFirstResponder.h"; sourceTree = "<group>"; };
 		2941E17E17F5CCCB00D5FD44 /* UIView+FindAndResignFirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FindAndResignFirstResponder.m"; sourceTree = "<group>"; };
 		2941E18117F7BE3000D5FD44 /* MSCMoreOptionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSCMoreOptionTableViewCell.h; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				291744CC17F3B8B20052A8C9 /* Main.storyboard */,
+				29231CE41B30DD7300ED855E /* Launch Screen.storyboard */,
 			);
 			name = "User Interface";
 			sourceTree = "<group>";
@@ -425,7 +428,7 @@
 		291744AD17F3B8B20052A8C9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Jukaela Enterprises";
 				TargetAttributes = {
 					291744B417F3B8B20052A8C9 = {
@@ -461,6 +464,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29231CE51B30DD7300ED855E /* Launch Screen.storyboard in Resources */,
 				29463BCC17F4A44A00B2C807 /* HeaderNames.plist in Resources */,
 				291744D917F3B8B20052A8C9 /* Images.xcassets in Resources */,
 				291744C517F3B8B20052A8C9 /* InfoPlist.strings in Resources */,
@@ -585,6 +589,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -599,7 +604,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -632,7 +637,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -651,7 +656,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Fetch/Fetch for iOS-Prefix.pch";
 				INFOPLIST_FILE = "Fetch/Fetch for iOS-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jukaela.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "Fetch for iOS";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
@@ -671,7 +677,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Fetch/Fetch for iOS-Prefix.pch";
 				INFOPLIST_FILE = "Fetch/Fetch for iOS-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jukaela.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "Fetch for iOS";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
