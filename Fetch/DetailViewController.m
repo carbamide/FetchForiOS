@@ -68,15 +68,7 @@
  */
 @property (strong, nonatomic) UIAlertController *parseActionSheet;
 
-/**
- *  Maximize gesture for outputTextView
- */
-@property (strong, nonatomic) UITapGestureRecognizer *maximizeGesture;
-
-/**
- *  Minimize gesture for outputTextView
- */
-@property (strong, nonatomic) UITapGestureRecognizer *minimizeGesture;
+@property (nonatomic, getter=isOutputExpanded) BOOL outputExpanded;
 
 /**
  *  Reload URL notification handler
@@ -150,11 +142,9 @@
 -(void)showCsvOutputAction:(id)sender;
 
 /**
- *  Expand the outputTextView to the full size of the view's frame.
- *
- *  @param gestureRecognizer The UITapGestureRecognizer that called this method
+ *  Expand the outputTextView to the full size of the view's frame. *
  */
--(void)expandOutputTextView:(UITapGestureRecognizer *)gestureRecognizer;
+-(IBAction)expandOutputTextView:(id)sender;
 
 /**
  *  Minimize the outputTextView back to it's original size
@@ -200,7 +190,6 @@ NS_ENUM(NSInteger, CellTypeTag){
     [[self outputTextView] setPrimaryHighlightColor:UIColorFromRGB(0xfff51d)];
     [[self outputTextView] setSecondaryHighlightColor:UIColorFromRGB(0xfffa86)];
     
-    //Meh - I don't know about all this.  I might change it back.
     [[[self outputTextView] layer] setBorderWidth:1];
     [[[self outputTextView] layer] setBorderColor:[[[kAppDelegate window] tintColor] CGColor]];
     [[self outputTextView] setBackgroundColor:[UIColor whiteColor]];
@@ -220,6 +209,7 @@ NS_ENUM(NSInteger, CellTypeTag){
         [[self parseButton] setEnabled:NO];
         [[self responseHeadersButton] setEnabled:NO];
         [[self clearButton] setEnabled:NO];
+        [[self expandOutputButton] setEnabled:NO];
         
         [[self fetchActivityIndicator] setHidden:YES];
     }
@@ -268,11 +258,6 @@ NS_ENUM(NSInteger, CellTypeTag){
     [super viewDidLoad];
     
     [self setupUserInterface];
-    
-    _maximizeGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandOutputTextView:)];
-    [_maximizeGesture setNumberOfTapsRequired:2];
-    
-    [[self outputTextView] addGestureRecognizer:_maximizeGesture];
     
     [self setupNotifications];
     
@@ -335,7 +320,8 @@ NS_ENUM(NSInteger, CellTypeTag){
     [[self view] findAndResignFirstResponder];
     
     [[self clearButton] setEnabled:YES];
-    
+    [[self expandOutputButton] setEnabled:YES];
+
     if ([self addToUrlListIfUnique]) {
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         NSMutableString *parameters = [[NSMutableString alloc] init];
@@ -347,7 +333,12 @@ NS_ENUM(NSInteger, CellTypeTag){
         }
         
         if ([[self customPayloadSwitch] isOn]) {
-            [request setHTTPBody:[[[self customPayloadTextView] text] dataUsingEncoding:NSUTF8StringEncoding]];
+            if ([[self customPayloadTextView] text]) {
+                [request setHTTPBody:[[[self customPayloadTextView] text] dataUsingEncoding:NSUTF8StringEncoding]];
+
+                [[self currentUrl] setCustomPayload:[[self customPayloadTextView] text]];
+                [[self currentUrl] save];
+            }
         }
         else {
             for (Parameters *tempParam in [self parametersDataSource]) {
@@ -506,6 +497,7 @@ NS_ENUM(NSInteger, CellTypeTag){
     [[self outputTextView] setText:@""];
     
     [[self clearButton] setEnabled:NO];
+    [[self expandOutputButton] setEnabled:NO];
 }
 
 -(IBAction)showCustomPayloadAction:(id)sender
@@ -617,6 +609,7 @@ NS_ENUM(NSInteger, CellTypeTag){
         [[self outputTextView] scrollRangeToVisible:NSMakeRange([[[self outputTextView] text] length], 0)];
         
         [[self clearButton] setEnabled:YES];
+        [[self expandOutputButton] setEnabled:YES];
     });
 }
 
@@ -732,8 +725,6 @@ NS_ENUM(NSInteger, CellTypeTag){
 
 -(void)loadUrl:(NSNotification *)aNotification
 {
-    [self minimizeOutputTextView:nil];
-    
     [self setJsonData:nil];
     
     [[self parseButton] setEnabled:NO];
@@ -898,9 +889,15 @@ NS_ENUM(NSInteger, CellTypeTag){
     }
 }
 
--(void)expandOutputTextView:(UITapGestureRecognizer *)gestureRecognizer
+-(IBAction)expandOutputTextView:(id)sender
 {
-    [UIView animateWithDuration:1.0 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:UIViewAnimationOptionTransitionNone animations:^{
+    if ([self isOutputExpanded]) {
+        [self minimizeOutputTextView:nil];
+        
+        return;
+    }
+    
+    [UIView animateWithDuration:0.5 animations:^{
         [[self searchBar] setAlpha:1.0];
         
         if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
@@ -910,29 +907,27 @@ NS_ENUM(NSInteger, CellTypeTag){
             [[self outputTextView] setFrame:CGRectMake(0, 0, 768, 1024)];
         }
     } completion:^(BOOL finished) {
+        [[self expandOutputButton] setImage:[UIImage imageNamed:@"Collapse"]];
+        [self setOutputExpanded:YES];
+        
         UIEdgeInsets tempInsets = UIEdgeInsetsMake(108, 0.0, 44, 0.0);
         
         [[self outputTextView] setContentInset:tempInsets];
         [[self outputTextView] setScrollIndicatorInsets:tempInsets];
         
         [[self searchBar] setUserInteractionEnabled:YES];
-        
-        [[self outputTextView] removeGestureRecognizer:_maximizeGesture];
-        
-        if (!_minimizeGesture) {
-            _minimizeGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(minimizeOutputTextView:)];
-            [_minimizeGesture setNumberOfTapsRequired:2];
-        }
-        
-        [[self outputTextView] addGestureRecognizer:_minimizeGesture];
-        
-        [[self navigationItem] setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(minimizeOutputTextView:)]];
     }];
 }
 
 -(void)minimizeOutputTextView:(id)sender
 {
-    [UIView animateWithDuration:1.0 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:UIViewAnimationOptionTransitionNone animations:^{
+    if (![self isOutputExpanded]) {
+        [self expandOutputTextView:nil];
+        
+        return;
+    }
+    
+    [UIView animateWithDuration:0.5 animations:^{
         [[self searchBar] setAlpha:0];
         
         if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
@@ -942,6 +937,9 @@ NS_ENUM(NSInteger, CellTypeTag){
             [[self outputTextView] setFrame:kPortraitOutputViewRect];
         }
     } completion:^(BOOL finished) {
+        [[self expandOutputButton] setImage:[UIImage imageNamed:@"Expand"]];
+        [self setOutputExpanded:NO];
+        
         UIEdgeInsets tempInsets = UIEdgeInsetsMake(0, 0.0, 0.0, 0.0);
         
         [[self outputTextView] setContentInset:tempInsets];
@@ -949,15 +947,6 @@ NS_ENUM(NSInteger, CellTypeTag){
         
         [[self searchBar] setUserInteractionEnabled:NO];
         
-        [[self outputTextView] removeGestureRecognizer:_minimizeGesture];
-        
-        if (!_maximizeGesture) {
-            _maximizeGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(expandOutputTextView:)];
-            
-            [_maximizeGesture setNumberOfTapsRequired:2];
-        }
-        
-        [[self outputTextView] addGestureRecognizer:_maximizeGesture];
         [[self outputTextView] scrollRangeToVisible:NSMakeRange([[[self outputTextView] text] length], 0)];
         
         [[self navigationItem] setLeftBarButtonItem:nil];
@@ -1010,6 +999,8 @@ NS_ENUM(NSInteger, CellTypeTag){
     if (tableView == [self headersTableView]) {
         Headers *tempHeader = [self headersDataSource][[indexPath row]];
         
+        [cell setCurrentHeader:tempHeader];
+        
         [[cell nameTextField] setText:[tempHeader name]];
         [[cell nameTextField] setPlaceholder:@"Header Name"];
         
@@ -1023,6 +1014,8 @@ NS_ENUM(NSInteger, CellTypeTag){
     }
     else {
         Parameters *tempParameter = [self parametersDataSource][[indexPath row]];
+        
+        [cell setCurrentParameter:tempParameter];
         
         [[cell nameTextField] setText:[tempParameter name]];
         [[cell nameTextField] setPlaceholder:@"Parameter Name"];

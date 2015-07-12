@@ -32,12 +32,12 @@
 /**
  *  Text field that holds the URL of the current URL object
  */
-@property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *urlTextField;
+@property (strong, nonatomic) IBOutlet UITextField *urlTextField;
 
 /**
  *  Description of the URL contained in urlTextField
  */
-@property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *urlDescriptionTextField;
+@property (strong, nonatomic) IBOutlet UITextField *urlDescriptionTextField;
 
 /**
  *  UIButton that shows the SelectionViewController when selected
@@ -93,6 +93,11 @@
  *  UIButton that allows the user to clear the contents of outputTextView
  */
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *clearButton;
+
+/**
+ *  UIButton that allows the user to expand the size of the output UITextView.
+ */
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *expandOutputButton;
 
 /**
  *  UIBarButtonItem that allows the user to show the JsonOutputViewController

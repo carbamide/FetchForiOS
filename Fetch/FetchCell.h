@@ -27,12 +27,12 @@
 /**
  *  The name of the Header or Parameter object
  */
-@property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *nameTextField;
+@property (strong, nonatomic) IBOutlet UITextField *nameTextField;
 
 /**
  *  The value of the Header or Parameter object
  */
-@property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *valueTextField;
+@property (strong, nonatomic) IBOutlet UITextField *valueTextField;
 
 /**
  *  Header object currently being displayed in this cell
