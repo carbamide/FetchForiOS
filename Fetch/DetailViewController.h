@@ -30,21 +30,6 @@
 @property (strong, nonatomic) Projects *currentProject;
 
 /**
- *  UIPopoverController that holds the SelectionViewController
- */
-@property (strong, nonatomic) UIPopoverController *selectionPopover;
-
-/**
- *  UIPopoverController that holds the ResponseHeadersViewController
- */
-@property (strong, nonatomic) UIPopoverController *responseHeadersPopover;
-
-/**
- *  UIPopoverController that holds the JsonOutputViewController
- */
-@property (strong, nonatomic) UIPopoverController *jsonPopover;
-
-/**
  *  Text field that holds the URL of the current URL object
  */
 @property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *urlTextField;

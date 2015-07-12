@@ -217,14 +217,13 @@
         UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[exportedURL] applicationActivities:nil];
         
         [activityViewController setExcludedActivityTypes:@[UIActivityTypePostToFacebook, UIActivityTypePostToTwitter]];
+        [activityViewController setModalPresentationStyle:UIModalPresentationPopover];
         
-        if (![self activityPopoverController]) {
-            [self setActivityPopoverController:[[UIPopoverController alloc] initWithContentViewController:activityViewController]];
-        }
+        UIPopoverPresentationController *popoverPresentationController = [activityViewController popoverPresentationController];
+        [popoverPresentationController setSourceView:[self tableView]];
+        [popoverPresentationController setSourceRect:[[gestureRecognizer view] frame]];
         
-        [[self activityPopoverController] setContentViewController:activityViewController];
-        
-        [[self activityPopoverController] presentPopoverFromRect:[[gestureRecognizer view] frame] inView:[self tableView] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        [self presentViewController:activityViewController animated:YES completion:nil];
     }
 }
 

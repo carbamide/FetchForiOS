@@ -12,15 +12,13 @@
 #import "SelectionViewController.h"
 
 @interface FetchCell()
+
+@property (strong, nonatomic) SelectionViewController *selectionViewController;
+
 /**
  *  NSArray of common http headers
  */
 @property (strong, nonatomic) NSArray *headerNames;
-
-/**
- *  UIPopoverController that holds a SelectionViewController to select a header
- */
-@property (strong, nonatomic) UIPopoverController *selectionPopover;
 
 /**
  *  Determine the UITextField that called this method, then save that data to the current object, Header or Parameter
@@ -72,12 +70,15 @@
             [viewController setSender:textField];
             [viewController setDelegate:self];
             [viewController setDataSource:[self headerNames]];
+            [viewController setModalPresentationStyle:UIModalPresentationPopover];
             
-            if (![self selectionPopover]) {
-                [self setSelectionPopover:[[UIPopoverController alloc] initWithContentViewController:viewController]];
-            }
+            UIPopoverPresentationController *popoverPresentationController = [viewController popoverPresentationController];
+            [popoverPresentationController setSourceRect:[textField frame]];
+            [popoverPresentationController setSourceView:self];
             
-            [[self selectionPopover] presentPopoverFromRect:[textField frame] inView:self permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+            [self setSelectionViewController:viewController];
+            
+            [[self delegate] presentViewController:viewController animated:YES completion:nil];
         }
     }
     return YES;
@@ -89,7 +90,9 @@
     
     [textField resignFirstResponder];
     
-    [[self selectionPopover] dismissPopoverAnimated:YES];
+    if ([self selectionViewController]) {
+        [[self selectionViewController] dismissViewControllerAnimated:YES completion:nil];
+    }
     
     return YES;
 }
@@ -100,8 +103,10 @@
     
     [textField resignFirstResponder];
     
-    [[self selectionPopover] dismissPopoverAnimated:YES];
-
+    if ([self selectionViewController]) {
+        [[self selectionViewController] dismissViewControllerAnimated:YES completion:nil];
+    }
+    
     return YES;
 }
 

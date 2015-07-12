@@ -21,6 +21,10 @@
 @interface FetchCell : UITableViewCell <UITextFieldDelegate>
 
 /**
+ *  The delegate view controller of the FetchCell
+ */
+@property (weak) UIViewController *delegate;
+/**
  *  The name of the Header or Parameter object
  */
 @property (strong, nonatomic) IBOutlet JVFloatLabeledTextField *nameTextField;

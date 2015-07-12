@@ -25,9 +25,4 @@
  */
 @property (strong, nonatomic) DetailViewController *detailViewController;
 
-/**
- *  UIPopoverController that holds the export activities
- */
-@property (strong, nonatomic) UIPopoverController *activityPopoverController;
-
 @end

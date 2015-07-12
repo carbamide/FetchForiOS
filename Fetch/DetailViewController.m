@@ -22,10 +22,6 @@
 #import "CsvOutputViewController.h"
 
 @interface DetailViewController ()
-/**
- *  UIPopoverController that holds a reference to the UISplitView's 0th panel
- */
-@property (strong, nonatomic) UIPopoverController *masterPopoverController;
 
 /**
  *  Data source for the headersTableView
@@ -315,12 +311,13 @@ NS_ENUM(NSInteger, CellTypeTag){
     [viewController setSender:sender];
     [viewController setDelegate:self];
     [viewController setDataSource:[self httpMethods]];
+    [viewController setModalPresentationStyle:UIModalPresentationPopover];
     
-    if (![self selectionPopover]) {
-        [self setSelectionPopover:[[UIPopoverController alloc] initWithContentViewController:viewController]];
-    }
+    UIPopoverPresentationController *popoverPresentationController = [viewController popoverPresentationController];
+    [popoverPresentationController setSourceRect:[sender frame]];
+    [popoverPresentationController setSourceView:[self view]];
     
-    [[self selectionPopover] presentPopoverFromRect:[sender frame] inView:[self view] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 -(IBAction)fetchAction:(id)sender
@@ -543,15 +540,14 @@ NS_ENUM(NSInteger, CellTypeTag){
     
     ResponseHeadersViewController *headersViewController = [[ResponseHeadersViewController alloc] initWithStyle:UITableViewStylePlain keysArray:keysArray valuesArray:valuesArray];
     
-    if ([[self jsonPopover] isPopoverVisible]) {
-        [[self jsonPopover] dismissPopoverAnimated:YES];
-    }
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:headersViewController];
+    [navController setModalPresentationStyle:UIModalPresentationPopover];
     
-    if (![self responseHeadersPopover]) {
-        [self setResponseHeadersPopover:[[UIPopoverController alloc] initWithContentViewController:[[UINavigationController alloc] initWithRootViewController:headersViewController]]];
-    }
+    UIPopoverPresentationController *popoverPresentationController = [navController popoverPresentationController];
+    [popoverPresentationController setBarButtonItem:sender];
+    [popoverPresentationController setSourceView:[self view]];
     
-    [[self responseHeadersPopover] presentPopoverFromBarButtonItem:[self responseHeadersButton] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 -(IBAction)parseAction:(id)sender
@@ -738,10 +734,6 @@ NS_ENUM(NSInteger, CellTypeTag){
 {
     [self minimizeOutputTextView:nil];
     
-    if ([self masterPopoverController]) {
-        [[self masterPopoverController] dismissPopoverAnimated:YES];
-    }
-    
     [self setJsonData:nil];
     
     [[self parseButton] setEnabled:NO];
@@ -857,14 +849,15 @@ NS_ENUM(NSInteger, CellTypeTag){
         
         [viewController setJsonData:[self jsonData]];
         
-        if ([[self responseHeadersPopover] isPopoverVisible]) {
-            [[self responseHeadersPopover] dismissPopoverAnimated:YES];
-        }
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+        [navController setModalPresentationStyle:UIModalPresentationPopover];
         
-        [self setJsonPopover:[[UIPopoverController alloc] initWithContentViewController:[[UINavigationController alloc] initWithRootViewController:viewController]]];
+        UIPopoverPresentationController *popoverPresentationController = [navController popoverPresentationController];
+        [popoverPresentationController setBarButtonItem:sender];
+        [popoverPresentationController setSourceView:[self view]];
         
-        dispatch_async(dispatch_get_main_queue(), ^ {
-            [[self jsonPopover] presentPopoverFromBarButtonItem:[self parseButton] permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self presentViewController:navController animated:YES completion:nil];
         });
     }
     else {
@@ -1008,6 +1001,8 @@ NS_ENUM(NSInteger, CellTypeTag){
     static NSString *CellIdentifier = @"Cell";
     FetchCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
+    [cell setDelegate:self];
+    
     if (!cell) {
         cell = [[FetchCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
@@ -1142,20 +1137,13 @@ NS_ENUM(NSInteger, CellTypeTag){
 #pragma mark -
 #pragma mark - UISplitViewDelegate
 
-- (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
+- (void)splitViewController:(UISplitViewController *)svc willChangeToDisplayMode:(UISplitViewControllerDisplayMode)displayMode
 {
-    [barButtonItem setTitle:@"Projects"];
+    [[self navigationItem] setLeftItemsSupplementBackButton:YES];
     
-    [[self navigationItem] setLeftBarButtonItem:barButtonItem animated:YES];
+    [[svc displayModeButtonItem] setTitle:@"Projects"];
     
-    [self setMasterPopoverController:popoverController];
-}
-
-- (void)splitViewController:(UISplitViewController *)splitController willShowViewController:(UIViewController *)viewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
-{
-    [[self navigationItem] setLeftBarButtonItem:nil animated:YES];
-    
-    [self setMasterPopoverController:nil];
+    [[self navigationItem] setLeftBarButtonItem:[svc displayModeButtonItem] animated:YES];
 }
 
 #pragma mark -

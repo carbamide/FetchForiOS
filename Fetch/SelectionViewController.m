@@ -86,7 +86,7 @@
         [textField resignFirstResponder];
     }
     
-    [[[self delegate] selectionPopover] dismissPopoverAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
